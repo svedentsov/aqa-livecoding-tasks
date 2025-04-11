@@ -3,6 +3,7 @@
 <a name="table-of-contents"></a>
 
 ### Основы основ (встречаются очень часто)
+
 * [FizzBuzz](#task-1)
 * [Перевернуть строку (Reverse String)](#task-2)
 * [Проверка на палиндром (Palindrome Check)](#task-3)
@@ -15,6 +16,7 @@
 * [Найти первый неповторяющийся символ в строке (Find First Non-Repeating Character)](#task-10)
 
 ### Стандартные задачи (встречаются часто)
+
 * [Факториал числа (Factorial)](#task-11)
 * [Числа Фибоначчи (Fibonacci Sequence)](#task-12)
 * [Проверка на простое число (Prime Number Check)](#task-13)
@@ -27,6 +29,7 @@
 * [Проверить, содержит ли строка только цифры (Check if String Contains Only Digits)](#task-20)
 
 ### Чуть сложнее или специфичнее (средняя частота)
+
 * [Перевернуть порядок слов в предложении (Reverse Words in Sentence)](#task-21)
 * [Найти пересечение двух массивов/списков (Find Intersection of Two Arrays/Lists)](#task-22)
 * [Проверка сбалансированности скобок (Balanced Parentheses Check)](#task-23)
@@ -49,6 +52,7 @@
 * [Сравнить два объекта кастомного класса (Compare Custom Objects)](#task-40)
 
 ### Более специализированные или сложные (реже)
+
 * [Валидация IP-адреса (Validate IP Address)](#task-41)
 * [Конвертация римских чисел в целые (Roman to Integer)](#task-42)
 * [Конвертация целых чисел в римские (Integer to Roman)](#task-43)
@@ -71,6 +75,7 @@
 * [Перемножение матриц (Matrix Multiplication - для 2x2 или 3x3)](#task-60)
 
 ### Сложные или нетипичные для AQA live coding (очень редко)
+
 * [Реализовать LRU Cache (Least Recently Used Cache)](#task-61)
 * [Найти медиану двух отсортированных массивов (Median of Two Sorted Arrays)](#task-62)
 * [Найти все комбинации элементов списка, сумма которых равна X (Combination Sum)](#task-63)

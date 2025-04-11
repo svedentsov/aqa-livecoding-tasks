@@ -3,6 +3,9 @@ package com.svedentsov.aqa.tasks.algorithms;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+/**
+ * Решение задачи №100: Вычисление простого математического выражения в строке.
+ */
 public class Task100_SimpleExpressionEvaluator {
 
     /**

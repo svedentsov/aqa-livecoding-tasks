@@ -2,6 +2,9 @@ package com.svedentsov.aqa.tasks.strings;
 
 import java.util.Arrays;
 
+/**
+ * Решение задачи №80: Регулярное выражение для поиска/валидации.
+ */
 public class Task80_SimpleRegex {
 
     /**
