@@ -930,7 +930,7 @@
   иметь одинаковый `hashCode`.
 * **Пример:** `new Point(1, 2).equals(new Point(1, 2))` -> `true`. `new Point(1, 2).equals(new Point(2, 1))` ->
   `false`. `new Point(1, 2).hashCode()` должен быть равен `new Point(1, 2).hashCode()`.
-* **Решение:** [`EqualsHashCode`](src/main/java/com/svedentsov/aqa/tasks/oop_design/Task51_EqualsHashCode.java)
+* **Решение:** [`EqualsHashCode`](src/main/java/com/svedentsov/aqa/tasks/oop_design/EqualsHashCode.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -946,7 +946,7 @@
   являющуюся префиксом всех строк в массиве `strs`. Если общего префикса нет, верните пустую строку `""`.
 * **Пример:** `longestCommonPrefix(new String[]{"flower", "flow", "flight"})` -> `"fl"`.
   `longestCommonPrefix(new String[]{"dog", "racecar", "car"})` -> `""`.
-* **Решение:** [`LongestCommonPrefix`](src/main/java/com/svedentsov/aqa/tasks/strings/Task52_LongestCommonPrefix.java)
+* **Решение:** [`LongestCommonPrefix`](src/main/java/com/svedentsov/aqa/tasks/strings/LongestCommonPrefix.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -962,7 +962,7 @@
   `s` является подпоследовательностью строки `t` (т.е. `s` можно получить из `t` удалением некоторых символов без
   изменения порядка оставшихся), и `false` иначе.
 * **Пример:** `isSubsequence("ace", "abcde")` -> `true`. `isSubsequence("axc", "ahbgdc")` -> `false`.
-* **Решение:** [`IsSubsequence`](src/main/java/com/svedentsov/aqa/tasks/strings/Task53_IsSubsequence.java)
+* **Решение:** [`IsSubsequence`](src/main/java/com/svedentsov/aqa/tasks/strings/IsSubsequence.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -979,7 +979,7 @@
   просто выводит сообщение в консоль.
 * **Пример:** `Logger logger1 = Logger.getInstance(); Logger logger2 = Logger.getInstance(); logger1 == logger2` ->
   `true`. `logger1.log("Test message")` выводит "Test message".
-* **Решение:** [`Singleton`](src/main/java/com/svedentsov/aqa/tasks/oop_design/Task54_Singleton.java)
+* **Решение:** [`Singleton`](src/main/java/com/svedentsov/aqa/tasks/oop_design/Singleton.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -997,7 +997,7 @@
 * **Пример:**
   `grid = {{'1','1','0','0','0'}, {'1','1','0','0','0'}, {'0','0','1','0','0'}, {'0','0','0','1','1'}}` ->
   `countIslands(grid)` должен вернуть `3`.
-* **Решение:** [`NumberOfIslands`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/Task55_NumberOfIslands.java)
+* **Решение:** [`NumberOfIslands`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/NumberOfIslands.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1014,7 +1014,7 @@
   строке с отступом).
 * **Пример:** Вывод может выглядеть примерно так:
   `Order{orderId=123, customer=Customer{name='Alice'}, products=[\n  Product{name='Laptop', price=1200.0},\n  Product{name='Mouse', price=25.0}\n]}`.
-* **Решение:** [`ToStringComplex`](src/main/java/com/svedentsov/aqa/tasks/oop_design/Task56_ToStringComplex.java)
+* **Решение:** [`ToStringComplex`](src/main/java/com/svedentsov/aqa/tasks/oop_design/ToStringComplex.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1028,7 +1028,7 @@
 * **Задание:** Напишите метод `String generateRandomString(int length)`, который генерирует и возвращает случайную
   строку, состоящую из букв (верхнего и нижнего регистра) и цифр, указанной длины `length`.
 * **Пример:** `generateRandomString(10)` может вернуть `"aK8s2ZpQ1v"`.
-* **Решение:** [`GenerateRandomString`](src/main/java/com/svedentsov/aqa/tasks/strings/Task57_GenerateRandomString.java)
+* **Решение:** [`GenerateRandomString`](src/main/java/com/svedentsov/aqa/tasks/strings/GenerateRandomString.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1043,7 +1043,7 @@
   формата email: строка должна содержать один символ `@` и хотя бы одну точку `.` после символа `@`.
 * **Пример:** `isValidEmailBasic("test@example.com")` -> `true`. `isValidEmailBasic("test.example.com")` -> `false`.
   `isValidEmailBasic("test@examplecom")` -> `false`. `isValidEmailBasic("test@@example.com")` -> `false`.
-* **Решение:** [`BasicEmailValidation`](src/main/java/com/svedentsov/aqa/tasks/strings/Task58_BasicEmailValidation.java)
+* **Решение:** [`BasicEmailValidation`](src/main/java/com/svedentsov/aqa/tasks/strings/BasicEmailValidation.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1059,7 +1059,7 @@
   найден, верните -1.
 * **Пример:** `findSubstringIndex("hello world", "world")` -> `6`. `findSubstringIndex("aaaaa", "bba")` -> `-1`.
   `findSubstringIndex("abc", "")` -> `0`.
-* **Решение:** [`FindSubstringIndex`](src/main/java/com/svedentsov/aqa/tasks/strings/Task59_FindSubstringIndex.java)
+* **Решение:** [`FindSubstringIndex`](src/main/java/com/svedentsov/aqa/tasks/strings/FindSubstringIndex.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1076,7 +1076,7 @@
 * **Пример:** `matrixA = {{1, 2}, {3, 4}}, matrixB = {{2, 0}, {1, 2}}`. `multiplyMatrices(matrixA, matrixB)` ->
   `{{4, 4}, {10, 8}}`.
 * **Решение:** [
-  `MatrixMultiplication`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/Task60_MatrixMultiplication.java)
+  `MatrixMultiplication`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/MatrixMultiplication.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1095,7 +1095,7 @@
 * **Пример:**
   `LRUCache cache = new LRUCache(2); cache.put(1, 1); cache.put(2, 2); cache.get(1); cache.put(3, 3); // Вытесняет 2 cache.get(2);` ->
   `-1`. `cache.get(1);` -> `1`. `cache.get(3);` -> `3`.
-* **Решение:** [`LRUCache`](src/main/java/com/svedentsov/aqa/tasks/data_structures/Task61_LRUCache.java)
+* **Решение:** [`LRUCache`](src/main/java/com/svedentsov/aqa/tasks/data_structures/LRUCache.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1110,7 +1110,7 @@
   двух отсортированных массивов `nums1` и `nums2`.
 * **Пример:** `findMedianSortedArrays(new int[]{1, 3}, new int[]{2})` -> `2.0`.
   `findMedianSortedArrays(new int[]{1, 2}, new int[]{3, 4})` -> `2.5`.
-* **Решение:** [`MedianSortedArrays`](src/main/java/com/svedentsov/aqa/tasks/algorithms/Task62_MedianSortedArrays.java)
+* **Решение:** [`MedianSortedArrays`](src/main/java/com/svedentsov/aqa/tasks/algorithms/MedianSortedArrays.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1125,7 +1125,7 @@
   все уникальные комбинации чисел из массива `candidates`, сумма которых равна `target`. Одно и то же число может
   быть использовано неограниченное количество раз.
 * **Пример:** `candidates = [2, 3, 6, 7], target = 7`. Результат: `[[2, 2, 3], [7]]`.
-* **Решение:** [`CombinationSum.`](src/main/java/com/svedentsov/aqa/tasks/dp/Task63_CombinationSum.java)
+* **Решение:** [`CombinationSum.`](src/main/java/com/svedentsov/aqa/tasks/dp/CombinationSum.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1140,7 +1140,7 @@
 * **Задание:** Напишите метод `int minEditDistance(String word1, String word2)`, который вычисляет минимальное
   количество операций (вставка, удаление, замена символа), необходимых для преобразования `word1` в `word2`.
 * **Пример:** `minEditDistance("horse", "ros")` -> `3`. `minEditDistance("intention", "execution")` -> `5`.
-* **Решение:** [`EditDistance`](src/main/java/com/svedentsov/aqa/tasks/dp/Task64_EditDistance.java)
+* **Решение:** [`EditDistance`](src/main/java/com/svedentsov/aqa/tasks/dp/EditDistance.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1159,7 +1159,7 @@
   максимальной. Каждый предмет можно взять только один раз (0/1).
 * **Пример:** Веса: `[10, 20, 30]`, Стоимости: `[60, 100, 120]`, Вместимость: `50`. Решение: взять предметы 2 и 3 (
   вес 20+30=50), стоимость 100+120=220.
-* **Решение:** [`Knapsack01`](src/main/java/com/svedentsov/aqa/tasks/dp/Task65_Knapsack01.java)
+* **Решение:** [`Knapsack01`](src/main/java/com/svedentsov/aqa/tasks/dp/Knapsack01.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1173,7 +1173,7 @@
 * **Задание:** Реализуйте метод `void mergeSort(int[] arr)`, который сортирует массив `arr` по возрастанию,
   используя рекурсивный алгоритм сортировки слиянием.
 * **Пример:** Исходный `[5, 1, 4, 2, 8]` после `mergeSort` станет `[1, 2, 4, 5, 8]`.
-* **Решение:** [`MergeSort`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/Task66_MergeSort.java)
+* **Решение:** [`MergeSort`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/MergeSort.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1187,7 +1187,7 @@
 * **Задание:** Реализуйте метод `void quickSort(int[] arr)`, который сортирует массив `arr` по возрастанию,
   используя рекурсивный алгоритм быстрой сортировки.
 * **Пример:** Исходный `[5, 1, 4, 2, 8]` после `quickSort` станет `[1, 2, 4, 5, 8]`.
-* **Решение:** [`QuickSort`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/Task67_QuickSort.java)
+* **Решение:** [`QuickSort`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/QuickSort.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1201,7 +1201,7 @@
 * **Задание:** Реализуйте класс `TreeNode` и метод `TreeNode insertIntoBST(TreeNode root, int val)`, который
   вставляет значение `val` в бинарное дерево поиска с корнем `root` и возвращает корень обновленного дерева.
 * **Пример:** `insertIntoBST(root, 5)` вставит 5 в соответствующее место дерева.
-* **Решение:** [`BuildBST`](src/main/java/com/svedentsov/aqa/tasks/trees/Task68_BuildBST.java)
+* **Решение:** [`BuildBST`](src/main/java/com/svedentsov/aqa/tasks/trees/BuildBST.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1216,7 +1216,7 @@
   `List<Integer> inorderTraversal(TreeNode root)`, который выполняет центрированный (in-order) обход дерева и
   возвращает список значений узлов.
 * **Пример:** Для дерева `[1, null, 2, 3]`, `inorderTraversal` вернет `[1, 3, 2]`.
-* **Решение:** [`TreeTraversal`](src/main/java/com/svedentsov/aqa/tasks/trees/Task69_TreeTraversal.java)
+* **Решение:** [`TreeTraversal`](src/main/java/com/svedentsov/aqa/tasks/trees/TreeTraversal.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1233,7 +1233,7 @@
   упомянув Jackson/Gson).
 * **Пример:** Обсуждение использования аннотаций, `ObjectMapper` и т.д.
 * **Решение (Концептуальное обсуждение):** [
-  `JsonConcept`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/Task70_JsonConcept.java)
+  `JsonConcept`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/JsonConcept.java)
 
 [К оглавлению](#table-of-contents)
 
