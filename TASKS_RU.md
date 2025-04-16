@@ -1248,7 +1248,7 @@
   `val` и `next`). Метод должен вернуть `true`, если в списке есть цикл, и `false` иначе.
 * **Пример:** Если узел `next` последнего элемента указывает на один из предыдущих узлов, метод вернет `true`.
 * **Решение:** [
-  `DetectCycleLinkedList`](src/main/java/com/svedentsov/aqa/tasks/linked_lists/Task71_DetectCycleLinkedList.java)
+  `DetectCycleLinkedList`](src/main/java/com/svedentsov/aqa/tasks/linked_lists/DetectCycleLinkedList.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1262,7 +1262,7 @@
 * **Задание:** Напишите метод `ListNode reverseList(ListNode head)`, который переворачивает односвязный список и
   возвращает новую голову списка.
 * **Пример:** Список `1 -> 2 -> 3 -> null` должен стать `3 -> 2 -> 1 -> null`.
-* **Решение:** [`ReverseLinkedList`](src/main/java/com/svedentsov/aqa/tasks/linked_lists/Task72_ReverseLinkedList.java)
+* **Решение:** [`ReverseLinkedList`](src/main/java/com/svedentsov/aqa/tasks/linked_lists/ReverseLinkedList.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1278,7 +1278,7 @@
   данных вы бы использовали? (Например, Token Bucket или Leaky Bucket).
 * **Пример:** Обсуждение использования `Map<UserId, Timestamp/Counter>` или `Map<UserId, TokenBucketState>`.
 * **Решение (Концептуальное обсуждение):** [
-  `RateLimiterConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/Task73_RateLimiterConcept.java)
+  `RateLimiterConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/RateLimiterConcept.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1294,7 +1294,7 @@
 * **Пример:** Обсуждение `Map<Topic, List<Subscriber>>`, методов `subscribe(topic, subscriber)`,
   `publish(topic, message)`.
 * **Решение (Концептуальное обсуждение + Простой Код):** [
-  `PubSubConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/Task74_PubSubConcept.java)
+  `PubSubConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/PubSubConcept.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1310,7 +1310,7 @@
 * **Пример:** `points = [[1, 3], [-2, 2]], k = 1`. Результат: `[[-2, 2]]`.
   `points = [[3, 3], [5, -1], [-2, 4]], k = 2`. Результат: `[[3, 3], [-2, 4]]` (порядок не важен).
 * **Решение:** [
-  `KClosestPointsOrigin`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/Task75_KClosestPointsOrigin.java)
+  `KClosestPointsOrigin`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/KClosestPointsOrigin.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1324,7 +1324,7 @@
   рамках одного приложения. Какие плюсы и минусы у каждого подхода (например, UUID, Snowflake, Timestamp + Counter)?
 * **Пример:** Сравнение вероятности коллизий, производительности, сортируемости ID.
 * **Решение (Концептуальное обсуждение):** [
-  `UniqueIdConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/Task76_UniqueIdConcept.java)
+  `UniqueIdConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/UniqueIdConcept.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1338,7 +1338,7 @@
 * **Задание:** Напишите метод `String encodeBase64(String input)` и `String decodeBase64(String encodedInput)`,
   используя класс `java.util.Base64`, для кодирования строки в Base64 и декодирования обратно.
 * **Пример:** `encodeBase64("hello")` -> `"aGVsbG8="`. `decodeBase64("aGVsbG8=")` -> `"hello"`.
-* **Решение:** [`Base64`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/Task77_Base64.java)
+* **Решение:** [`Base64`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/Base64.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1353,7 +1353,7 @@
   yyyy-MM-dd" и возвращает количество дней между ними.
 * **Пример:** `daysBetween("2025-04-01", "2025-04-10")` -> `9`.
 * **Решение:** [
-  `DateTimeManipulation`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/Task78_DateTimeManipulation.java)
+  `DateTimeManipulation`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/DateTimeManipulation.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1368,7 +1368,7 @@
   конструктор, метод `toString()` (например, "2/3"), и метод `add(Fraction other)` для сложения дробей с приведением
   к общему знаменателю и упрощением результата (используя НОД).
 * **Пример:** `new Fraction(1, 2).add(new Fraction(1, 3))` должен вернуть объект `Fraction`, представляющий `5/6`.
-* **Решение:** [`FractionClass`](src/main/java/com/svedentsov/aqa/tasks/oop_design/Task79_FractionClass.java)
+* **Решение:** [`FractionClass`](src/main/java/com/svedentsov/aqa/tasks/oop_design/FractionClass.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1384,7 +1384,7 @@
   для проверки, соответствует ли строка `number` простому формату телефонного номера, например, `+7-XXX-XXX-XX-XX` (
   где X - цифра).
 * **Пример:** `isValidPhoneNumber("+7-911-123-45-67")` -> `true`. `isValidPhoneNumber("89111234567")` -> `false`.
-* **Решение:** [`SimpleRegex`](src/main/java/com/svedentsov/aqa/tasks/strings/Task80_SimpleRegex.java)
+* **Решение:** [`SimpleRegex`](src/main/java/com/svedentsov/aqa/tasks/strings/SimpleRegex.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1400,7 +1400,7 @@
   символ нельзя использовать дважды в одном слове.
 * **Пример:** `board = {{'A','B','C','E'}, {'S','F','C','S'}, {'A','D','E','E'}}, word = "ABCCED"` -> `true`.
   `word = "SEE"` -> `true`. `word = "ABCB"` -> `false`.
-* **Решение:** [`WordSearch`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/Task81_WordSearch.java)
+* **Решение:** [`WordSearch`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/WordSearch.java)
 
 [К оглавлению](#table-of-contents)
 
