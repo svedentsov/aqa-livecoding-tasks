@@ -1,4 +1,4 @@
-package com.svedentsov.aqa.tasks.maps_sets; // или arrays_lists
+package com.svedentsov.aqa.tasks.maps_sets;
 
 import java.util.Arrays;
 import java.util.HashMap;

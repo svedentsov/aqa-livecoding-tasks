@@ -1,4 +1,4 @@
-package com.svedentsov.aqa.tasks.arrays_lists; // Или maps_sets
+package com.svedentsov.aqa.tasks.arrays_lists;
 
 import java.util.*;
 import java.util.stream.Collectors;

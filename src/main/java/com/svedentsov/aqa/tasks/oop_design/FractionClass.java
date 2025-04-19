@@ -1,4 +1,4 @@
-package com.svedentsov.aqa.tasks.oop_design; // или algorithms
+package com.svedentsov.aqa.tasks.oop_design;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package com.svedentsov.aqa.tasks.files_io_formats; // или algorithms
+package com.svedentsov.aqa.tasks.files_io_formats;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

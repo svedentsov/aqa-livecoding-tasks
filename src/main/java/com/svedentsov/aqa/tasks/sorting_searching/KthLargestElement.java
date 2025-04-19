@@ -1,4 +1,4 @@
-package com.svedentsov.aqa.tasks.sorting_searching; // или arrays_lists
+package com.svedentsov.aqa.tasks.sorting_searching;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;

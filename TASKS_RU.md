@@ -127,10 +127,9 @@
 
 * **Описание:** Написать программу, которая выводит числа от 1 до N. Но для чисел, кратных 3, вывести "Fizz", для чисел,
   кратных 5 - "Buzz", а для чисел, кратных и 3, и 5 - "FizzBuzz". (Проверяет: циклы, условия)
-* **Задание:** Напишите метод `fizzBuzz(int n)`, который выводит в консоль числа от 1 до `n`. Для чисел, кратных 3,
-  выведите "Fizz" вместо числа. Для чисел, кратных 5, выведите "Buzz". Для чисел, кратных и 3, и 5, выведите "
-  FizzBuzz".
-* **Пример:** `fizzBuzz(15)` должно вывести:
+* **Задание:** Напишите метод, например `generateFizzBuzz(int n)`, который принимает целое число n и возвращает
+  последовательность FizzBuzz от 1 до n в виде списка строк (List<String>).
+* **Пример:** `generateFizzBuzz(15)` должно вывести:
   `1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz` (каждое на новой строке или через
   запятую).
 * **Решение:** [`FizzBuzz`](src/main/java/com/svedentsov/aqa/tasks/algorithms/FizzBuzz.java)
@@ -1416,7 +1415,7 @@
   `ticketNumber`, состоящая из четного количества цифр (например, 6), "счастливым билетом" (сумма первой половины
   цифр равна сумме второй половины).
 * **Пример:** `isLuckyTicket("123402")` -> `true` (1+2+3 = 6, 4+0+2 = 6). `isLuckyTicket("123456")` -> `false`.
-* **Решение:** [`LuckyTicket`](src/main/java/com/svedentsov/aqa/tasks/algorithms/Task82_LuckyTicket.java)
+* **Решение:** [`LuckyTicket`](src/main/java/com/svedentsov/aqa/tasks/algorithms/LuckyTicket.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1435,7 +1434,7 @@
 * **Пример:** `field = {{0, 1, 0}, {0, 1, 0}, {0, 0, 0}}`. `checkShot(0, 1)` -> `"Hit"`. `checkShot(0, 0)` ->
   `"Miss"`.
 * **Решение:** [
-  `BattleshipCheckShot`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/Task83_BattleshipCheckShot.java)
+  `BattleshipCheckShot`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/BattleshipCheckShot.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1452,7 +1451,7 @@
 * **Пример:** Если `board[row]` содержит `['5','3','.','.','7','.','.','.','.']`, метод вернет `true`. Если
   `['5','3','.','.','7','.','.','3','.']`, метод вернет `false`.
 * **Решение:** [
-  `ValidateSudokuPart`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/Task84_ValidateSudokuPart.java)
+  `ValidateSudokuPart`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/ValidateSudokuPart.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1468,7 +1467,7 @@
   `NullPointerException`.
 * **Пример:** Показать код до и после использования `Optional` для работы с потенциально `null` объектом.
 * **Решение (Концептуальное обсуждение + Демонстрация):** [
-  `OptionalConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/Task85_OptionalConcept.java)
+  `OptionalConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/OptionalConcept.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1483,7 +1482,7 @@
   Stream API, напишите код, который отфильтрует строки, начинающиеся на "a", преобразует их в верхний регистр, и
   соберет результат в новый `List<String>`.
 * **Пример:** Результат должен быть `["APPLE", "APRICOT"]`.
-* **Решение:** [`JavaStreamsSimple`](src/main/java/com/svedentsov/aqa/tasks/algorithms/Task86_JavaStreamsSimple.java)
+* **Решение:** [`JavaStreamsSimple`](src/main/java/com/svedentsov/aqa/tasks/algorithms/JavaStreamsSimple.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1498,7 +1497,7 @@
   `final`, предоставьте только геттеры и конструктор, который инициализирует поля. Объясните, почему этот класс
   является неизменяемым.
 * **Пример:** После `ImmutablePoint p = new ImmutablePoint(1, 2);`, состояние `p` изменить нельзя.
-* **Решение:** [`ImmutableClass`](src/main/java/com/svedentsov/aqa/tasks/oop_design/Task87_ImmutableClass.java)
+* **Решение:** [`ImmutableClass`](src/main/java/com/svedentsov/aqa/tasks/oop_design/ImmutableClass.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1515,7 +1514,7 @@
 * **Пример:** Класс `UserProfile` с полем `List<String> permissions`. Показать, как при копировании `UserProfile`
   создать и новый `ArrayList` для `permissions`.
 * **Решение (Концептуальное обсуждение + Демонстрация):** [
-  `DeepShallowCopyConcept`](src/main/java/com/svedentsov/aqa/tasks/oop_design/Task88_DeepShallowCopyConcept.java)
+  `DeepShallowCopyConcept`](src/main/java/com/svedentsov/aqa/tasks/oop_design/DeepShallowCopyConcept.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1532,7 +1531,7 @@
   потребует доп. структуру).
 * **Пример:** `cache.put("user:1", userData); Object data = cache.get("user:1");`
 * **Решение:** [
-  `SimpleInMemoryCache`](src/main/java/com/svedentsov/aqa/tasks/data_structures/Task89_SimpleInMemoryCache.java)
+  `SimpleInMemoryCache`](src/main/java/com/svedentsov/aqa/tasks/data_structures/SimpleInMemoryCache.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1548,7 +1547,7 @@
   мертвая клетка, 1 - живая) и вычисляет следующее состояние поля согласно правилам игры "Жизнь" Конвея (клетка
   выживает с 2-3 соседями, мертвая оживает с 3 соседями). Верните новое поле.
 * **Пример:** Показать небольшой пример 3x3 поля и его состояние на следующем шаге.
-* **Решение:** [`GameOfLifeStep`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/Task90_GameOfLifeStep.java)
+* **Решение:** [`GameOfLifeStep`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/GameOfLifeStep.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1563,7 +1562,7 @@
   каждого столбика 1). Напишите метод `int trapRainWater(int[] height)`, который вычисляет, сколько единиц дождевой
   воды может быть удержано между столбцами после дождя.
 * **Пример:** `trapRainWater(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1})` -> `6`.
-* **Решение:** [`TrappingRainWater`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/Task91_TrappingRainWater.java)
+* **Решение:** [`TrappingRainWater`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/TrappingRainWater.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1579,7 +1578,7 @@
   чисел). Какую структуру данных (или комбинацию) было бы эффективно использовать?
 * **Пример:** Обсуждение использования двух куч (min-heap и max-heap).
 * **Решение (Концептуальное обсуждение + Код Класса):** [
-  `MedianFinderStream`](src/main/java/com/svedentsov/aqa/tasks/data_structures/Task92_MedianFinderStream.java)
+  `MedianFinderStream`](src/main/java/com/svedentsov/aqa/tasks/data_structures/MedianFinderStream.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1594,7 +1593,7 @@
   дерево с корнем `root` корректным бинарным деревом поиска (для каждого узла все значения в левом поддереве меньше
   значения узла, а в правом - больше).
 * **Пример:** Дерево `[2, 1, 3]` -> `true`. Дерево `[5, 1, 4, null, null, 3, 6]` -> `false`.
-* **Решение:** [`ValidateBST`](src/main/java/com/svedentsov/aqa/tasks/trees/Task93_ValidateBST.java)
+* **Решение:** [`ValidateBST`](src/main/java/com/svedentsov/aqa/tasks/trees/ValidateBST.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1609,7 +1608,7 @@
   возвращает уровень узла со значением `key` в бинарном дереве (корень на уровне 1). Если узел не найден, верните
   -1.
 * **Пример:** В дереве `[3, 9, 20, null, null, 15, 7]`, `getNodeLevel(root, 15, 1)` -> `3`.
-* **Решение:** [`NodeLevelInTree`](src/main/java/com/svedentsov/aqa/tasks/trees/Task94_NodeLevelInTree.java)
+* **Решение:** [`NodeLevelInTree`](src/main/java/com/svedentsov/aqa/tasks/trees/NodeLevelInTree.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1624,7 +1623,7 @@
   находит наименьшего общего предка (LCA) двух узлов `p` и `q` в бинарном дереве поиска `root`.
 * **Пример:** Для BST `[6, 2, 8, 0, 4, 7, 9, null, null, 3, 5]`, LCA для узлов 2 и 8 будет 6. LCA для узлов 2 и 4
   будет 2.
-* **Решение:** [`LowestCommonAncestor`](src/main/java/com/svedentsov/aqa/tasks/trees/Task95_LowestCommonAncestor.java)
+* **Решение:** [`LowestCommonAncestor`](src/main/java/com/svedentsov/aqa/tasks/trees/LowestCommonAncestor.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1638,7 +1637,7 @@
   дерева (длину самого длинного пути между любыми двумя узлами в дереве). Путь не обязательно проходит через корень.
   Длина пути измеряется количеством ребер.
 * **Пример:** Для дерева `[1, 2, 3, 4, 5]`, диаметр равен 3 (путь `4 -> 2 -> 1 -> 3` или `5 -> 2 -> 1 -> 3`).
-* **Решение:** [`BinaryTreeDiameter`](src/main/java/com/svedentsov/aqa/tasks/trees/Task96_BinaryTreeDiameter.java)
+* **Решение:** [`BinaryTreeDiameter`](src/main/java/com/svedentsov/aqa/tasks/trees/BinaryTreeDiameter.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1652,7 +1651,7 @@
 * **Задание:** Напишите метод `boolean isSymmetric(TreeNode root)`, который проверяет, является ли бинарное дерево
   зеркально симметричным относительно своего центра.
 * **Пример:** Дерево `[1, 2, 2, 3, 4, 4, 3]` -> `true`. Дерево `[1, 2, 2, null, 3, null, 3]` -> `false`.
-* **Решение:** [`SymmetricTreeCheck`](src/main/java/com/svedentsov/aqa/tasks/trees/Task97_SymmetricTreeCheck.java)
+* **Решение:** [`SymmetricTreeCheck`](src/main/java/com/svedentsov/aqa/tasks/trees/SymmetricTreeCheck.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1668,7 +1667,7 @@
   ли путь от `startNode` до `endNode`. Используйте поиск в ширину (BFS) или в глубину (DFS).
 * **Пример:** Для графа `{0:[1, 2], 1:[2], 2:[0, 3], 3:[3]}`, `hasPath(0, 3, graph)` -> `true`.
   `hasPath(3, 0, graph)` -> `false`.
-* **Решение:** [`GraphPathFinder`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/Task98_GraphPathFinder.java)
+* **Решение:** [`GraphPathFinder`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/GraphPathFinder.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1684,7 +1683,7 @@
   цвет, что и стартовая клетка, должны быть перекрашены в `newColor`.
 * **Пример:** `image = {{1,1,1},{1,1,0},{1,0,1}}, sr = 1, sc = 1, newColor = 2`. Результат:
   `{{2,2,2},{2,2,0},{2,0,1}}`.
-* **Решение:** [`FloodFill`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/Task99_FloodFill.java)
+* **Решение:** [`FloodFill`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/FloodFill.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1703,6 +1702,6 @@
   `evaluateExpression("2*3+5/6*3+15")` -> `21`. (Упрощенная версия может не требовать полного парсера с учетом
   скобок).
 * **Решение:** [
-  `SimpleExpressionEvaluator`](src/main/java/com/svedentsov/aqa/tasks/algorithms/Task100_SimpleExpressionEvaluator.java)
+  `SimpleExpressionEvaluator`](src/main/java/com/svedentsov/aqa/tasks/algorithms/SimpleExpressionEvaluator.java)
 
 [К оглавлению](#table-of-contents)
