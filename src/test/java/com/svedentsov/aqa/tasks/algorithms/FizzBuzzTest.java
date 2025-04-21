@@ -11,6 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Тесты для FizzBuzz")
 class FizzBuzzTest {
 
     private FizzBuzz fizzBuzz;

@@ -16,23 +16,22 @@ import java.util.stream.Collectors;
  * а значениями — количество их вхождений.
  * <p>
  * Пример: `countCharacters("hello world")` ->
- * `{' ': 1, 'd': 1, 'e': 1, 'h': 1, 'l': 3, 'o': 2, 'r': 1, 'w': 1}` (порядок может отличаться).
+ * `{' ': 1, 'd': 1, 'e': 1, 'h': 1, 'l': 3, 'o': 2, 'r': 1, 'w': 1}` (порядок должен быть отсортирован, если используется TreeMap).
  */
 public class CountCharOccurrences {
 
     /**
      * Подсчитывает количество вхождений каждого символа в строке итеративно.
-     * Использует HashMap для хранения счетчиков. Порядок ключей не гарантирован.
+     * Использует TreeMap для хранения счетчиков и автоматической сортировки ключей (символов).
      * Чувствителен к регистру.
-     * Сложность O(n) по времени, где n - длина строки.
-     * Память O(k), где k - количество уникальных символов.
+     * Сложность O(n log k) по времени из-за TreeMap (или O(n), если амортизированно), где n - длина строки, k - кол-во уник. символов.
+     * Память O(k).
      *
      * @param str Входная строка. Может быть null.
-     * @return Карта (Map), где ключ - символ (Character), значение - количество его вхождений (Integer).
+     * @return Карта (TreeMap), где ключ - символ (Character), значение - количество его вхождений (Integer).
      * Возвращает пустую карту, если строка null или пуста.
      */
     public Map<Character, Integer> countCharacters(String str) {
-        // Используем TreeMap для автоматической сортировки ключей (символов)
         Map<Character, Integer> counts = new TreeMap<>();
         if (str == null || str.isEmpty()) {
             return counts; // Возвращаем пустую (отсортированную) карту
@@ -49,10 +48,11 @@ public class CountCharOccurrences {
 
     /**
      * Подсчитывает количество вхождений каждого символа с использованием Stream API.
-     * Чувствителен к регистру.
+     * Чувствителен к регистру. Использует TreeMap для сортировки ключей.
      *
      * @param str Входная строка. Может быть null.
-     * @return Карта (TreeMap для сортировки), где ключ - символ (Character), значение - количество его вхождений (Long).
+     * @return Карта (TreeMap), где ключ - символ (Character), значение - количество его вхождений (Long).
+     * Обратите внимание: значение имеет тип Long из-за использования Collectors.counting().
      * Возвращает пустую карту для null или пустой строки.
      */
     public Map<Character, Long> countCharactersStream(String str) {
@@ -67,61 +67,5 @@ public class CountCharOccurrences {
                 .collect(Collectors.groupingBy(Function.identity(),
                         TreeMap::new, // Указываем фабрику для создания TreeMap
                         Collectors.counting()));
-    }
-
-    /**
-     * Точка входа для демонстрации работы методов подсчета символов.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        CountCharOccurrences sol = new CountCharOccurrences();
-
-        runCountTest(sol, "hello world", "Стандартный случай (строчные)");
-        // Ожидаемый результат (отсортировано): {' ':1, d:1, e:1, h:1, l:3, o:2, r:1, w:1}
-
-        runCountTest(sol, "Programming Java", "Смешанный регистр и пробел");
-        // Ожидаемый результат (отсортировано): {' ':1, J:1, P:1, a:2, g:2, i:1, m:2, n:1, o:1, r:2, v:1}
-
-        runCountTest(sol, "", "Пустая строка");
-        // Ожидаемый результат: {}
-
-        runCountTest(sol, null, "Null строка");
-        // Ожидаемый результат: {}
-
-        runCountTest(sol, "a", "Один символ");
-        // Ожидаемый результат: {a:1}
-
-        runCountTest(sol, "aaaaa", "Все символы одинаковы");
-        // Ожидаемый результат: {a:5}
-
-        runCountTest(sol, "!@#$ %^& *()", "Специальные символы и пробелы");
-        // Ожидаемый результат (отсортировано): {' ':2, !:1, #:1, $:1, %:1, &:1, (:1, ):1, *:1, @:1, ^:1}
-
-        runCountTest(sol, "你好 世界", "Unicode символы (китайский)");
-        // Ожидаемый результат (отсортировано): {' ':1, 世:1, 界:1, 你:1, 好:1}
-    }
-
-    /**
-     * Вспомогательный метод для тестирования методов подсчета символов.
-     *
-     * @param sol         Экземпляр решателя.
-     * @param str         Тестовая строка.
-     * @param description Описание теста.
-     */
-    private static void runCountTest(CountCharOccurrences sol, String str, String description) {
-        System.out.println("\n--- " + description + " ---");
-        String input = (str == null ? "null" : "\"" + str + "\"");
-        System.out.println("Input string: " + input);
-        try {
-            System.out.println("countCharacters (Iterative): " + sol.countCharacters(str));
-        } catch (Exception e) {
-            System.out.println("countCharacters (Iterative): Error - " + e.getMessage());
-        }
-        try {
-            System.out.println("countCharacters (Stream):    " + sol.countCharactersStream(str));
-        } catch (Exception e) {
-            System.out.println("countCharacters (Stream):    Error - " + e.getMessage());
-        }
     }
 }

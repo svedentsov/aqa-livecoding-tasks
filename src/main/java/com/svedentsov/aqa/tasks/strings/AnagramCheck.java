@@ -13,7 +13,7 @@ import java.util.Map;
  * <p>
  * Задание: Напишите метод `boolean areAnagrams(String str1, String str2)`,
  * который возвращает `true`, если строки `str1` и `str2` являются анаграммами
- * (игнорируя регистр и пробелы), и `false` иначе.
+ * (игнорируя регистр и небуквенные символы - см. реализацию cleanString), и `false` иначе.
  * <p>
  * Пример: `areAnagrams("listen", "silent")` -> `true`,
  * `areAnagrams("Dormitory", "dirty room")` -> `true`,
@@ -22,17 +22,17 @@ import java.util.Map;
 public class AnagramCheck {
 
     /**
-     * Вспомогательный метод для очистки строки: удаление небуквенных символов и приведение к нижнему регистру.
-     * Изменено: теперь удаляем ВСЕ, кроме букв.
+     * Вспомогательный метод для очистки строки: удаление НЕБУКВЕННЫХ символов и приведение к нижнему регистру.
      *
      * @param s Исходная строка.
-     * @return Очищенная строка.
+     * @return Очищенная строка, содержащая только буквы в нижнем регистре.
      */
     private String cleanString(String s) {
-        // Удаляем все, что НЕ является буквой (можно изменить на isLetterOrDigit, если цифры тоже важны)
-        return s.replaceAll("[^a-zA-Z]", "").toLowerCase();
-        // Вариант с удалением только пробелов:
-        // return s.replaceAll("\\s+", "").toLowerCase();
+        if (s == null) return ""; // Возвращаем пустую строку для null, чтобы избежать NPE в replaceAll
+        // Удаляем все, что НЕ является буквой (согласно стандарту Unicode \p{L})
+        // и приводим к нижнему регистру.
+        return s.replaceAll("[^\\p{L}]", "").toLowerCase();
+        // Примечание: [^a-zA-Z] удалит только латинские буквы. [^\p{L}] более универсален.
     }
 
     /**
@@ -43,7 +43,7 @@ public class AnagramCheck {
      * @param str1 Первая строка.
      * @param str2 Вторая строка.
      * @return {@code true}, если строки являются анаграммами, {@code false} в противном случае.
-     * Считает null не анаграммой ничему, кроме null (можно изменить политику).
+     * Считает null анаграммой null.
      */
     public boolean areAnagramsSort(String str1, String str2) {
         if (str1 == null && str2 == null) return true; // Политика: null анаграмма null
@@ -58,6 +58,7 @@ public class AnagramCheck {
             return false;
         }
         // Если обе строки пусты после очистки, считаем их анаграммами
+        // (например, "123" и "!@#$")
         if (clean1.isEmpty()) {
             return true;
         }
@@ -81,6 +82,7 @@ public class AnagramCheck {
      * @param str1 Первая строка.
      * @param str2 Вторая строка.
      * @return {@code true}, если строки являются анаграммами, {@code false} в противном случае.
+     * Считает null анаграммой null.
      */
     public boolean areAnagramsMap(String str1, String str2) {
         if (str1 == null && str2 == null) return true;
@@ -92,7 +94,7 @@ public class AnagramCheck {
         if (clean1.length() != clean2.length()) {
             return false;
         }
-        // Если обе строки пустые после очистки, считаем их анаграммами
+        // Если обе строки пусты после очистки, считаем их анаграммами
         if (clean1.isEmpty()) {
             return true;
         }
@@ -115,65 +117,7 @@ public class AnagramCheck {
             charCounts.put(c, count - 1);
         }
 
-        // Если все символы второй строки совпали с первой и уменьшили счетчики,
-        // и длины строк были равны, то все счетчики должны быть нулями.
-        // Проверка на нулевые счетчики не обязательна, т.к. предыдущие шаги это гарантируют.
+        // Проверка не нужна, если длины равны и все символы второй строки "погасили" счетчики
         return true;
-    }
-
-    /**
-     * Точка входа для демонстрации работы методов проверки анаграмм.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        AnagramCheck sol = new AnagramCheck();
-
-        runAnagramTest(sol, "listen", "silent");         // true
-        runAnagramTest(sol, "Dormitory", "dirty room");  // true (игнорируя регистр и пробел)
-        runAnagramTest(sol, "hello", "world");           // false
-        runAnagramTest(sol, "abc", "aabc");              // false (разная длина после очистки)
-        runAnagramTest(sol, "a b", "b a");               // true (игнорируя пробелы)
-        runAnagramTest(sol, null, null);                 // true (по нашей политике)
-        runAnagramTest(sol, "abc", null);                // false
-        runAnagramTest(sol, null, "abc");                // false
-        runAnagramTest(sol, "rat", "car");               // false
-        runAnagramTest(sol, "aabb", "bbaa");             // true
-        runAnagramTest(sol, "aaz", "zza");               // false (разные символы/количество)
-        runAnagramTest(sol, "Astronomer", "Moon starer"); // true
-        runAnagramTest(sol, "School master", "The classroom"); // true
-        runAnagramTest(sol, " ", "   ");                 // true (пустые после очистки)
-        runAnagramTest(sol, "123", "321");               // true (если cleanString удаляет только пробелы) / false (если удаляет и цифры)
-        // --> ЗАВИСИТ ОТ РЕАЛИЗАЦИИ cleanString
-        // Текущая реализация cleanString удалит цифры -> false
-        runAnagramTest(sol, "rail safety!", "fairy tales!"); // true (игнорируя '!' и пробелы)
-        runAnagramTest(sol, "", "");                     // true
-    }
-
-    /**
-     * Вспомогательный метод для тестирования методов проверки анаграмм.
-     *
-     * @param sol Экземпляр решателя.
-     * @param s1  Первая строка.
-     * @param s2  Вторая строка.
-     */
-    private static void runAnagramTest(AnagramCheck sol, String s1, String s2) {
-        String input1 = (s1 == null ? "null" : "\"" + s1 + "\"");
-        String input2 = (s2 == null ? "null" : "\"" + s2 + "\"");
-        System.out.println("\n--- Testing Anagrams ---");
-        System.out.println("Input 1: " + input1);
-        System.out.println("Input 2: " + input2);
-        try {
-            boolean resultSort = sol.areAnagramsSort(s1, s2);
-            System.out.println("areAnagrams (Sort): " + resultSort);
-        } catch (Exception e) {
-            System.out.println("areAnagrams (Sort): Error - " + e.getMessage());
-        }
-        try {
-            boolean resultMap = sol.areAnagramsMap(s1, s2);
-            System.out.println("areAnagrams (Map):  " + resultMap);
-        } catch (Exception e) {
-            System.out.println("areAnagrams (Map):  Error - " + e.getMessage());
-        }
     }
 }

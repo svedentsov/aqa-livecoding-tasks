@@ -129,10 +129,10 @@
   кратных 5 - "Buzz", а для чисел, кратных и 3, и 5 - "FizzBuzz". (Проверяет: циклы, условия)
 * **Задание:** Напишите метод, например `generateFizzBuzz(int n)`, который принимает целое число n и возвращает
   последовательность FizzBuzz от 1 до n в виде списка строк (List<String>).
-* **Пример:** `generateFizzBuzz(15)` должно вывести:
-  `1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz` (каждое на новой строке или через
-  запятую).
-* **Решение:** [`FizzBuzz`](src/main/java/com/svedentsov/aqa/tasks/algorithms/FizzBuzz.java)
+* **Пример:** Вызов `generateFizzBuzz(15)` должен вернуть список строк, эквивалентный: `List.of("1", "2", "Fizz", "4", "
+  Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz")`
+* **Решение:** [FizzBuzz](src/main/java/com/svedentsov/aqa/tasks/algorithms/FizzBuzz.java),
+  [FizzBuzzTest](src/test/java/com/svedentsov/aqa/tasks/algorithms/FizzBuzzTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -147,7 +147,8 @@
 * **Задание:** Напишите метод `String reverseString(String str)`, который принимает строку и возвращает новую
   строку, являющуюся перевернутой версией исходной.
 * **Пример:** `reverseString("hello")` -> `"olleh"`, `reverseString("Java")` -> `"avaJ"`.
-* **Решение:** [`ReverseString`](src/main/java/com/svedentsov/aqa/tasks/strings/ReverseString.java)
+* **Решение:** [ReverseString](src/main/java/com/svedentsov/aqa/tasks/strings/ReverseString.java),
+  [ReverseStringTest](src/test/java/com/svedentsov/aqa/tasks/strings/ReverseStringTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -163,7 +164,8 @@
   является палиндромом (игнорируя регистр и не буквенно-цифровые символы), и `false` в противном случае.
 * **Пример:** `isPalindrome("A man, a plan, a canal: Panama")` -> `true`, `isPalindrome("race a car")` -> `false`,
   `isPalindrome(" ")` -> `true`.
-* **Решение:** [`PalindromeCheck`](src/main/java/com/svedentsov/aqa/tasks/strings/PalindromeCheck.java)
+* **Решение:** [PalindromeCheck](src/main/java/com/svedentsov/aqa/tasks/strings/PalindromeCheck.java),
+  [PalindromeCheckTest](src/test/java/com/svedentsov/aqa/tasks/strings/PalindromeCheckTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -179,7 +181,8 @@
   чисел и возвращает список уникальных чисел, которые встречаются в исходном списке более одного раза.
 * **Пример:** `findDuplicates(List.of(1, 2, 3, 2, 4, 5, 1, 5))` -> `[1, 2, 5]` (порядок не важен, можно вернуть
   `Set`).
-* **Решение:** [`FindDuplicatesList`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindDuplicatesList.java)
+* **Решение:** [FindDuplicatesList](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindDuplicatesList.java),
+  [FindDuplicatesListTest](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/FindDuplicatesListTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -195,8 +198,8 @@
   ключами являются символы из строки `str`, а значениями — количество их вхождений.
 * **Пример:** `countCharacters("hello world")` ->
   `{'h': 1, 'e': 1, 'l': 3, 'o': 2, ' ': 1, 'w': 1, 'r': 1, 'd': 1}`.
-* **Решение:** [
-  `CountCharOccurrences`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/CountCharOccurrences.java)
+* **Решение:** [CountCharOccurrences](src/main/java/com/svedentsov/aqa/tasks/maps_sets/CountCharOccurrences.java),
+  [CountCharOccurrencesTest](src/test/java/com/svedentsov/aqa/tasks/maps_sets/CountCharOccurrencesTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -212,7 +215,8 @@
   массиве `numbers` без использования `Collections.max()` или `Stream.max()`. Обработайте случай пустого массива (
   например, выбросив исключение или вернув `Integer.MIN_VALUE`).
 * **Пример:** `findMax(new int[]{1, 5, 2, 9, 3})` -> `9`. `findMax(new int[]{-1, -5, -2})` -> `-1`.
-* **Решение:** [`FindMaxMinArray`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindMaxMinArray.java)
+* **Решение:** [FindMaxMinArray](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindMaxMinArray.java),
+  [FindMaxMinArrayTest](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/FindMaxMinArrayTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -228,8 +232,8 @@
   возвращает новый список, содержащий только уникальные строки из исходного списка, сохраняя порядок первого
   вхождения.
 * **Пример:** `removeDuplicates(List.of("a", "b", "a", "c", "b"))` -> `["a", "b", "c"]`.
-* **Решение:** [
-  `RemoveDuplicatesList`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/RemoveDuplicatesList.java)
+* **Решение:** [RemoveDuplicatesList](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/RemoveDuplicatesList.java),
+  [RemoveDuplicatesListTest](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/RemoveDuplicatesListTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -245,7 +249,8 @@
   строки `str1` и `str2` являются анаграммами (игнорируя регистр и пробелы), и `false` иначе.
 * **Пример:** `areAnagrams("listen", "silent")` -> `true`, `areAnagrams("Dormitory", "dirty room")` -> `true`,
   `areAnagrams("hello", "world")` -> `false`.
-* **Решение:** [`AnagramCheck`](src/main/java/com/svedentsov/aqa/tasks/strings/AnagramCheck.java)
+* **Решение:** [AnagramCheck](src/main/java/com/svedentsov/aqa/tasks/strings/AnagramCheck.java),
+  [AnagramCheckTest](src/test/java/com/svedentsov/aqa/tasks/strings/AnagramCheckTest.java)
 
 [К оглавлению](#table-of-contents)
 

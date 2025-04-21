@@ -93,38 +93,4 @@ public class FindDuplicatesList {
                 // Собираем ключи (числа-дубликаты) в новый список
                 .collect(Collectors.toList());
     }
-
-    /**
-     * Точка входа для демонстрации работы методов поиска дубликатов.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        FindDuplicatesList sol = new FindDuplicatesList();
-        // 1. Стандартный случай с несколькими дубликатами. Ожидаемый результат: [1, 2, 5]
-        List<Integer> list1 = List.of(1, 2, 3, 2, 4, 5, 1, 5);
-        System.out.println("findDuplicates(" + list1 + "): " + sol.findDuplicates(list1));
-        System.out.println("findDuplicatesStream(" + list1 + "): " + sol.findDuplicatesStream(list1));
-
-        // 2. Список без дубликатов. Ожидаемый результат: []
-        List<Integer> list2 = List.of(1, 2, 3, 4);
-        System.out.println("findDuplicates(" + list2 + "): " + sol.findDuplicates(list2)); // []
-        System.out.println("findDuplicatesStream(" + list2 + "): " + sol.findDuplicatesStream(list2)); // []
-
-        // 3. Список, где все элементы - дубликаты одного числа. Ожидаемый результат: [1]
-        List<Integer> list3 = List.of(1, 1, 1, 1);
-        System.out.println("findDuplicates(" + list3 + "): " + sol.findDuplicates(list3)); // [1]
-        System.out.println("findDuplicatesStream(" + list3 + "): " + sol.findDuplicatesStream(list3)); // [1]
-
-        // 4. Список с null значениями и дубликатами. Ожидаемый результат: [1, 2]
-        List<Integer> list4 = new ArrayList<>();
-        list4.add(1);
-        list4.add(null);
-        list4.add(2);
-        list4.add(null); // Несколько null
-        list4.add(1);    // Дубликат 1
-        list4.add(2);    // Дубликат 2
-        System.out.println("findDuplicates(" + list4 + "): " + sol.findDuplicates(list4)); // [1, 2]
-        System.out.println("findDuplicatesStream(" + list4 + "): " + sol.findDuplicatesStream(list4)); // [1, 2]
-    }
 }

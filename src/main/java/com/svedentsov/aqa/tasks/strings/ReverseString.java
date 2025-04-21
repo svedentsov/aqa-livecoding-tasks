@@ -39,6 +39,9 @@ public class ReverseString {
         if (str == null) {
             return null; // Обработка случая с null
         }
+        if (str.isEmpty()) {
+            return ""; // Для пустой строки можно сразу вернуть пустую строку
+        }
         char[] chars = str.toCharArray(); // Преобразование строки в массив символов
         int left = 0; // Указатель на начало
         int right = chars.length - 1; // Указатель на конец
@@ -53,43 +56,5 @@ public class ReverseString {
         }
         // Создание новой строки из измененного массива символов
         return new String(chars);
-    }
-
-    /**
-     * Точка входа для демонстрации работы методов переворота строки с различными примерами.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        ReverseString sol = new ReverseString();
-
-        String[] testStrings = {
-                "hello",
-                "Java",
-                null,
-                "",
-                "a",
-                "madam", // Палиндром
-                " ",
-                "  leading and trailing spaces  ",
-                "12345!@#$"
-        };
-
-        System.out.println("--- Тестирование reverseString (StringBuilder) ---");
-        for (String test : testStrings) {
-            System.out.printf("Input: \"%s\" -> Output: \"%s\"%n", test, sol.reverseString(test));
-        }
-
-        System.out.println("\n--- Тестирование reverseStringManual (char array) ---");
-        for (String test : testStrings) {
-            System.out.printf("Input: \"%s\" -> Output: \"%s\"%n", test, sol.reverseStringManual(test));
-        }
-
-        // Сравнение результатов обоих методов на примере
-        String example = "Programming";
-        System.out.println("\n--- Сравнение методов ---");
-        System.out.println("Original: " + example);
-        System.out.println("reverseString: " + sol.reverseString(example));
-        System.out.println("reverseStringManual: " + sol.reverseStringManual(example));
     }
 }
