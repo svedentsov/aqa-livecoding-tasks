@@ -265,7 +265,8 @@
 * **Задание:** Напишите метод `long sumElements(int[] numbers)`, который вычисляет и возвращает сумму всех элементов
   в массиве `numbers`.
 * **Пример:** `sumElements(new int[]{1, 2, 3, 4, 5})` -> `15`. `sumElements(new int[]{})` -> `0`.
-* **Решение:** [`SumArrayElements`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/SumArrayElements.java)
+* **Решение:** [`SumArrayElements`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/SumArrayElements.java),
+  [`SumArrayElementsTest`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/SumArrayElementsTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -281,8 +282,8 @@
   символ в строке `str`, который встречается только один раз. Если такого символа нет, верните null или выбросите
   исключение.
 * **Пример:** `findFirstNonRepeatingChar("swiss")` -> `'w'`, `findFirstNonRepeatingChar("aabbcc")` -> `null`.
-* **Решение:** [
-  `FindFirstNonRepeatingChar`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingChar.java)
+* **Решение:** [`FindFirstNonRepeatingChar`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingChar.java),
+[`FindFirstNonRepeatingCharTest`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingCharTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -291,12 +292,13 @@
 
 ### Факториал числа (Factorial)
 
-* **Описание:** Написать функцию для вычисления факториала числа (итеративно или рекурсивно). (Проверяет:
-  циклы/рекурсия, арифметика)
+* **Описание:** Написать функцию для вычисления факториала числа (итеративно или рекурсивно).
+(Проверяет: циклы/рекурсия, арифметика)
 * **Задание:** Напишите метод `long factorial(int n)`, который вычисляет факториал неотрицательного целого числа
   `n`. Реализуйте итеративно.
 * **Пример:** `factorial(5)` -> `120`, `factorial(0)` -> `1`.
-* **Решение:** [`Factorial`](src/main/java/com/svedentsov/aqa/tasks/algorithms/Factorial.java)
+* **Решение:** [`Factorial`](src/main/java/com/svedentsov/aqa/tasks/algorithms/Factorial.java),
+[`FactorialTest`](src/test/java/com/svedentsov/aqa/tasks/algorithms/FactorialTest.java)
 
 [К оглавлению](#table-of-contents)
 

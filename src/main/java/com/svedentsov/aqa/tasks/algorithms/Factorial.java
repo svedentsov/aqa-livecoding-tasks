@@ -29,7 +29,7 @@ public class Factorial {
         if (n < 0) {
             throw new IllegalArgumentException("Factorial is not defined for negative numbers: " + n);
         }
-        // Базовые случаи: 0! = 1, 1! = 1
+        // Базовые случаи: 0! = 1, 1! = 1, но цикл ниже это обработает, если n=1, поэтому отдельная проверка не нужна.
         if (n == 0) {
             return 1L;
         }
@@ -40,44 +40,12 @@ public class Factorial {
             // Проверка на возможное переполнение ПЕРЕД умножением
             // Если result > Long.MAX_VALUE / i, то result * i точно вызовет переполнение
             if (result > Long.MAX_VALUE / i) {
-                throw new ArithmeticException("Factorial result for " + n + " overflows long type at step " + i);
+                // Создаем сообщение об ошибке, включающее n и шаг i, на котором произошло переполнение
+                String errorMsg = String.format("Factorial result for %d overflows long type at step %d", n, i);
+                throw new ArithmeticException(errorMsg);
             }
             result *= i;
         }
         return result;
-    }
-
-    /**
-     * Точка входа для демонстрации работы метода вычисления факториала.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        Factorial sol = new Factorial();
-
-        runFactorialTest(sol, 0);   // 1
-        runFactorialTest(sol, 1);   // 1
-        runFactorialTest(sol, 2);   // 2
-        runFactorialTest(sol, 5);   // 120
-        runFactorialTest(sol, 10);  // 3628800
-        runFactorialTest(sol, 20);  // 2432902008176640000 (Максимальный для long)
-        runFactorialTest(sol, 21);  // Error - overflows long type
-        runFactorialTest(sol, -1);  // Error - Factorial is not defined for negative numbers
-        runFactorialTest(sol, -5);  // Error - Factorial is not defined for negative numbers
-    }
-
-    /**
-     * Вспомогательный метод для тестирования факториала.
-     *
-     * @param sol Экземпляр решателя.
-     * @param n   Число для вычисления факториала.
-     */
-    private static void runFactorialTest(Factorial sol, int n) {
-        System.out.print("Factorial(" + n + "): ");
-        try {
-            System.out.println(sol.factorial(n));
-        } catch (IllegalArgumentException | ArithmeticException e) {
-            System.out.println("Error - " + e.getMessage());
-        }
     }
 }

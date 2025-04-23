@@ -12,7 +12,7 @@ import java.util.Map;
  * <p>
  * Задание: Напишите метод `Character findFirstNonRepeatingChar(String str)`,
  * который находит и возвращает первый символ в строке `str`, который встречается
- * только один раз. Если такого символа нет, верните null или выбросите исключение.
+ * только один раз. Если такого символа нет, верните null.
  * <p>
  * Пример: `findFirstNonRepeatingChar("swiss")` -> `'w'`,
  * `findFirstNonRepeatingChar("aabbcc")` -> `null`.
@@ -58,47 +58,5 @@ public class FindFirstNonRepeatingChar {
 
         // Если цикл завершился, значит, неповторяющихся символов не найдено.
         return null;
-    }
-
-    /**
-     * Точка входа для демонстрации работы метода поиска первого неповторяющегося символа.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        FindFirstNonRepeatingChar sol = new FindFirstNonRepeatingChar();
-
-        runNonRepeatingTest(sol, "swiss", "Стандартный случай 1"); // 'w'
-        runNonRepeatingTest(sol, "aabbcc", "Все символы повторяются"); // null
-        runNonRepeatingTest(sol, "stress", "Стандартный случай 2"); // 't'
-        runNonRepeatingTest(sol, "aabbccddeeffG", "Символ в конце"); // 'G'
-        runNonRepeatingTest(sol, "a", "Один символ"); // 'a'
-        runNonRepeatingTest(sol, "", "Пустая строка"); // null
-        runNonRepeatingTest(sol, null, "Null строка"); // null
-        runNonRepeatingTest(sol, "Go Google", "С пробелами и регистром"); // ' ' (пробел - первый уникальный)
-        runNonRepeatingTest(sol, "loveleetcode", "Другой пример"); // 'v'
-        runNonRepeatingTest(sol, "aabbccddee", "Нет уникальных"); // null
-        runNonRepeatingTest(sol, "zabcdeabcde", "Первый символ уникален"); // 'z'
-        runNonRepeatingTest(sol, "112233455", "Строка с цифрами"); // '4'
-    }
-
-    /**
-     * Вспомогательный метод для тестирования findFirstNonRepeatingChar.
-     *
-     * @param sol         Экземпляр решателя.
-     * @param str         Тестовая строка.
-     * @param description Описание теста.
-     */
-    private static void runNonRepeatingTest(FindFirstNonRepeatingChar sol, String str, String description) {
-        System.out.println("\n--- " + description + " ---");
-        String input = (str == null ? "null" : "\"" + str + "\"");
-        System.out.println("Input string: " + input);
-        try {
-            Character result = sol.findFirstNonRepeatingChar(str);
-            // Выводим результат в кавычках, если это символ, иначе null
-            System.out.println("First non-repeating: " + (result == null ? "null" : "'" + result + "'"));
-        } catch (Exception e) {
-            System.out.println("First non-repeating: Error - " + e.getMessage());
-        }
     }
 }
