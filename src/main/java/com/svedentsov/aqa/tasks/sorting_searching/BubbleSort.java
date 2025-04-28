@@ -1,13 +1,10 @@
 package com.svedentsov.aqa.tasks.sorting_searching;
 
-import java.util.Arrays;
-
 /**
  * Решение задачи №16: Сортировка массива методом пузырька (Bubble Sort).
  * <p>
- * Описание: Реализовать простой алгоритм сортировки (пузырьком, выбором)
- * или использовать `Collections.sort()` / `Arrays.sort()` и объяснить,
- * как он работает. (Проверяет: основы алгоритмов, работа с коллекциями)
+ * Описание: Реализовать простой алгоритм сортировки (пузырьком, выбором).
+ * (Проверяет: основы алгоритмов)
  * <p>
  * Задание: Реализуйте метод `void bubbleSort(int[] arr)`, который сортирует
  * массив `arr` по возрастанию, используя алгоритм пузырьковой сортировки.
@@ -39,23 +36,21 @@ public class BubbleSort {
      */
     public void bubbleSort(int[] arr) {
         // Если массив null или содержит 0/1 элемент, он уже считается отсортированным
+        // или не требует сортировки. Метод просто завершается.
         if (arr == null || arr.length < 2) {
             return;
         }
 
         int n = arr.length;
-        boolean swapped; // Флаг для оптимизации: true, если был хотя бы один обмен за проход
+        boolean swapped; // Флаг для оптимизации
 
-        // Внешний цикл: Управляет количеством проходов. Теоретически нужно n-1 проходов
-        // в худшем случае, чтобы гарантировать сортировку.
+        // Внешний цикл: n-1 проходов в худшем случае
         for (int i = 0; i < n - 1; i++) {
-            swapped = false; // Сбрасываем флаг в начале каждого прохода
+            swapped = false; // Сбрасываем флаг
 
-            // Внутренний цикл: Сравнивает и меняет местами соседние элементы.
-            // Граница j < n - 1 - i: после i-го прохода последние i элементов
-            // уже находятся на своих местах, поэтому их можно не проверять.
+            // Внутренний цикл: сравнение и обмен соседних элементов
+            // Граница n - 1 - i: после i-го прохода последние i элементов отсортированы
             for (int j = 0; j < n - 1 - i; j++) {
-                // Если текущий элемент больше следующего, меняем их местами
                 if (arr[j] > arr[j + 1]) {
                     // Обмен значениями
                     int temp = arr[j];
@@ -65,55 +60,10 @@ public class BubbleSort {
                 }
             }
 
-            // Оптимизация: Если за весь внутренний цикл не было ни одного обмена,
-            // это значит, что массив уже полностью отсортирован. Можно завершать.
+            // Оптимизация: если за проход не было обменов, массив отсортирован
             if (!swapped) {
-                //System.out.println("Optimization triggered: Array sorted early at pass " + (i + 1));
                 break;
             }
-            // System.out.println("After pass " + (i + 1) + ": " + Arrays.toString(arr)); // Для отладки
-        }
-    }
-
-    /**
-     * Точка входа для демонстрации работы метода пузырьковой сортировки.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        BubbleSort sol = new BubbleSort();
-
-        runSortTest(sol, new int[]{5, 1, 4, 2, 8}, "Стандартный случай"); // [1, 2, 4, 5, 8]
-        runSortTest(sol, new int[]{1, 2, 3, 4, 5}, "Уже отсортированный (оптимизация)"); // [1, 2, 3, 4, 5]
-        runSortTest(sol, new int[]{9, 1, 5, 3, 7, 2}, "Другой случай"); // [1, 2, 3, 5, 7, 9]
-        runSortTest(sol, new int[]{}, "Пустой массив"); // []
-        runSortTest(sol, new int[]{5}, "Один элемент"); // [5]
-        runSortTest(sol, null, "Null массив"); // null
-        runSortTest(sol, new int[]{5, 4, 3, 2, 1}, "Обратно отсортированный (худший случай)"); // [1, 2, 3, 4, 5]
-        runSortTest(sol, new int[]{5, 1, 4, 1, 5, 8}, "С дубликатами"); // [1, 1, 4, 5, 5, 8]
-        runSortTest(sol, new int[]{-1, -5, 2, 0, -1}, "С отрицательными и нулем"); // [-5, -1, -1, 0, 2]
-        runSortTest(sol, new int[]{2, 1}, "Два элемента"); // [1, 2]
-    }
-
-    /**
-     * Вспомогательный метод для тестирования сортировки.
-     *
-     * @param sol         Экземпляр решателя.
-     * @param arr         Массив для сортировки (будет изменен!).
-     * @param description Описание теста.
-     */
-    private static void runSortTest(BubbleSort sol, int[] arr, String description) {
-        System.out.println("\n--- " + description + " ---");
-        String originalString = (arr == null ? "null" : Arrays.toString(arr));
-        System.out.println("Original: " + originalString);
-        // Создаем копию, чтобы исходный массив (если он из main) не менялся для других тестов
-        int[] arrCopy = (arr == null) ? null : Arrays.copyOf(arr, arr.length);
-        try {
-            sol.bubbleSort(arrCopy);
-            String sortedString = (arrCopy == null ? "null" : Arrays.toString(arrCopy));
-            System.out.println("Sorted:   " + sortedString);
-        } catch (Exception e) {
-            System.out.println("Sorted:   Error - " + e.getMessage());
         }
     }
 }
