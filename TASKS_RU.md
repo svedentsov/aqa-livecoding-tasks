@@ -131,7 +131,8 @@
   последовательность FizzBuzz от 1 до n в виде списка строк (List<String>).
 * **Пример:** Вызов `generateFizzBuzz(15)` должен вернуть список строк, эквивалентный: `List.of("1", "2", "Fizz", "4", "
   Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz")`
-* **Решение:** [`FizzBuzz.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/FizzBuzz.java),
+* **Решение:**
+  [`FizzBuzz.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/FizzBuzz.java),
   [`FizzBuzzTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/FizzBuzzTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -147,7 +148,8 @@
 * **Задание:** Напишите метод `String reverseString(String str)`, который принимает строку и возвращает новую
   строку, являющуюся перевернутой версией исходной.
 * **Пример:** `reverseString("hello")` -> `"olleh"`, `reverseString("Java")` -> `"avaJ"`.
-* **Решение:** [`ReverseString.java`](src/main/java/com/svedentsov/aqa/tasks/strings/ReverseString.java),
+* **Решение:**
+  [`ReverseString.java`](src/main/java/com/svedentsov/aqa/tasks/strings/ReverseString.java),
   [`ReverseStringTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/ReverseStringTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -164,7 +166,8 @@
   является палиндромом (игнорируя регистр и не буквенно-цифровые символы), и `false` в противном случае.
 * **Пример:** `isPalindrome("A man, a plan, a canal: Panama")` -> `true`, `isPalindrome("race a car")` -> `false`,
   `isPalindrome(" ")` -> `true`.
-* **Решение:** [`PalindromeCheck.java`](src/main/java/com/svedentsov/aqa/tasks/strings/PalindromeCheck.java),
+* **Решение:**
+  [`PalindromeCheck.java`](src/main/java/com/svedentsov/aqa/tasks/strings/PalindromeCheck.java),
   [`PalindromeCheckTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/PalindromeCheckTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -181,7 +184,8 @@
   чисел и возвращает список уникальных чисел, которые встречаются в исходном списке более одного раза.
 * **Пример:** `findDuplicates(List.of(1, 2, 3, 2, 4, 5, 1, 5))` -> `[1, 2, 5]` (порядок не важен, можно вернуть
   `Set`).
-* **Решение:** [`FindDuplicatesList.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindDuplicatesList.java),
+* **Решение:**
+  [`FindDuplicatesList.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindDuplicatesList.java),
   [`FindDuplicatesListTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/FindDuplicatesListTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -198,8 +202,8 @@
   ключами являются символы из строки `str`, а значениями — количество их вхождений.
 * **Пример:** `countCharacters("hello world")` ->
   `{'h': 1, 'e': 1, 'l': 3, 'o': 2, ' ': 1, 'w': 1, 'r': 1, 'd': 1}`.
-* **Решение:** [
-  `CountCharOccurrences.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/CountCharOccurrences.java),
+* **Решение:**
+  [`CountCharOccurrences.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/CountCharOccurrences.java),
   [`CountCharOccurrencesTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/CountCharOccurrencesTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -216,7 +220,8 @@
   массиве `numbers` без использования `Collections.max()` или `Stream.max()`. Обработайте случай пустого массива (
   например, выбросив исключение или вернув `Integer.MIN_VALUE`).
 * **Пример:** `findMax(new int[]{1, 5, 2, 9, 3})` -> `9`. `findMax(new int[]{-1, -5, -2})` -> `-1`.
-* **Решение:** [`FindMaxMinArray.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindMaxMinArray.java),
+* **Решение:**
+  [`FindMaxMinArray.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindMaxMinArray.java),
   [`FindMaxMinArrayTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/FindMaxMinArrayTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -233,8 +238,8 @@
   возвращает новый список, содержащий только уникальные строки из исходного списка, сохраняя порядок первого
   вхождения.
 * **Пример:** `removeDuplicates(List.of("a", "b", "a", "c", "b"))` -> `["a", "b", "c"]`.
-* **Решение:** [
-  `RemoveDuplicatesList.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/RemoveDuplicatesList.java),
+* **Решение:**
+  [`RemoveDuplicatesList.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/RemoveDuplicatesList.java),
   [`RemoveDuplicatesListTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/RemoveDuplicatesListTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -251,7 +256,8 @@
   строки `str1` и `str2` являются анаграммами (игнорируя регистр и пробелы), и `false` иначе.
 * **Пример:** `areAnagrams("listen", "silent")` -> `true`, `areAnagrams("Dormitory", "dirty room")` -> `true`,
   `areAnagrams("hello", "world")` -> `false`.
-* **Решение:** [`AnagramCheck.java`](src/main/java/com/svedentsov/aqa/tasks/strings/AnagramCheck.java),
+* **Решение:**
+  [`AnagramCheck.java`](src/main/java/com/svedentsov/aqa/tasks/strings/AnagramCheck.java),
   [`AnagramCheckTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/AnagramCheckTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -267,7 +273,8 @@
 * **Задание:** Напишите метод `long sumElements(int[] numbers)`, который вычисляет и возвращает сумму всех элементов
   в массиве `numbers`.
 * **Пример:** `sumElements(new int[]{1, 2, 3, 4, 5})` -> `15`. `sumElements(new int[]{})` -> `0`.
-* **Решение:** [`SumArrayElements.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/SumArrayElements.java),
+* **Решение:**
+  [`SumArrayElements.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/SumArrayElements.java),
   [`SumArrayElementsTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/SumArrayElementsTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -284,10 +291,9 @@
   символ в строке `str`, который встречается только один раз. Если такого символа нет, верните null или выбросите
   исключение.
 * **Пример:** `findFirstNonRepeatingChar("swiss")` -> `'w'`, `findFirstNonRepeatingChar("aabbcc")` -> `null`.
-* **Решение:** [
-  `FindFirstNonRepeatingChar.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingChar.java),
-  [
-  `FindFirstNonRepeatingCharTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingCharTest.java)
+* **Решение:**
+  [`FindFirstNonRepeatingChar.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingChar.java),
+  [`FindFirstNonRepeatingCharTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingCharTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -301,7 +307,8 @@
 * **Задание:** Напишите метод `long factorial(int n)`, который вычисляет факториал неотрицательного целого числа
   `n`. Реализуйте итеративно.
 * **Пример:** `factorial(5)` -> `120`, `factorial(0)` -> `1`.
-* **Решение:** [`Factorial.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/Factorial.java),
+* **Решение:**
+  [`Factorial.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/Factorial.java),
   [`FactorialTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/FactorialTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -317,7 +324,8 @@
 * **Задание:** Напишите метод `int fibonacci(int n)`, который возвращает `n`-ое число Фибоначчи (последовательность
   начинается с 0, 1, 1, 2...). Реализуйте итеративно.
 * **Пример:** `fibonacci(0)` -> `0`, `fibonacci(1)` -> `1`, `fibonacci(6)` -> `8`.
-* **Решение:** [`FibonacciSequence.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/FibonacciSequence.java),
+* **Решение:**
+  [`FibonacciSequence.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/FibonacciSequence.java),
   [`FibonacciSequenceTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/FibonacciSequenceTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -333,7 +341,8 @@
 * **Задание:** Напишите метод `boolean isPrime(int number)`, который возвращает `true`, если `number` (положительное
   целое число > 1) является простым, и `false` иначе.
 * **Пример:** `isPrime(7)` -> `true`, `isPrime(10)` -> `false`, `isPrime(2)` -> `true`.
-* **Решение:** [`PrimeNumberCheck.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/PrimeNumberCheck.java),
+* **Решение:**
+  [`PrimeNumberCheck.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/PrimeNumberCheck.java),
   [`PrimeNumberCheckTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/PrimeNumberCheckTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -347,7 +356,8 @@
 * **Задание:** Дан код: `int a = 5; int b = 10;`. Напишите код, который меняет значения `a` и `b` местами, не
   используя дополнительную переменную.
 * **Пример:** После выполнения кода `a` должно стать `10`, а `b` должно стать `5`.
-* **Решение:** [`SwapVariables.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/SwapVariables.java),
+* **Решение:**
+  [`SwapVariables.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/SwapVariables.java),
   [`SwapVariablesTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/SwapVariablesTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -364,7 +374,8 @@
   содержащий уникальные числа от 1 до `n` (включительно), кроме одного отсутствующего. Метод должен вернуть это
   отсутствующее число.
 * **Пример:** `findMissingNumber(new int[]{1, 2, 4, 5}, 5)` -> `3`.
-* **Решение:** [`FindMissingNumber.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindMissingNumber.java),
+* **Решение:**
+  [`FindMissingNumber.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindMissingNumber.java),
   [`FindMissingNumberTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/FindMissingNumberTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -380,7 +391,8 @@
 * **Задание:** Реализуйте метод `void bubbleSort(int[] arr)`, который сортирует массив `arr` по возрастанию,
   используя алгоритм пузырьковой сортировки.
 * **Пример:** Исходный массив `[5, 1, 4, 2, 8]` после вызова `bubbleSort` должен стать `[1, 2, 4, 5, 8]`.
-* **Решение:** [`BubbleSort.java`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/BubbleSort.java),
+* **Решение:**
+  [`BubbleSort.java`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/BubbleSort.java),
   [`BubbleSortTest.java`](src/test/java/com/svedentsov/aqa/tasks/sorting_searching/BubbleSortTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -397,7 +409,8 @@
   принимает два отсортированных по возрастанию списка целых чисел и возвращает новый отсортированный список,
   содержащий все элементы из обоих исходных списков.
 * **Пример:** `mergeSortedLists(List.of(1, 3, 5), List.of(2, 4, 6))` -> `[1, 2, 3, 4, 5, 6]`.
-* **Решение:** [`MergeSortedLists.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/MergeSortedLists.java),
+* **Решение:**
+  [`MergeSortedLists.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/MergeSortedLists.java),
   [`MergeSortedListsTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/MergeSortedListsTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -413,7 +426,8 @@
 * **Задание:** Напишите метод `int countWords(String sentence)`, который подсчитывает количество слов в строке
   `sentence`. Слова разделены одним или несколькими пробелами.
 * **Пример:** `countWords("This is a sample sentence.")` -> `5`, `countWords(" Hello   world ")` -> `2`.
-* **Решение:** [`CountWordsString.java`](src/main/java/com/svedentsov/aqa/tasks/strings/CountWordsString.java),
+* **Решение:**
+  [`CountWordsString.java`](src/main/java/com/svedentsov/aqa/tasks/strings/CountWordsString.java),
   [`CountWordsStringTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/CountWordsStringTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -431,7 +445,8 @@
   мал), верните `Integer.MIN_VALUE` или выбросите исключение.
 * **Пример:** `findSecondLargest(new int[]{1, 5, 2, 9, 3, 9})` -> `5`. `findSecondLargest(new int[]{3, 3, 3})` ->
   `Integer.MIN_VALUE`.
-* **Решение:** [`FindSecondLargest.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindSecondLargest.java),
+* **Решение:**
+  [`FindSecondLargest.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindSecondLargest.java),
   [`FindSecondLargestTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/FindSecondLargestTest.java)
 
 [К оглавлению](#table-of-contents)
@@ -447,8 +462,9 @@
   состоит только из цифр (0-9), и `false` в противном случае. Пустая строка или `null` должны возвращать `false`.
 * **Пример:** `containsOnlyDigits("12345")` -> `true`, `containsOnlyDigits("12a45")` -> `false`,
   `containsOnlyDigits("")` -> `false`.
-* **Решение:** [`CheckStringOnlyDigits.java`](src/main/java/com/svedentsov/aqa/tasks/strings/CheckStringOnlyDigits.java),
-[`CheckStringOnlyDigitsTest.java`](src/main/test/com/svedentsov/aqa/tasks/strings/CheckStringOnlyDigitsTest.java)
+* **Решение:**
+  [`CheckStringOnlyDigits.java`](src/main/java/com/svedentsov/aqa/tasks/strings/CheckStringOnlyDigits.java),
+  [`CheckStringOnlyDigitsTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/CheckStringOnlyDigitsTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -464,7 +480,9 @@
   начале/конце/между словами должны быть убраны.
 * **Пример:** `reverseWords("the sky is blue")` -> `"blue is sky the"`. `reverseWords("  hello world  ")` ->
   `"world hello"`.
-* **Решение:** [`ReverseWordsSentence`](src/main/java/com/svedentsov/aqa/tasks/strings/ReverseWordsSentence.java)
+* **Решение:**
+  [`ReverseWordsSentence.java`](src/main/java/com/svedentsov/aqa/tasks/strings/ReverseWordsSentence.java),
+  [`ReverseWordsSentenceTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/ReverseWordsSentenceTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -480,8 +498,9 @@
   множество (`Set`) уникальных элементов, присутствующих в обоих массивах `arr1` и `arr2`.
 * **Пример:** `findIntersection(new int[]{1, 2, 2, 1}, new int[]{2, 2})` -> `{2}`.
   `findIntersection(new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4})` -> `{4, 9}`.
-* **Решение:** [
-  `FindIntersectionArrays`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindIntersectionArrays.java)
+* **Решение:**
+  [`FindIntersectionArrays.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindIntersectionArrays.java),
+  [`FindIntersectionArraysTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/FindIntersectionArraysTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -497,8 +516,9 @@
   сбалансированы скобки `()`, `{}`, `[]` в строке `expression`.
 * **Пример:** `areBracketsBalanced("({[]})")` -> `true`. `areBracketsBalanced("([)]")` -> `false`.
   `areBracketsBalanced("{[}")` -> `false`. `areBracketsBalanced("()")` -> `true`.
-* **Решение:** [
-  `BalancedParenthesesCheck`](src/main/java/com/svedentsov/aqa/tasks/data_structures/BalancedParenthesesCheck.java)
+* **Решение:**
+  [`BalancedParenthesesCheck.java`](src/main/java/com/svedentsov/aqa/tasks/data_structures/BalancedParenthesesCheck.java),
+  [`BalancedParenthesesCheckTest.java`](src/test/java/com/svedentsov/aqa/tasks/data_structures/BalancedParenthesesCheckTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -515,8 +535,9 @@
   `"Car{make='Toyota', model='Camry', year=2020}"`.
 * **Пример:** `Car myCar = new Car("Toyota", "Camry", 2020); System.out.println(myCar);` должно вывести указанную
   строку. `myCar.getMake()` должно вернуть `"Toyota"`.
-* **Решение:** [
-  `SimpleClassImplementation`](src/main/java/com/svedentsov/aqa/tasks/oop_design/SimpleClassImplementation.java)
+* **Решение:**
+  [`SimpleClassImplementation.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/SimpleClassImplementation.java),
+  [`SimpleClassImplementationTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/SimpleClassImplementationTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -533,7 +554,9 @@
   равна `target`. Если такой пары нет, верните пустой массив или `null`. Предполагается, что решение единственное.
 * **Пример:** `findTwoSumIndices(new int[]{2, 7, 11, 15}, 9)` -> `[0, 1]`.
   `findTwoSumIndices(new int[]{3, 2, 4}, 6)` -> `[1, 2]`.
-* **Решение:** [`TwoSumProblem`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/TwoSumProblem.java)
+* **Решение:** 
+[`TwoSumProblem.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/TwoSumProblem.java),
+[`TwoSumProblemTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/TwoSumProblemTest.java)
 
 [К оглавлению](#table-of-contents)
 

@@ -24,14 +24,6 @@ public class ReverseWordsSentence {
      * Переворачивает порядок слов в предложении итеративно.
      * Удаляет лишние пробелы в начале, конце и между словами,
      * оставляя ровно один пробел между перевернутыми словами.
-     * <p>
-     * Алгоритм:
-     * 1. Обработать null: вернуть пустую строку.
-     * 2. Убрать ведущие/завершающие пробелы (`trim()`).
-     * 3. Если строка пуста после trim, вернуть пустую строку.
-     * 4. Разделить строку на слова по одному или нескольким пробелам (`split("\\s+")`).
-     * 5. Перевернуть порядок элементов в полученном массиве слов.
-     * 6. Соединить слова обратно в строку с одним пробелом в качестве разделителя (`String.join()`).
      *
      * @param sentence Исходное предложение. Может быть null.
      * @return Предложение с перевернутым порядком слов или пустая строка,
@@ -52,7 +44,7 @@ public class ReverseWordsSentence {
         // Шаг 4: Разделение на слова
         String[] words = trimmedSentence.split("\\s+");
 
-        // Шаг 5: Переворот массива слов
+        // Шаг 5: Переворот массива слов (in-place)
         int left = 0;
         int right = words.length - 1;
         while (left < right) {
@@ -84,57 +76,11 @@ public class ReverseWordsSentence {
         }
         // Разбиваем на слова, игнорируя лишние пробелы
         List<String> words = Arrays.stream(trimmedSentence.split("\\s+"))
-                // .filter(s -> !s.isEmpty()) // Не обязательно, т.к. split("\\s+") не создает пустых строк при таком использовании
+                // Фильтрация пустых строк не нужна при использовании split("\\s+") на непустой строке
                 .collect(Collectors.toList());
         // Переворачиваем список
         Collections.reverse(words);
         // Соединяем обратно с одним пробелом
         return String.join(" ", words);
-    }
-
-    /**
-     * Точка входа для демонстрации работы методов переворота слов.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        ReverseWordsSentence sol = new ReverseWordsSentence();
-
-        runReverseWordsTest(sol, "the sky is blue", "Стандартное предложение"); // "blue is sky the"
-        runReverseWordsTest(sol, "  hello world  ", "С внешними пробелами"); // "world hello"
-        runReverseWordsTest(sol, "a good   example", "С множественными внутренними пробелами"); // "example good a"
-        runReverseWordsTest(sol, " single ", "Одно слово с пробелами"); // "single"
-        runReverseWordsTest(sol, "   ", "Только пробелы"); // ""
-        runReverseWordsTest(sol, "", "Пустая строка"); // ""
-        runReverseWordsTest(sol, null, "Null строка"); // ""
-        runReverseWordsTest(sol, "word, one.", "С пунктуацией (остается при словах)"); // "one. word,"
-        runReverseWordsTest(sol, "1 two 3 four", "С цифрами"); // "four 3 two 1"
-        runReverseWordsTest(sol, "  leading", "Только ведущие пробелы"); // "leading"
-        runReverseWordsTest(sol, "trailing  ", "Только завершающие пробелы"); // "trailing"
-    }
-
-    /**
-     * Вспомогательный метод для тестирования переворота слов.
-     *
-     * @param sol         Экземпляр решателя.
-     * @param sentence    Тестовая строка.
-     * @param description Описание теста.
-     */
-    private static void runReverseWordsTest(ReverseWordsSentence sol, String sentence, String description) {
-        System.out.println("\n--- " + description + " ---");
-        String input = (sentence == null ? "null" : "\"" + sentence + "\"");
-        System.out.println("Input: " + input);
-        try {
-            String resultIterative = sol.reverseWords(sentence);
-            System.out.println("Reversed (Iterative): \"" + resultIterative + "\"");
-        } catch (Exception e) {
-            System.out.println("Reversed (Iterative): Error - " + e.getMessage());
-        }
-        try {
-            String resultStream = sol.reverseWordsStream(sentence);
-            System.out.println("Reversed (Stream):    \"" + resultStream + "\"");
-        } catch (Exception e) {
-            System.out.println("Reversed (Stream):    Error - " + e.getMessage());
-        }
     }
 }

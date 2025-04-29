@@ -1,6 +1,9 @@
 package com.svedentsov.aqa.tasks.arrays_lists;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -41,7 +44,6 @@ public class FindIntersectionArrays {
         int[] largerArr = (arr1.length < arr2.length) ? arr2 : arr1;
 
         // Шаг 3: Помещаем элементы меньшего массива в Set
-        // Указываем начальную емкость, чтобы уменьшить количество рехеширований
         Set<Integer> elementSet = new HashSet<>((int) (smallerArr.length / 0.75f) + 1);
         for (int num : smallerArr) {
             elementSet.add(num);
@@ -52,9 +54,8 @@ public class FindIntersectionArrays {
 
         // Шаг 5: Проходим по большему массиву и ищем совпадения в Set
         for (int num : largerArr) {
-            // contains() работает за O(1) в среднем
             if (elementSet.contains(num)) {
-                intersection.add(num); // Добавляем общий элемент в результат (Set сам обрабатывает дубликаты)
+                intersection.add(num);
             }
         }
         return intersection;
@@ -65,9 +66,10 @@ public class FindIntersectionArrays {
      * Может быть менее эффективен по времени и памяти для больших примитивных массивов
      * из-за boxing/unboxing и создания промежуточных коллекций.
      *
-     * @param arr1 Первый массив.
-     * @param arr2 Второй массив.
-     * @return Множество пересекающихся элементов.
+     * @param arr1 Первый массив. Может быть null.
+     * @param arr2 Второй массив. Может быть null.
+     * @return Множество пересекающихся элементов. Возвращает пустое множество,
+     * если пересечения нет или хотя бы один из массивов null/пуст.
      */
     public Set<Integer> findIntersectionStream(int[] arr1, int[] arr2) {
         if (arr1 == null || arr2 == null || arr1.length == 0 || arr2.length == 0) {
@@ -83,56 +85,5 @@ public class FindIntersectionArrays {
                 .filter(num -> set1.contains(num)) // Оставляем общие
                 .boxed() // int -> Integer
                 .collect(Collectors.toSet()); // Собираем в Set
-    }
-
-    /**
-     * Точка входа для демонстрации работы методов поиска пересечения.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        FindIntersectionArrays sol = new FindIntersectionArrays();
-
-        runIntersectionTest(sol, new int[]{1, 2, 2, 1}, new int[]{2, 2}, "Пример 1"); // [2]
-        runIntersectionTest(sol, new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4}, "Пример 2"); // [4, 9]
-        runIntersectionTest(sol, new int[]{1, 2, 3}, new int[]{4, 5, 6}, "Нет пересечения"); // []
-        runIntersectionTest(sol, new int[]{}, new int[]{1, 2}, "Первый пустой"); // []
-        runIntersectionTest(sol, new int[]{1, 2}, new int[]{}, "Второй пустой"); // []
-        runIntersectionTest(sol, new int[]{}, new int[]{}, "Оба пустые"); // []
-        runIntersectionTest(sol, null, new int[]{1, 2}, "Первый null"); // []
-        runIntersectionTest(sol, new int[]{1, 2}, null, "Второй null"); // []
-        runIntersectionTest(sol, null, null, "Оба null"); // []
-        runIntersectionTest(sol, new int[]{1, 2, 3, 4}, new int[]{2, 4, 6, 8}, "Частичное пересечение"); // [2, 4]
-        runIntersectionTest(sol, new int[]{-1, 0, 1}, new int[]{0, 1, 2, -1}, "С нулем и отрицательными"); // [-1, 0, 1]
-        runIntersectionTest(sol, new int[]{5, 5, 5}, new int[]{5, 0}, "Дубликаты в одном"); // [5]
-    }
-
-    /**
-     * Вспомогательный метод для тестирования поиска пересечения.
-     *
-     * @param sol         Экземпляр решателя.
-     * @param arr1        Первый массив.
-     * @param arr2        Второй массив.
-     * @param description Описание теста.
-     */
-    private static void runIntersectionTest(FindIntersectionArrays sol, int[] arr1, int[] arr2, String description) {
-        System.out.println("\n--- " + description + " ---");
-        String a1Str = (arr1 == null ? "null" : Arrays.toString(arr1));
-        String a2Str = (arr2 == null ? "null" : Arrays.toString(arr2));
-        System.out.println("Array 1: " + a1Str);
-        System.out.println("Array 2: " + a2Str);
-        try {
-            // Используем TreeSet для вывода отсортированного результата
-            Set<Integer> resultManual = new TreeSet<>(sol.findIntersection(arr1, arr2));
-            System.out.println("  Intersection (Set):    " + resultManual);
-        } catch (Exception e) {
-            System.out.println("  Intersection (Set):    Error - " + e.getMessage());
-        }
-        try {
-            Set<Integer> resultStream = new TreeSet<>(sol.findIntersectionStream(arr1, arr2));
-            System.out.println("  Intersection (Stream): " + resultStream);
-        } catch (Exception e) {
-            System.out.println("  Intersection (Stream): Error - " + e.getMessage());
-        }
     }
 }
