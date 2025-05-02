@@ -16,7 +16,6 @@ class PrimeNumberCheckTest {
 
     @BeforeEach
     void setUp() {
-        // Инициализация объекта перед каждым тестом
         primeNumberCheck = new PrimeNumberCheck();
     }
 

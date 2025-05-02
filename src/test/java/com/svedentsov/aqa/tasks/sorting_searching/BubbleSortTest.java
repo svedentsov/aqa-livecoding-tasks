@@ -20,7 +20,6 @@ class BubbleSortTest {
 
     @BeforeEach
     void setUp() {
-        // Инициализация объекта перед каждым тестом
         bubbleSort = new BubbleSort();
     }
 

@@ -554,9 +554,9 @@
   равна `target`. Если такой пары нет, верните пустой массив или `null`. Предполагается, что решение единственное.
 * **Пример:** `findTwoSumIndices(new int[]{2, 7, 11, 15}, 9)` -> `[0, 1]`.
   `findTwoSumIndices(new int[]{3, 2, 4}, 6)` -> `[1, 2]`.
-* **Решение:** 
-[`TwoSumProblem.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/TwoSumProblem.java),
-[`TwoSumProblemTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/TwoSumProblemTest.java)
+* **Решение:**
+  [`TwoSumProblem.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/TwoSumProblem.java),
+  [`TwoSumProblemTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/TwoSumProblemTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -570,7 +570,9 @@
   принимает список строк и возвращает `Map`, где ключи - это длина строки, а значения - списки строк этой длины.
 * **Пример:** `groupStringsByLength(List.of("apple", "bat", "cat", "apricot", "ball"))` ->
   `{5: ["apple"], 3: ["bat", "cat"], 7: ["apricot"], 4: ["ball"]}`.
-* **Решение:** [`GroupListElements`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/GroupListElements.java)
+* **Решение:**
+  [`GroupListElements.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/GroupListElements.java),
+  [`GroupListElementsTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/GroupListElementsTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -584,8 +586,9 @@
 * **Задание:** Напишите метод `List<Integer> generatePrimes(int n)`, который возвращает список всех простых чисел от
   2 до `n` включительно. Используйте алгоритм "Решето Эратосфена".
 * **Пример:** `generatePrimes(10)` -> `[2, 3, 5, 7]`. `generatePrimes(20)` -> `[2, 3, 5, 7, 11, 13, 17, 19]`.
-* **Решение:** [
-  `GeneratePrimesSieve`](src/main/java/com/svedentsov/aqa/tasks/algorithms/GeneratePrimesSieve.java)
+* **Решение:**
+  [`GeneratePrimesSieve.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/GeneratePrimesSieve.java),
+  [`GeneratePrimesSieveTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/GeneratePrimesSieveTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -600,7 +603,9 @@
   число `n` является степенью двойки (1, 2, 4, 8, 16...), и `false` иначе.
 * **Пример:** `isPowerOfTwo(1)` -> `true`, `isPowerOfTwo(16)` -> `true`, `isPowerOfTwo(10)` -> `false`,
   `isPowerOfTwo(0)` -> `false`.
-* **Решение:** [`CheckPowerOfTwo`](src/main/java/com/svedentsov/aqa/tasks/algorithms/CheckPowerOfTwo.java)
+* **Решение:**
+  [`CheckPowerOfTwo.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/CheckPowerOfTwo.java),
+  [`CheckPowerOfTwoTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/CheckPowerOfTwoTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -615,7 +620,9 @@
 * **Задание:** Напишите метод `int sumDigits(int number)`, который вычисляет и возвращает сумму цифр
   неотрицательного целого числа `number`.
 * **Пример:** `sumDigits(123)` -> `6`, `sumDigits(49)` -> `13`, `sumDigits(5)` -> `5`, `sumDigits(0)` -> `0`.
-* **Решение:** [`SumOfDigits`](src/main/java/com/svedentsov/aqa/tasks/algorithms/SumOfDigits.java)
+* **Решение:**
+  [`SumOfDigits.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/SumOfDigits.java),
+  [`SumOfDigitsTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/SumOfDigitsTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -630,7 +637,9 @@
 * **Задание:** Напишите метод `List<Integer> removeElement(List<Integer> list, int elementToRemove)`, который
   возвращает новый список, полученный из `list` удалением всех вхождений `elementToRemove`.
 * **Пример:** `removeElement(List.of(1, 2, 3, 2, 4, 2), 2)` -> `[1, 3, 4]`.
-* **Решение:** [`RemoveElementList`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/RemoveElementList.java)
+* **Решение:**
+  [`RemoveElementList.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/RemoveElementList.java),
+  [`RemoveElementListTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/RemoveElementListTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -647,7 +656,9 @@
   короче исходной, метод должен вернуть исходную строку.
 * **Пример:** `compressString("aabcccccaaa")` -> `"a2b1c5a3"`. `compressString("abc")` -> `"abc"`.
   `compressString("aabbcc")` -> `"a2b2c2"`.
-* **Решение:** [`StringCompression`](src/main/java/com/svedentsov/aqa/tasks/strings/StringCompression.java)
+* **Решение:**
+  [`StringCompression.java`](src/main/java/com/svedentsov/aqa/tasks/strings/StringCompression.java),
+  [`StringCompressionTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/StringCompressionTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -663,8 +674,9 @@
   Обработайте случай пустого массива.
 * **Пример:** `findMostFrequentElement(new int[]{1, 3, 2, 1, 4, 1, 3})` -> `1`.
   `findMostFrequentElement(new int[]{1, 2, 3})` -> `1` (или `2`, или `3`).
-* **Решение:** [
-  `FindMostFrequentElement`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/FindMostFrequentElement.java)
+* **Решение:**
+  [`FindMostFrequentElement.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/FindMostFrequentElement.java)
+  [`FindMostFrequentElementTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindMostFrequentElementTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -680,7 +692,9 @@
   возвращает количество строк в нем. Обработайте возможные `IOException`. (На собеседовании могут попросить
   использовать `try-with-resources`).
 * **Пример:** Если файл `data.txt` содержит 3 строки, `countLines("data.txt")` -> `3`.
-* **Решение:** [`ReadFileCount`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/ReadFileCount.java)
+* **Решение:**
+  [`ReadFileCount.java`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/ReadFileCount.java)
+  [`ReadFileCountTest.java`](src/test/java/com/svedentsov/aqa/tasks/files_io_formats/ReadFileCountTest.java)
 
 [К оглавлению](#table-of-contents)
 
