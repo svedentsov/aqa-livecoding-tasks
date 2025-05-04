@@ -25,7 +25,7 @@ public class LCM {
      *
      * @param a Первое целое число.
      * @param b Второе целое число.
-     * @return Наименьшее общее кратное чисел a и b (тип long). Возвращает 0, если одно из чисел 0.
+     * @return Наименьшее общее кратное чисел a и b (тип long). Возвращает 0L, если одно из чисел 0.
      */
     public long lcm(int a, int b) {
         // НОК с нулем всегда равен нулю по определению
@@ -35,8 +35,7 @@ public class LCM {
 
         // Вычисляем НОД абсолютных значений
         int greatestCommonDivisor = gcd(a, b);
-        // Если НОД равен 0, это значит a=0 и b=0, что уже обработано.
-        // НОД не может быть 0, если хотя бы одно из чисел не 0.
+        // НОД(a, b) не может быть 0, если a и b не оба 0 (этот случай обработан выше)
 
         // Вычисляем НОК по формуле (|a| / НОД(a, b)) * |b|
         // Используем long для промежуточных вычислений и результата
@@ -44,85 +43,29 @@ public class LCM {
         long valB = Math.abs((long) b);
 
         // Деление выполняется до умножения, чтобы уменьшить промежуточные значения
+        // greatestCommonDivisor гарантированно > 0 здесь
         return (valA / greatestCommonDivisor) * valB;
-    }
-
-    /**
-     * Точка входа для демонстрации работы метода вычисления НОК.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        LCM sol = new LCM();
-        int[][] pairs = {
-                {4, 6}, {6, 4}, {5, 7}, {12, 18}, {0, 5}, {5, 0},
-                {7, 7}, {-4, 6}, {-4, -6}, {1, 1}, {1, 8}, {8, 1},
-                {21, 49}, {0, 0}
-        };
-        long[] expected = {12, 12, 35, 36, 0, 0, 7, 12, 12, 1, 8, 8, 147, 0};
-
-        System.out.println("--- Calculating LCM (Least Common Multiple) ---");
-        for (int i = 0; i < pairs.length; i++) {
-            runLcmTest(sol, pairs[i][0], pairs[i][1], expected[i]);
-        }
-
-        // Пример с числами, где произведение |a*b| переполнило бы int
-        int largeA = 50000;
-        int largeB = 60000;
-        long expectedLarge = 300000L;
-        runLcmTest(sol, largeA, largeB, expectedLarge);
-
-        // Пример с числами, где результат LCM переполняет int, но умещается в long
-        int bigA = Integer.MAX_VALUE; // Простое число
-        int bigB = Integer.MAX_VALUE - 1; // Четное, gcd=1
-        long expectedMax = (long) bigA * bigB; // Ожидаемый результат > Integer.MAX_VALUE
-        runLcmTest(sol, bigA, bigB, expectedMax);
-
     }
 
     /**
      * Вспомогательный метод для вычисления НОД (Наибольший Общий Делитель).
      * Используется итеративный алгоритм Евклида.
-     * Используется методом lcm.
+     * Используется методом lcm. Приватный, т.к. является деталью реализации lcm.
      *
      * @param a Первое целое число.
      * @param b Второе целое число.
      * @return НОД чисел |a| и |b|.
      */
     private int gcd(int a, int b) {
-        a = Math.abs(a);
-        b = Math.abs(b);
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
+        // Используем long промежуточно на случай a = Integer.MIN_VALUE
+        long la = Math.abs((long) a);
+        long lb = Math.abs((long) b);
+        while (lb != 0) {
+            long temp = lb;
+            lb = la % lb;
+            la = temp;
         }
-        return a;
-    }
-
-    /**
-     * Вспомогательный метод для тестирования LCM.
-     *
-     * @param sol      Экземпляр решателя.
-     * @param a        Первое число.
-     * @param b        Второе число.
-     * @param expected Ожидаемый результат.
-     */
-    private static void runLcmTest(LCM sol, int a, int b, long expected) {
-        System.out.println("\nInput: a=" + a + ", b=" + b);
-        try {
-            long result = sol.lcm(a, b);
-            System.out.printf("  LCM = %d (Expected: %d) %s%n",
-                    result, expected, (result == expected ? "" : "<- MISMATCH!"));
-        } catch (ArithmeticException e) {
-            // Используем Long.MAX_VALUE как маркер ожидаемого переполнения для теста
-            if (expected == Long.MAX_VALUE) {
-                System.out.println("  LCM = Overflow (Expected)");
-            } else {
-                System.err.println("  LCM = Error: " + e.getMessage() + " (Expected: " + expected + ")");
-            }
-        } catch (Exception e) {
-            System.err.println("  LCM = Unexpected Error: " + e.getMessage());
-        }
+        // Результат НОД гарантированно умещается в int, если a и b были int
+        return (int) la;
     }
 }

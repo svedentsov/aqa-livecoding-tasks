@@ -711,8 +711,9 @@
   количеству цифр в числе).
 * **Пример:** `isArmstrongNumber(153)` -> `true` (1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153). `isArmstrongNumber(370)` ->
   `true`. `isArmstrongNumber(123)` -> `false`.
-* **Решение:** [
-  `ArmstrongNumberCheck`](src/main/java/com/svedentsov/aqa/tasks/algorithms/ArmstrongNumberCheck.java)
+* **Решение:**
+  [`ArmstrongNumberCheck.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/ArmstrongNumberCheck.java)
+  [`ArmstrongNumberCheckTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/ArmstrongNumberCheckTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -743,7 +744,9 @@
 * **Задание:** Напишите метод `int gcd(int a, int b)`, который вычисляет наибольший общий делитель двух
   неотрицательных целых чисел `a` и `b`, используя алгоритм Евклида.
 * **Пример:** `gcd(48, 18)` -> `6`. `gcd(10, 5)` -> `5`. `gcd(7, 13)` -> `1`. `gcd(0, 5)` -> `5`.
-* **Решение:** [`GCD`](src/main/java/com/svedentsov/aqa/tasks/algorithms/GCD.java)
+* **Решение:**
+  [`GCD.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/GCD.java)
+  [`GCDTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/GCDTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -757,7 +760,9 @@
 * **Задание:** Напишите метод `int lcm(int a, int b)`, который вычисляет наименьшее общее кратное двух положительных
   целых чисел `a` и `b`. Можно использовать формулу `lcm(a, b) = (|a * b|) / gcd(a, b)`.
 * **Пример:** `lcm(4, 6)` -> `12`. `lcm(5, 7)` -> `35`.
-* **Решение:** [`LCM`](src/main/java/com/svedentsov/aqa/tasks/algorithms/LCM.java)
+* **Решение:**
+  [`LCM.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/LCM.java)
+  [`LCMTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/LCMTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -771,9 +776,10 @@
 * **Задание:** Напишите метод `int binarySearch(int[] sortedArray, int key)`, который ищет индекс элемента `key` в
   отсортированном по возрастанию массиве `sortedArray` с помощью алгоритма бинарного поиска. Если элемент не найден,
   верните -1.
-* **Пример:** `binarySearch(new int[]{1, 3, 5, 7, 9}, 5)` -> `2`. `binarySearch(new int[]{1, 3, 5, 7, 9}, 6)` ->
-  `-1`.
-* **Решение:** [`BinarySearch`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/BinarySearch.java)
+* **Пример:** `binarySearch(new int[]{1, 3, 5, 7, 9}, 5)` -> `2`. `binarySearch(new int[]{1, 3, 5, 7, 9}, 6)` -> `-1`.
+* **Решение:**
+  [`BinarySearch.java`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/BinarySearch.java)
+  [`BinarySearchTest.java`](src/test/java/com/svedentsov/aqa/tasks/sorting_searching/BinarySearchTest.java)
 
 [К оглавлению](#table-of-contents)
 
