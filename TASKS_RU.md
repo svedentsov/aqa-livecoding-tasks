@@ -729,8 +729,8 @@
   удаления) и `isEmpty()`.
 * **Пример:** `MyStack stack = new MyStack(); stack.push(1); stack.push(2); stack.pop()` -> `2`. `stack.peek()` ->
   `1`. `stack.isEmpty()` -> `false`.
-* **Решение:** [
-  `ImplementStackQueue`](src/main/java/com/svedentsov/aqa/tasks/data_structures/ImplementStackQueue.java)
+* **Решение:**
+  [`ImplementStackQueue`](src/main/java/com/svedentsov/aqa/tasks/data_structures/ImplementStackQueue.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -796,7 +796,9 @@
   возможно, или верните новый.
 * **Пример:** `arr = [1, 2, 3, 4, 5], k = 2`. После `rotateArray(arr, k)` массив `arr` должен стать
   `[4, 5, 1, 2, 3]`.
-* **Решение:** [`RotateArray`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/RotateArray.java)
+* **Решение:**
+  [`RotateArray.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/RotateArray.java)
+  [`RotateArrayTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/RotateArrayTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -814,7 +816,9 @@
 * **Пример:** `Collections.sort(listOfPersons)` должен отсортировать список объектов `Person` согласно заданным
   правилам. `new Person("Bob", 30).compareTo(new Person("Alice", 30))` -> положительное число.
   `new Person("Alice", 25).compareTo(new Person("Bob", 30))` -> отрицательное число.
-* **Решение:** [`CompareCustomObjects`](src/main/java/com/svedentsov/aqa/tasks/oop_design/CompareCustomObjects.java)
+* **Решение:**
+  [`CompareCustomObjects.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/CompareCustomObjects.java)
+  [`CompareCustomObjectsTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/CompareCustomObjectsTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -832,7 +836,9 @@
 * **Пример:** `isValidIPv4("192.168.0.1")` -> `true`. `isValidIPv4("255.255.255.255")` -> `true`.
   `isValidIPv4("0.0.0.0")` -> `true`. `isValidIPv4("256.1.1.1")` -> `false`. `isValidIPv4("192.168.0.01")` ->
   `false`. `isValidIPv4("192.168..1")` -> `false`. `isValidIPv4("abc.def.ghi.jkl")` -> `false`.
-* **Решение:** [`ValidateIpAddress`](src/main/java/com/svedentsov/aqa/tasks/strings/ValidateIpAddress.java)
+* **Решение:**
+  [`ValidateIpAddress.java`](src/main/java/com/svedentsov/aqa/tasks/strings/ValidateIpAddress.java)
+  [`ValidateIpAddressTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/ValidateIpAddressTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -849,7 +855,9 @@
       в целое число. (I=1, V=5, X=10, L=50, C=100, D=500, M=1000). Учитывайте правила вычитания (IV=4, IX=9, XL=40,
       XC=90, CD=400, CM=900).
     * **Пример:** `romanToInt("III")` -> `3`. `romanToInt("LVIII")` -> `58`. `romanToInt("MCMXCIV")` -> `1994`.
-* **Решение:** [`RomanToInteger`](src/main/java/com/svedentsov/aqa/tasks/strings/RomanToInteger.java)
+* **Решение:**
+  [`RomanToInteger.java`](src/main/java/com/svedentsov/aqa/tasks/strings/RomanToInteger.java)
+  [`RomanToIntegerTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/RomanToIntegerTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -863,7 +871,9 @@
 * **Задание:** Напишите метод `String intToRoman(int num)`, который конвертирует целое число `num` (от 1 до 3999) в
   строку с римским представлением.
 * **Пример:** `intToRoman(3)` -> `"III"`. `intToRoman(58)` -> `"LVIII"`. `intToRoman(1994)` -> `"MCMXCIV"`.
-* **Решение:** [`IntegerToRoman`](src/main/java/com/svedentsov/aqa/tasks/strings/IntegerToRoman.java)
+* **Решение:**
+  [`IntegerToRoman.java`](src/main/java/com/svedentsov/aqa/tasks/strings/IntegerToRoman.java)
+  [`IntegerToRomanTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/IntegerToRomanTest.java)
 
 [К оглавлению](#table-of-contents)
 

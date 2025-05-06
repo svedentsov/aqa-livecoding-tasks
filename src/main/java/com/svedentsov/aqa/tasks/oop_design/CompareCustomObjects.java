@@ -4,8 +4,7 @@ import java.util.*;
 
 /**
  * Решение задачи №40: Сравнение объектов кастомного класса (Person).
- * Демонстрирует реализацию интерфейса Comparable для "естественного" порядка
- * и создание внешних классов Comparator для альтернативных порядков сортировки.
+ * Содержит класс Person, реализующий Comparable, и примеры Comparator'ов.
  * <p>
  * Описание: Реализовать интерфейс `Comparable` или предоставить `Comparator`
  * для кастомного класса (например, `Person` по возрасту). (Проверяет: ООП, интерфейсы)
@@ -14,67 +13,8 @@ import java.util.*;
  * реализовывал интерфейс `Comparable<Person>`. Сравнение должно происходить
  * сначала по возрасту (по возрастанию), а при одинаковом возрасте - по имени
  * (в алфавитном порядке).
- * <p>
- * Пример: `Collections.sort(listOfPersons)` должен отсортировать список объектов `Person`
- * согласно заданным правилам.
- * `new Person("Bob", 30).compareTo(new Person("Alice", 30))` -> положительное число.
- * `new Person("Alice", 25).compareTo(new Person("Bob", 30))` -> отрицательное число.
  */
 public class CompareCustomObjects {
-
-    /**
-     * Точка входа для демонстрации использования Comparable и Comparator с классом Person.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        Person alice30 = new Person("Alice", 30);
-        Person bob25 = new Person("Bob", 25);
-        Person charlie30 = new Person("Charlie", 30);
-        Person bob30 = new Person("Bob", 30);
-        Person alice25 = new Person("Alice", 25);
-
-        // --- Демонстрация compareTo (из Comparable) ---
-        System.out.println("--- Comparing using Comparable (age ascending, then name ascending) ---");
-        compareAndPrint(alice30, bob25);       // Alice(30) > Bob(25) -> 1
-        compareAndPrint(bob25, alice30);       // Bob(25) < Alice(30) -> -1
-        compareAndPrint(alice30, charlie30);   // Alice(30) < Charlie(30) -> -1 (по имени)
-        compareAndPrint(charlie30, bob30);     // Charlie(30) > Bob(30) -> 1 (по имени)
-        compareAndPrint(bob30, alice30);       // Bob(30) > Alice(30) -> 1 (по имени)
-        compareAndPrint(alice30, alice30);     // Alice(30) == Alice(30) -> 0
-        compareAndPrint(alice30, bob30);       // Alice(30) < Bob(30) -> -1 (по имени)
-
-        // --- Демонстрация сортировки списка (использует Comparable) ---
-        List<Person> people = new ArrayList<>(List.of(alice30, bob25, charlie30, bob30, alice25));
-        System.out.println("\n--- Sorting List using Comparable (Collections.sort) ---");
-        System.out.println("Original list : " + people);
-        Collections.sort(people); // Использует Person.compareTo()
-        System.out.println("Sorted list   : " + people);
-        // Ожидаемый порядок: [Alice(25), Bob(25), Alice(30), Bob(30), Charlie(30)]
-
-        // --- Демонстрация сортировки с использованием Comparator ---
-        // Создаем копии списка для разных сортировок
-        List<Person> peopleForAgeSort = new ArrayList<>(people); // Уже отсортированный список
-        List<Person> peopleForNameSort = new ArrayList<>(people);
-        List<Person> peopleForAgeDescSort = new ArrayList<>(people);
-
-        System.out.println("\n--- Sorting List using Comparators (list.sort) ---");
-
-        // Сортировка только по возрасту (возрастание)
-        peopleForAgeSort.sort(new PersonAgeComparator());
-        System.out.println("Sorted by Age : " + peopleForAgeSort);
-        // Ожидаемый порядок: [Alice(25), Bob(25), Alice(30), Bob(30), Charlie(30)] (порядок людей с одинаковым возрастом не гарантирован)
-
-        // Сортировка только по имени (алфавитный порядок)
-        peopleForNameSort.sort(new PersonNameComparator());
-        System.out.println("Sorted by Name: " + peopleForNameSort);
-        // Ожидаемый порядок: [Alice(25), Alice(30), Bob(25), Bob(30), Charlie(30)]
-
-        // Сортировка по возрасту (убывание) с использованием лямбда-выражения
-        peopleForAgeDescSort.sort((p1, p2) -> Integer.compare(p2.getAge(), p1.getAge()));
-        System.out.println("Sorted by Age (desc): " + peopleForAgeDescSort);
-        // Ожидаемый порядок: [Alice(30), Bob(30), Charlie(30), Alice(25), Bob(25)]
-    }
 
     /**
      * Класс, представляющий человека с именем и возрастом.
@@ -82,6 +22,8 @@ public class CompareCustomObjects {
      * "естественный" порядок сортировки объектов Person:
      * сначала по возрасту (по возрастанию), затем по имени (в алфавитном порядке).
      */
+    // Класс static, чтобы его можно было инстанцировать без экземпляра CompareCustomObjects
+    // Можно вынести в отдельный файл Person.java
     static class Person implements Comparable<Person> {
         private final String name;
         private final int age;
@@ -103,7 +45,6 @@ public class CompareCustomObjects {
         @Override
         public String toString() {
             return name + "(" + age + ")"; // Краткая форма для вывода
-            // return "Person{name='" + name + '\'' + ", age=" + age + '}';
         }
 
         @Override
@@ -141,11 +82,13 @@ public class CompareCustomObjects {
     /**
      * Внешний компаратор для сравнения объектов Person ТОЛЬКО по возрасту (по возрастанию).
      */
+    // Класс static для удобства использования
     static class PersonAgeComparator implements Comparator<Person> {
         @Override
         public int compare(Person p1, Person p2) {
-            // Проверки на null не обязательны, если гарантируется, что список их не содержит,
-            // но для надежности лучше добавить Objects.requireNonNull(p1); Objects.requireNonNull(p2);
+            // Для большей надежности можно добавить проверки на null
+            Objects.requireNonNull(p1, "Person p1 cannot be null");
+            Objects.requireNonNull(p2, "Person p2 cannot be null");
             return Integer.compare(p1.getAge(), p2.getAge());
         }
     }
@@ -153,29 +96,13 @@ public class CompareCustomObjects {
     /**
      * Внешний компаратор для сравнения объектов Person ТОЛЬКО по имени (алфавитный порядок).
      */
+    // Класс static для удобства использования
     static class PersonNameComparator implements Comparator<Person> {
         @Override
         public int compare(Person p1, Person p2) {
+            Objects.requireNonNull(p1, "Person p1 cannot be null");
+            Objects.requireNonNull(p2, "Person p2 cannot be null");
             return p1.getName().compareTo(p2.getName());
         }
-    }
-
-    /**
-     * Вспомогательный метод для вывода результата сравнения двух Person.
-     *
-     * @param p1 Первый Person.
-     * @param p2 Второй Person.
-     */
-    private static void compareAndPrint(Person p1, Person p2) {
-        int result = p1.compareTo(p2);
-        String comparison;
-        if (result < 0) {
-            comparison = "<";
-        } else if (result > 0) {
-            comparison = ">";
-        } else {
-            comparison = "==";
-        }
-        System.out.printf("  Comparing %s %s %s -> Result: %d%n", p1, comparison, p2, result);
     }
 }

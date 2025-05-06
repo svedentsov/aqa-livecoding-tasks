@@ -28,16 +28,6 @@ public class IntegerToRoman {
      * Использует "жадный" подход: итеративно вычитает из числа максимально возможное
      * значение из предопределенного списка `VALUES` и добавляет соответствующий символ
      * из `SYMBOLS` к результату.
-     * <p>
-     * Алгоритм:
-     * 1. Проверить, что число `num` находится в диапазоне [1, 3999].
-     * 2. Инициализировать пустой StringBuilder `romanResult`.
-     * 3. Итерировать по массивам `VALUES` и `SYMBOLS` одновременно (индекс `i`).
-     * 4. Внутренний цикл `while`: пока `num >= VALUES[i]`:
-     * a. Вычесть `VALUES[i]` из `num`.
-     * b. Добавить `SYMBOLS[i]` к `romanResult`.
-     * 5. (Опционально) Если `num` стало 0, можно прервать внешний цикл.
-     * 6. Вернуть `romanResult.toString()`.
      *
      * @param num Целое число от 1 до 3999.
      * @return Строка с римским представлением числа.
@@ -67,44 +57,5 @@ public class IntegerToRoman {
 
         // Шаг 6: Возвращаем результат
         return romanResult.toString();
-    }
-
-    /**
-     * Точка входа для демонстрации работы метода конвертации целых чисел в римские.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        IntegerToRoman sol = new IntegerToRoman();
-        int[] nums = {3, 58, 1994, 9, 4, 40, 90, 400, 900, 1, 2025, 3999, 49, 888, 1515};
-
-        System.out.println("--- Converting Integer to Roman ---");
-        for (int num : nums) {
-            runIntToRomanTest(sol, num);
-        }
-
-        // Тесты на ошибки
-        runIntToRomanTest(sol, 0);    // Exception
-        runIntToRomanTest(sol, 4000); // Exception
-        runIntToRomanTest(sol, -10);  // Exception
-    }
-
-    /**
-     * Вспомогательный метод для тестирования intToRoman.
-     *
-     * @param sol Экземпляр решателя.
-     * @param num Число для конвертации.
-     */
-    private static void runIntToRomanTest(IntegerToRoman sol, int num) {
-        System.out.print("intToRoman(" + num + ") -> ");
-        try {
-            String roman = sol.intToRoman(num);
-            System.out.println("'" + roman + "'");
-            // Можно добавить сравнение с ожидаемым значением, если оно передано
-        } catch (IllegalArgumentException e) {
-            System.out.println("Caught expected error: " + e.getMessage());
-        } catch (Exception e) {
-            System.err.println("Caught unexpected error: " + e.getMessage());
-        }
     }
 }

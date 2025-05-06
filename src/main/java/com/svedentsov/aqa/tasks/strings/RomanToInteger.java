@@ -21,7 +21,6 @@ import java.util.Objects;
 public class RomanToInteger {
 
     // Карта для хранения значений римских цифр.
-    // Делаем ее static final и инициализируем в статическом блоке.
     private static final Map<Character, Integer> ROMAN_MAP;
 
     static {
@@ -40,20 +39,9 @@ public class RomanToInteger {
      * Конвертирует строку с римским числом в целое число.
      * Учитывает правила сложения и вычитания (например, IV = 4, VI = 6).
      * Обрабатывает строку справа налево для упрощения логики вычитания.
-     * <p>
-     * Алгоритм:
-     * 1. Инициализировать `result = 0` и `prevValue = 0`.
-     * 2. Итерировать по строке `s` справа налево (от `s.length() - 1` до `0`).
-     * 3. Для каждого символа `currentChar`:
-     * a. Получить его числовое значение `currentValue` из `ROMAN_MAP`.
-     * b. Если символ невалидный (нет в карте), выбросить исключение.
-     * c. Если `currentValue < prevValue` (случай вычитания, например 'I' в "IV"),
-     * вычесть `currentValue` из `result`.
-     * d. Иначе (если `currentValue >= prevValue`), прибавить `currentValue` к `result`.
-     * e. Обновить `prevValue = currentValue` для следующей итерации.
-     * 4. Вернуть `result`.
      *
-     * @param s Строка с римским числом. Предполагается валидной согласно стандартным правилам.
+     * @param s Строка с римским числом. Предполагается, что строка состоит из валидных
+     *          римских символов, но может быть не канонически сформирована.
      * @return Целочисленное представление римского числа.
      * @throws IllegalArgumentException если строка содержит символы, не являющиеся римскими цифрами.
      * @throws NullPointerException     если строка s равна null.
@@ -80,58 +68,8 @@ public class RomanToInteger {
             } else {
                 result += currentValue;
             }
-
             prevValue = currentValue; // Сохраняем текущее значение для следующей итерации
         }
-
         return result;
-    }
-
-    /**
-     * Точка входа для демонстрации работы метода конвертации римских чисел в целые.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        RomanToInteger sol = new RomanToInteger();
-        String[] romanNumerals = {"III", "LVIII", "MCMXCIV", "IX", "IV", "XL", "XC", "CD", "CM", "I", "MMXXV", "", "MMMDCCCLXXXVIII", "V", "X"};
-        int[] expectedInts = {3, 58, 1994, 9, 4, 40, 90, 400, 900, 1, 2025, 0, 3888, 5, 10};
-
-        System.out.println("--- Converting Roman to Integer ---");
-        for (int i = 0; i < romanNumerals.length; i++) {
-            runRomanToIntTest(sol, romanNumerals[i], expectedInts[i]);
-        }
-
-        // Тесты на ошибки
-        runRomanToIntTest(sol, "MCMA", -1); // Ожидается ошибка
-        runRomanToIntTest(sol, null, -1); // Ожидается ошибка
-        runRomanToIntTest(sol, "IIII", 4); // Не каноническая запись, но метод обработает как 4
-        runRomanToIntTest(sol, "VX", 5);   // Не каноническая запись, но метод обработает как 5 (5-10 не бывает)
-    }
-
-    /**
-     * Вспомогательный метод для тестирования romanToInt.
-     *
-     * @param sol      Экземпляр решателя.
-     * @param roman    Входное римское число (строка).
-     * @param expected Ожидаемое целое число (-1 для ожидания ошибки).
-     */
-    private static void runRomanToIntTest(RomanToInteger sol, String roman, int expected) {
-        String input = (roman == null ? "null" : "'" + roman + "'");
-        System.out.print("romanToInt(" + input + ") -> ");
-        try {
-            int result = sol.romanToInt(roman);
-            boolean match = (result == expected);
-            System.out.printf("%d (Expected: %d) %s%n",
-                    result, expected, (match ? "" : "<- MISMATCH!"));
-        } catch (IllegalArgumentException | NullPointerException e) {
-            if (expected == -1) { // Если ожидалась ошибка
-                System.out.println("Caught expected error: " + e.getClass().getSimpleName());
-            } else {
-                System.err.printf("Caught unexpected error: %s (Expected: %d)%n", e.getMessage(), expected);
-            }
-        } catch (Exception e) {
-            System.err.printf("Caught unexpected error: %s%n", e.getMessage());
-        }
     }
 }
