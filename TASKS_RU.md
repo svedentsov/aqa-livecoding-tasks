@@ -889,8 +889,9 @@
 * **Пример:** `lengthOfLongestSubstring("abcabcbb")` -> `3` (подстрока "abc").
   `lengthOfLongestSubstring("bbbbb")` -> `1` (подстрока "b"). `lengthOfLongestSubstring("pwwkew")` -> `3` (
   подстрока "wke").
-* **Решение:** [
-  `LongestSubstringWithoutRepeating`](src/main/java/com/svedentsov/aqa/tasks/strings/LongestSubstringWithoutRepeating.java)
+* **Решение:**
+  [`LongestSubstringWithoutRepeating.java`](src/main/java/com/svedentsov/aqa/tasks/strings/LongestSubstringWithoutRepeating.java)
+  [`LongestSubstringWithoutRepeatingTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/LongestSubstringWithoutRepeatingTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -905,7 +906,9 @@
 * **Задание:** Напишите метод `void moveZeroes(int[] nums)`, который перемещает все нули в конец массива `nums`,
   сохраняя относительный порядок ненулевых элементов. Модифицируйте массив "на месте".
 * **Пример:** `nums = [0, 1, 0, 3, 12]`. После `moveZeroes(nums)` массив должен стать `[1, 3, 12, 0, 0]`.
-* **Решение:** [`MoveZeroesEnd`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/MoveZeroesEnd.java)
+* **Решение:**
+  [`MoveZeroesEnd.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/MoveZeroesEnd.java)
+  [`MoveZeroesEndMoveZeroesEndTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/MoveZeroesEndTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -920,8 +923,9 @@
   перестановок символов строки `str`.
 * **Пример:** `findPermutations("abc")` -> `["abc", "acb", "bac", "bca", "cab", "cba"]`.
   `findPermutations("aab")` -> `["aab", "aba", "baa"]`.
-* **Решение:** [
-  `FindStringPermutations`](src/main/java/com/svedentsov/aqa/tasks/strings/FindStringPermutations.java)
+* **Решение:**
+  [`FindStringPermutations.java`](src/main/java/com/svedentsov/aqa/tasks/strings/FindStringPermutations.java)
+  [`FindStringPermutationsTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/FindStringPermutationsTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -936,7 +940,9 @@
   подмассива в массиве `nums` (подмассив должен содержать хотя бы один элемент).
 * **Пример:** `maxSubArraySum(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4})` -> `6` (подмассив `[4, -1, 2, 1]`).
   `maxSubArraySum(new int[]{1})` -> `1`. `maxSubArraySum(new int[]{5, 4, -1, 7, 8})` -> `23`.
-* **Решение:** [`MaximumSubarraySum`](src/main/java/com/svedentsov/aqa/tasks/algorithms/MaximumSubarraySum.java)
+* **Решение:**
+  [`MaximumSubarraySum.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/MaximumSubarraySum.java)
+  [`MaximumSubarraySumTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/MaximumSubarraySumTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -952,8 +958,9 @@
   уникальный элемент.
 * **Пример:** `findKthLargest(new int[]{3, 2, 1, 5, 6, 4}, 2)` -> `5`.
   `findKthLargest(new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6}, 4)` -> `4`.
-* **Решение:** [
-  `KthLargestElement`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/KthLargestElement.java)
+* **Решение:**
+  [`KthLargestElement.java`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/KthLargestElement.java)
+  [`KthLargestElementTest.java`](src/test/java/com/svedentsov/aqa/tasks/sorting_searching/KthLargestElementTest.java)
 
 [К оглавлению](#table-of-contents)
 

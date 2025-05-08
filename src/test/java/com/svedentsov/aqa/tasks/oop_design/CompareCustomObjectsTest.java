@@ -14,9 +14,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Юнит-тесты для класса Person и его компараторов.
- */
 @DisplayName("Тесты для Person (Comparable и Comparators)")
 class CompareCustomObjectsTest {
 

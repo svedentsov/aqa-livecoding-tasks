@@ -18,13 +18,12 @@ public class FindStringPermutations {
     /**
      * Находит все уникальные перестановки символов строки.
      * Использует рекурсивный метод с возвратом (backtracking) и {@link HashSet} для
-     * автоматического обеспечения уникальности перестановок, особенно важно,
-     * если во входной строке есть повторяющиеся символы.
+     * автоматического обеспечения уникальности перестановок.
      *
      * @param str Исходная строка. Может быть null.
      * @return Список (ArrayList) уникальных перестановок строки.
      * Возвращает пустой список для null или пустой строки. Порядок перестановок
-     * в итоговом списке зависит от HashSet и последующей сортировки в `main`.
+     * в итоговом списке не гарантирован (зависит от HashSet).
      */
     public List<String> findPermutationsSet(String str) {
         // Используем Set для хранения уникальных перестановок
@@ -43,13 +42,13 @@ public class FindStringPermutations {
     }
 
     /**
-     * Находит все уникальные перестановки строки (альтернативный метод).
-     * Оптимизирован для строк с повторяющимися символами без использования Set.
+     * Находит все уникальные перестановки строки (оптимизированный метод без Set).
      * Требует предварительной сортировки массива символов для корректной работы
-     * логики пропуска дубликатов.
+     * логики пропуска дубликатов. Возвращает результат в лексикографическом порядке.
      *
-     * @param str Исходная строка.
-     * @return Список уникальных перестановок. Порядок будет лексикографическим.
+     * @param str Исходная строка. Может быть null.
+     * @return Список уникальных перестановок в лексикографическом порядке.
+     * Возвращает пустой список для null или пустой строки.
      */
     public List<String> findPermutationsOptimized(String str) {
         List<String> resultList = new ArrayList<>();
@@ -64,21 +63,6 @@ public class FindStringPermutations {
 
         generatePermutationsOptimizedRecursive(chars, used, currentPermutation, resultList);
         return resultList;
-    }
-
-    /**
-     * Точка входа для демонстрации работы методов поиска перестановок.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        FindStringPermutations sol = new FindStringPermutations();
-        String[] testStrings = {"abc", "aab", "a", "", null, "ABA", "112"};
-
-        System.out.println("--- Finding All Unique Permutations ---");
-        for (String str : testStrings) {
-            runPermutationTest(sol, str);
-        }
     }
 
     /**
@@ -128,7 +112,6 @@ public class FindStringPermutations {
             resultList.add(currentPermutation.toString());
             return;
         }
-
         for (int i = 0; i < chars.length; i++) {
             // Условия пропуска для избежания дубликатов:
             // 1. Пропустить, если символ уже использован в текущей перестановке.
@@ -147,31 +130,6 @@ public class FindStringPermutations {
             // Отменяем выбор
             used[i] = false;
             currentPermutation.deleteCharAt(currentPermutation.length() - 1);
-        }
-    }
-
-    /**
-     * Вспомогательный метод для тестирования поиска перестановок.
-     *
-     * @param sol Экземпляр решателя.
-     * @param str Входная строка.
-     */
-    private static void runPermutationTest(FindStringPermutations sol, String str) {
-        String inputStr = (str == null ? "null" : "'" + str + "'");
-        System.out.println("\nInput: " + inputStr);
-        try {
-            List<String> result1 = sol.findPermutationsSet(str);
-            Collections.sort(result1); // Сортируем для сравнения и предсказуемости
-            System.out.println("  Set Method (" + result1.size() + "): " + result1);
-        } catch (Exception e) {
-            System.err.println("  Set Method: Error - " + e.getMessage());
-        }
-        try {
-            List<String> result2 = sol.findPermutationsOptimized(str);
-            // Оптимизированный метод должен возвращать уже отсортированный результат
-            System.out.println("  Opt Method (" + result2.size() + "): " + result2);
-        } catch (Exception e) {
-            System.err.println("  Opt Method: Error - " + e.getMessage());
         }
     }
 }
