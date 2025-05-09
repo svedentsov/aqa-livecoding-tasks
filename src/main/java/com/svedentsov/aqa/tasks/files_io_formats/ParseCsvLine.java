@@ -30,14 +30,12 @@ public class ParseCsvLine {
      * одну обычную кавычку (").
      * <p>
      * Это простая реализация конечного автомата (state machine) для разбора строки.
-     * Состояния: Вне кавычек (inQuotes=false), Внутри кавычек (inQuotes=true).
      *
      * @param csvLine Строка CSV для разбора. Может быть null.
      * @return Список строк, представляющих поля CSV. Возвращает пустой список для null или пустой строки.
      * @throws IllegalArgumentException если формат кавычек нарушен (например, непарная кавычка).
      */
     public List<String> parseCsvLine(String csvLine) {
-        List<String> fields = new ArrayList<>();
         if (csvLine == null) {
             return Collections.emptyList(); // Возвращаем неизменяемый пустой список
         }
@@ -49,7 +47,7 @@ public class ParseCsvLine {
             return Collections.emptyList();
         }
 
-
+        List<String> fields = new ArrayList<>();
         StringBuilder currentField = new StringBuilder();
         boolean inQuotes = false; // Находимся ли внутри кавычек?
         int n = csvLine.length();
@@ -80,15 +78,12 @@ public class ParseCsvLine {
             } else {
                 // ----- Состояние: Вне кавычек -----
                 if (c == '"') {
-                    // Начало закавыченного поля
-                    // По стандарту, оно должно быть в начале (currentField должен быть пуст)
+                    // Начало закавыченного поля. Оно должно быть в начале текущего поля.
                     if (currentField.length() == 0) {
                         inQuotes = true;
                     } else {
                         // Кавычка не в начале незакавыченного поля - ошибка формата
-                        // (или можно добавить ее как обычный символ, если нужно нестрогое поведение)
-                        throw new IllegalArgumentException("Unexpected quote character inside unquoted field at index " + i);
-                        // currentField.append(c); // Нестрогое поведение
+                        throw new IllegalArgumentException("Unexpected quote character inside an unquoted field at index " + i);
                     }
                 } else if (c == ',') {
                     // Разделитель полей
@@ -110,57 +105,5 @@ public class ParseCsvLine {
         fields.add(currentField.toString());
 
         return fields;
-    }
-
-    /**
-     * Точка входа для демонстрации работы парсера CSV строки.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        ParseCsvLine sol = new ParseCsvLine();
-        String[] testLines = {
-                "John,Doe,30",                                    // Простое
-                "\"Smith, John\",\"New York, NY\",45",            // Запятые внутри кавычек
-                "Field1,\"Field \"\"with\"\" quotes\",Field3",    // Экранированные кавычки
-                "one,two,,four",                                  // Пустое поле
-                "\"one\",\"two\",\"\",\"four\"",                  // Пустое поле в кавычках
-                "a,b,\"c\"",                                      // Последнее поле в кавычках
-                "a,b,",                                           // Пустое последнее поле
-                "",                                               // Пустая строка
-                "\"\"",                                           // Одно пустое поле в кавычках
-                "single",                                         // Одно поле
-                "\"quoted, field\"",                              // Одно поле в кавычках с запятой
-                "field1,\"unclosed quote",                        // Невалидная: незакрытая кавычка
-                "field1,\"quote\"between,field3",                 // Невалидная: символ после кавычки не запятая
-                "field1, \" space \" ,field3 ",                   // Пробелы вокруг полей (сохраняются)
-                null                                              // Null строка
-        };
-
-        System.out.println("--- Parsing CSV Lines ---");
-        for (String line : testLines) {
-            runCsvParseTest(sol, line);
-        }
-    }
-
-    /**
-     * Вспомогательный метод для тестирования парсера CSV.
-     *
-     * @param sol  Экземпляр решателя.
-     * @param line Строка CSV для разбора.
-     */
-    private static void runCsvParseTest(ParseCsvLine sol, String line) {
-        String input = (line == null ? "null" : "'" + line + "'");
-        System.out.println("\nParsing: " + input);
-        try {
-            List<String> result = sol.parseCsvLine(line);
-            System.out.println("Result:   " + result);
-            // Выводим количество полей для наглядности
-            System.out.println("          (Fields count: " + result.size() + ")");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Result:   Error - " + e.getMessage());
-        } catch (Exception e) {
-            System.err.println("Result:   Unexpected Error - " + e.getMessage());
-        }
     }
 }

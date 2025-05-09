@@ -976,7 +976,9 @@
   исключая само число).
 * **Пример:** `isPerfectNumber(6)` -> `true` (1 + 2 + 3 = 6). `isPerfectNumber(28)` -> `true` (1 + 2 + 4 + 7 + 14 =
   28). `isPerfectNumber(7)` -> `false`.
-* **Решение:** [`PerfectNumberCheck`](src/main/java/com/svedentsov/aqa/tasks/algorithms/PerfectNumberCheck.java)
+* **Решение:**
+  [`PerfectNumberCheck.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/PerfectNumberCheck.java)
+  [`PerfectNumberCheckTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/PerfectNumberCheckTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -994,7 +996,9 @@
   две кавычки подряд `""` внутри кавычек означают одну кавычку).
 * **Пример:** `parseCsvLine("John,Doe,30")` -> `["John", "Doe", "30"]`.
   `parseCsvLine("\"Smith, John\",\"New York, NY\",45")` -> `["Smith, John", "New York, NY", "45"]`.
-* **Решение:** [`ParseCsvLine`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/ParseCsvLine.java)
+* **Решение:**
+  [`ParseCsvLine.java`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/ParseCsvLine.java)
+  [`ParseCsvLineTest.java`](src/test/java/com/svedentsov/aqa/tasks/files_io_formats/ParseCsvLineTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1009,7 +1013,9 @@
   иметь одинаковый `hashCode`.
 * **Пример:** `new Point(1, 2).equals(new Point(1, 2))` -> `true`. `new Point(1, 2).equals(new Point(2, 1))` ->
   `false`. `new Point(1, 2).hashCode()` должен быть равен `new Point(1, 2).hashCode()`.
-* **Решение:** [`EqualsHashCode`](src/main/java/com/svedentsov/aqa/tasks/oop_design/EqualsHashCode.java)
+* **Решение:**
+  [`EqualsHashCode.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/EqualsHashCode.java)
+  [`EqualsHashCodeTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/EqualsHashCodeTest.java)
 
 [К оглавлению](#table-of-contents)
 

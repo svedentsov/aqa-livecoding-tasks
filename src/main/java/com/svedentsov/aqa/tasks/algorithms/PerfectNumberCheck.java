@@ -20,29 +20,18 @@ public class PerfectNumberCheck {
      * Проверяет, является ли заданное положительное целое число идеальным.
      * Идеальное число - это положительное целое число, которое равно сумме
      * своих собственных положительных делителей (делителей, исключая само число).
-     * <p>
-     * Алгоритм:
-     * 1. Проверить, что число `num > 1` (по определению).
-     * 2. Инициализировать `sumOfProperDivisors = 1` (т.к. 1 всегда делитель).
-     * 3. Итерировать потенциальные делители `i` от 2 до `sqrt(num)`.
-     * 4. Если `i` делит `num` (`num % i == 0`):
-     * a. Добавить `i` к `sumOfProperDivisors`.
-     * b. Если `i * i != num` (т.е. `i` не квадратный корень), добавить также парный
-     * делитель `num / i` к `sumOfProperDivisors`.
-     * 5. (Опционально) Если в процессе `sumOfProperDivisors` становится больше `num`,
-     * можно сразу вернуть `false`.
-     * 6. После цикла сравнить `sumOfProperDivisors` с `num`. Если равны, число идеальное.
      *
      * @param num Число для проверки. Должно быть положительным.
      * @return {@code true}, если число идеальное, {@code false} в противном случае.
      */
     public boolean isPerfectNumber(int num) {
-        // Шаг 1: Идеальные числа по определению > 1
+        // Шаг 1: Идеальные числа по определению положительны и > 1.
+        // Сумма собственных делителей 1 равна 0, поэтому 1 не идеальное.
         if (num <= 1) {
             return false;
         }
 
-        // Шаг 2: Инициализация суммы (1 уже учтена)
+        // Шаг 2: Инициализация суммы (1 уже учтена как делитель)
         long sumOfProperDivisors = 1L; // Используем long для суммы на случай больших чисел
 
         // Шаг 3 & 4: Поиск и суммирование делителей до sqrt(num)
@@ -61,54 +50,13 @@ public class PerfectNumberCheck {
                 }
             }
             // Шаг 5: Оптимизация - если сумма уже больше числа, выходим
+            // Эта проверка должна быть внутри цикла, чтобы иметь эффект.
             if (sumOfProperDivisors > num) {
-                return false;
+                return false; // Оптимизация: если сумма уже превысила, дальше нет смысла считать
             }
         }
 
         // Шаг 6: Финальное сравнение суммы с числом
         return sumOfProperDivisors == num;
-    }
-
-    /**
-     * Точка входа для демонстрации работы метода проверки на идеальное число.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        PerfectNumberCheck sol = new PerfectNumberCheck();
-        // Первые несколько идеальных чисел: 6, 28, 496, 8128, 33550336
-        int[] testNumbers = {6, 28, 496, 8128, // true
-                1, 2, 7, 10, 12, 9, 100, // false
-                0, -6, // false
-                33550336 // true (может быть медленно)
-        };
-
-        System.out.println("--- Checking for Perfect Numbers ---");
-        for (int num : testNumbers) {
-            runPerfectNumberTest(sol, num);
-        }
-    }
-
-    /**
-     * Вспомогательный метод для тестирования isPerfectNumber.
-     *
-     * @param sol    Экземпляр решателя.
-     * @param number Число для проверки.
-     */
-    private static void runPerfectNumberTest(PerfectNumberCheck sol, int number) {
-        System.out.print("isPerfectNumber(" + number + "): ");
-        // Пропускаем очень большое число для экономии времени в демонстрации
-        if (number == 33550336) {
-            System.out.println("true (Skipping calculation for large number)");
-            return;
-        }
-        try {
-            boolean result = sol.isPerfectNumber(number);
-            System.out.println(result);
-            // Можно добавить сравнение с ожидаемым значением, если оно передано
-        } catch (Exception e) {
-            System.err.println("Error - " + e.getMessage());
-        }
     }
 }
