@@ -1,22 +1,19 @@
 package com.svedentsov.aqa.tasks.oop_design;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
  * Решение задачи №56: Реализация toString() для сложного объекта.
- * <p>
  * Описание: Форматированный вывод состояния объекта с вложенными объектами.
  * (Проверяет: ООП, работа со строками)
- * <p>
  * Задание: Дан класс `Order` { `int orderId; Customer customer; List<Product> products;` }.
  * Класс `Customer` { `String name;` }. Класс `Product` { `String name; double price;` }.
  * Переопределите метод `toString()` для класса `Order`, чтобы он возвращал читаемую
  * строку, включающую ID заказа, имя клиента и список продуктов (каждый на новой
  * строке с отступом).
- * <p>
  * Пример: Вывод может выглядеть примерно так:
  * `Order{orderId=123, customer=Customer{name='Alice'}, products=[\n  Product{name='Laptop', price=1200.0},\n  Product{name='Mouse', price=25.0}\n]}`.
  */
@@ -31,7 +28,10 @@ public class ToStringComplex {
         String name;
 
         public Customer(String name) {
-            this.name = name;
+            this.name = Objects.requireNonNull(name, "Customer name cannot be null");
+            if (name.trim().isEmpty()) {
+                throw new IllegalArgumentException("Customer name cannot be empty or blank.");
+            }
         }
 
         public String getName() {
@@ -64,7 +64,13 @@ public class ToStringComplex {
         double price;
 
         public Product(String name, double price) {
-            this.name = name;
+            this.name = Objects.requireNonNull(name, "Product name cannot be null");
+            if (name.trim().isEmpty()) {
+                throw new IllegalArgumentException("Product name cannot be empty or blank.");
+            }
+            if (price < 0) {
+                throw new IllegalArgumentException("Product price cannot be negative.");
+            }
             this.price = price;
         }
 
@@ -78,15 +84,16 @@ public class ToStringComplex {
 
         @Override
         public String toString() {
-            return "Product{name='" + name + "', price=" + price + '}';
+            // Используем Locale.ROOT для консистентного вывода double (с точкой как разделителем)
+            return String.format(Locale.ROOT, "Product{name='%s', price=%.1f}", name, price);
         }
 
         @Override
         public boolean equals(Object o) { /* ... стандартная реализация ... */
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            Product p = (Product) o;
-            return Double.compare(p.price, price) == 0 && Objects.equals(name, p.name);
+            Product product = (Product) o;
+            return Double.compare(product.price, price) == 0 && name.equals(product.name);
         }
 
         @Override
@@ -105,7 +112,7 @@ public class ToStringComplex {
     static class Order {
         final int orderId;
         final Customer customer;
-        final List<Product> products; // Используем List<Product>
+        final List<Product> products;
 
         /**
          * Создает объект Order.
@@ -123,7 +130,6 @@ public class ToStringComplex {
             this.products = List.copyOf(products);
         }
 
-        // Геттеры (для полноты)
         public int getOrderId() {
             return orderId;
         }
@@ -134,7 +140,7 @@ public class ToStringComplex {
 
         public List<Product> getProducts() {
             return products;
-        } // Возвращает неизменяемую копию
+        }
 
         /**
          * Возвращает форматированное строковое представление объекта Order.
@@ -147,31 +153,25 @@ public class ToStringComplex {
         public String toString() {
             // Используем StringBuilder для эффективного построения строки
             StringBuilder sb = new StringBuilder();
-            String indent = "  "; // Отступ для полей
-            String productIndent = "    "; // Отступ для продуктов
+            String indent = "  ";
+            String productIndent = "    ";
+            String EOL = System.lineSeparator();
 
-            sb.append("Order{\n"); // Начало объекта
+            sb.append("Order{").append(EOL);
+            sb.append(indent).append("orderId=").append(orderId).append(",").append(EOL);
+            sb.append(indent).append("customer=").append(customer).append(",").append(EOL);
+            sb.append(indent).append("products=[").append(EOL);
 
-            // Добавляем поля с отступом
-            sb.append(indent).append("orderId=").append(orderId).append(",\n");
-            sb.append(indent).append("customer=").append(customer).append(",\n"); // Вызовет Customer.toString()
-            sb.append(indent).append("products=[\n"); // Начало списка продуктов
-
-            // Форматируем список продуктов
             if (products.isEmpty()) {
-                sb.append(productIndent).append("(empty)\n"); // Указываем, что список пуст
+                sb.append(productIndent).append("(empty)").append(EOL);
             } else {
-                // Используем Stream API для форматирования каждого продукта
                 String productsString = products.stream()
-                        .filter(Objects::nonNull) // На случай, если список МОЖЕТ содержать null
-                        .map(p -> productIndent + p.toString()) // Добавляем отступ перед каждым продуктом
-                        .collect(Collectors.joining(",\n")); // Соединяем строки с ",\\n"
-                sb.append(productsString).append("\n");
+                        .map(p -> productIndent + p.toString())
+                        .collect(Collectors.joining("," + EOL));
+                sb.append(productsString).append(EOL);
             }
-
-            sb.append(indent).append("]\n"); // Закрывающая скобка списка
-            sb.append("}"); // Закрывающая скобка объекта
-
+            sb.append(indent).append("]").append(EOL);
+            sb.append("}");
             return sb.toString();
         }
 
@@ -190,43 +190,5 @@ public class ToStringComplex {
         public int hashCode() {
             return Objects.hash(orderId, customer, products);
         }
-    }
-
-    /**
-     * Точка входа для демонстрации работы метода toString() для сложного объекта Order.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        // Создаем клиентов
-        Customer alice = new Customer("Alice Smith");
-        Customer bob = new Customer("Bob Johnson");
-
-        // Создаем списки продуктов
-        // Используем ArrayList для возможности добавления null (если это нужно протестировать)
-        List<Product> productList1 = new ArrayList<>(List.of(
-                new Product("Laptop Pro", 1250.99),
-                new Product("Wireless Mouse", 29.50),
-                null, // Пример null продукта в исходном списке
-                new Product("Mechanical Keyboard", 85.00)
-        ));
-        List<Product> productList2 = List.of(); // Пустой список
-        List<Product> productList3 = List.of(new Product("USB Drive", 15.00));
-
-        // Создаем заказы
-        Order order1 = new Order(20240401, alice, productList1);
-        Order order2 = new Order(20240402, bob, productList2);
-        Order order3 = new Order(20240403, alice, productList3);
-
-        System.out.println("--- Complex Object toString() Demonstration ---");
-
-        System.out.println("\n--- Order 1 ---");
-        System.out.println(order1); // Вызов order1.toString()
-
-        System.out.println("\n--- Order 2 (Empty Products) ---");
-        System.out.println(order2);
-
-        System.out.println("\n--- Order 3 ---");
-        System.out.println(order3);
     }
 }

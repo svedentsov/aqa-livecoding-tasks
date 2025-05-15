@@ -2,13 +2,10 @@ package com.svedentsov.aqa.tasks.strings;
 
 /**
  * Решение задачи №2: Перевернуть строку.
- * <p>
  * Описание: Написать функцию, которая принимает строку и возвращает её в перевернутом виде.
  * (Проверяет: работа со строками, циклы/рекурсия/StringBuilder)
- * <p>
  * Задание: Напишите метод `String reverseString(String str)`, который принимает строку
  * и возвращает новую строку, являющуюся перевернутой версией исходной.
- * <p>
  * Пример: `reverseString("hello")` -> `"olleh"`, `reverseString("Java")` -> `"avaJ"`.
  */
 public class ReverseString {

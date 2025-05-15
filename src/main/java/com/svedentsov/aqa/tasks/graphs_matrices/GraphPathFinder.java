@@ -4,15 +4,12 @@ import java.util.*;
 
 /**
  * Решение задачи №98: Поиск пути между двумя узлами графа (BFS/DFS).
- * <p>
  * Описание: (Проверяет: основы графов, BFS/DFS)
- * <p>
  * Задание: Дан граф, представленный списком смежности
  * (`Map<Integer, List<Integer>> adjList`). Напишите метод
  * `boolean hasPath(int startNode, int endNode, Map<Integer, List<Integer>> adjList)`,
  * который проверяет, существует ли путь от `startNode` до `endNode`.
  * Используйте поиск в ширину (BFS) или в глубину (DFS).
- * <p>
  * Пример: Для графа `{0:[1, 2], 1:[2], 2:[0, 3], 3:[3]}`,
  * `hasPath(0, 3, graph)` -> `true`.
  * `hasPath(3, 0, graph)` -> `false`.

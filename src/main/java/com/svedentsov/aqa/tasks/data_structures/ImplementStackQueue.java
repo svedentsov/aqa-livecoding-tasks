@@ -5,15 +5,12 @@ import java.util.NoSuchElementException;
 
 /**
  * Решение задачи №35: Реализация базового Стека и Очереди.
- * <p>
  * Описание: Используя массив или `LinkedList`.
  * (Проверяет: основы структур данных, ООП)
- * <p>
  * Задание: Реализуйте класс `MyStack`, используя `java.util.LinkedList` или массив,
  * который будет иметь методы `push(int value)`, `pop()` (возвращает и удаляет
  * верхний элемент), `peek()` (возвращает верхний элемент без удаления) и `isEmpty()`.
  * Дополнительно реализован `MyQueue`.
- * <p>
  * Пример: `MyStack stack = new MyStack(); stack.push(1); stack.push(2); stack.pop()` -> `2`.
  * `stack.peek()` -> `1`. `stack.isEmpty()` -> `false`.
  */

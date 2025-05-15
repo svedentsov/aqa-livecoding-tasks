@@ -7,14 +7,11 @@ import java.util.stream.Collectors;
 
 /**
  * Решение задачи №21: Перевернуть порядок слов в предложении.
- * <p>
  * Описание: "hello world" -> "world hello". (Проверяет: работа со строками, `split()`, `join()`/StringBuilder)
- * <p>
  * Задание: Напишите метод `String reverseWords(String sentence)`, который переворачивает
  * порядок слов в предложении `sentence`, сохраняя сами слова неизменными.
  * Разделители - пробелы. Лишние пробелы в начале/конце/между словами должны быть убраны,
  * оставляя ровно один пробел между словами в результате.
- * <p>
  * Пример: `reverseWords("the sky is blue")` -> `"blue is sky the"`.
  * `reverseWords("  hello world  ")` -> `"world hello"`.
  */

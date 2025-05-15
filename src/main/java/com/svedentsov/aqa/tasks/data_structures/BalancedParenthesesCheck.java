@@ -4,13 +4,10 @@ import java.util.*;
 
 /**
  * Решение задачи №23: Проверка сбалансированности скобок.
- * <p>
  * Описание: Проверить, правильно ли расставлены скобки `()`, `{}`, `[]` в строке.
  * (Проверяет: Stack, работа со строками, логика)
- * <p>
  * Задание: Напишите метод `boolean areBracketsBalanced(String expression)`, который
  * проверяет, правильно ли сбалансированы скобки `()`, `{}`, `[]` в строке `expression`.
- * <p>
  * Пример: `areBracketsBalanced("({[]})")` -> `true`. `areBracketsBalanced("([)]")` -> `false`.
  * `areBracketsBalanced("{[}")` -> `false`. `areBracketsBalanced("()")` -> `true`.
  */

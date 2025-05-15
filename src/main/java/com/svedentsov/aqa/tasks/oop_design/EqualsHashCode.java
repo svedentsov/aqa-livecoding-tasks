@@ -4,14 +4,11 @@ import java.util.Objects;
 
 /**
  * Решение задачи №51: Реализация equals() и hashCode().
- * <p>
  * Описание: Объяснить контракт между ними.
  * (Проверяет: ООП, контракты Java)
- * <p>
  * Задание: Для класса `Point` с полями `int x` и `int y`, переопределите методы
  * `equals(Object o)` и `hashCode()` так, чтобы они соответствовали контракту:
  * равные объекты (`p1.x == p2.x && p1.y == p2.y`) должны иметь одинаковый `hashCode`.
- * <p>
  * Пример: `new Point(1, 2).equals(new Point(1, 2))` -> `true`.
  * `new Point(1, 2).equals(new Point(2, 1))` -> `false`.
  * `new Point(1, 2).hashCode()` должен быть равен `new Point(1, 2).hashCode()`.
@@ -24,14 +21,12 @@ public class EqualsHashCode {
      * Класс, представляющий точку на 2D плоскости с координатами x и y.
      * Демонстрирует правильное переопределение методов equals() и hashCode()
      * в соответствии с контрактом Java.
-     * <p>
      * Контракт equals():
      * 1. Рефлексивность: x.equals(x) == true.
      * 2. Симметричность: x.equals(y) == y.equals(x).
      * 3. Транзитивность: если x.equals(y) и y.equals(z), то x.equals(z).
      * 4. Согласованность: повторные вызовы x.equals(y) возвращают то же значение.
      * 5. Сравнение с null: x.equals(null) == false.
-     * <p>
      * Контракт hashCode():
      * 1. Согласованность: повторные вызовы x.hashCode() возвращают то же значение.
      * 2. Связь с equals(): если x.equals(y), то x.hashCode() == y.hashCode().

@@ -199,7 +199,7 @@
 * **Описание:** Написать функцию, которая подсчитывает, сколько раз каждый символ встречается в строке. (Проверяет:
   работа со строками, Map, циклы)
 * **Задание:** Напишите метод `Map<Character, Integer> countCharacters(String str)`, который возвращает Map, где
-  ключами являются символы из строки `str`, а значениями — количество их вхождений.
+  ключами являются символы из строки `str`, а значениями - количество их вхождений.
 * **Пример:** `countCharacters("hello world")` ->
   `{'h': 1, 'e': 1, 'l': 3, 'o': 2, ' ': 1, 'w': 1, 'r': 1, 'd': 1}`.
 * **Решение:**
@@ -1031,7 +1031,9 @@
   являющуюся префиксом всех строк в массиве `strs`. Если общего префикса нет, верните пустую строку `""`.
 * **Пример:** `longestCommonPrefix(new String[]{"flower", "flow", "flight"})` -> `"fl"`.
   `longestCommonPrefix(new String[]{"dog", "racecar", "car"})` -> `""`.
-* **Решение:** [`LongestCommonPrefix`](src/main/java/com/svedentsov/aqa/tasks/strings/LongestCommonPrefix.java)
+* **Решение:**
+  [`LongestCommonPrefix.java`](src/main/java/com/svedentsov/aqa/tasks/strings/LongestCommonPrefix.java)
+  [`LongestCommonPrefixTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/LongestCommonPrefixTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1047,7 +1049,9 @@
   `s` является подпоследовательностью строки `t` (т.е. `s` можно получить из `t` удалением некоторых символов без
   изменения порядка оставшихся), и `false` иначе.
 * **Пример:** `isSubsequence("ace", "abcde")` -> `true`. `isSubsequence("axc", "ahbgdc")` -> `false`.
-* **Решение:** [`IsSubsequence`](src/main/java/com/svedentsov/aqa/tasks/strings/IsSubsequence.java)
+* **Решение:**
+  [`IsSubsequence.java`](src/main/java/com/svedentsov/aqa/tasks/strings/IsSubsequence.java)
+  [`IsSubsequenceTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/IsSubsequenceTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1064,7 +1068,9 @@
   просто выводит сообщение в консоль.
 * **Пример:** `Logger logger1 = Logger.getInstance(); Logger logger2 = Logger.getInstance(); logger1 == logger2` ->
   `true`. `logger1.log("Test message")` выводит "Test message".
-* **Решение:** [`Singleton`](src/main/java/com/svedentsov/aqa/tasks/oop_design/Singleton.java)
+* **Решение:**
+  [`Singleton.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/Singleton.java)
+  [`SingletonTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/SingletonTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1082,7 +1088,9 @@
 * **Пример:**
   `grid = {{'1','1','0','0','0'}, {'1','1','0','0','0'}, {'0','0','1','0','0'}, {'0','0','0','1','1'}}` ->
   `countIslands(grid)` должен вернуть `3`.
-* **Решение:** [`NumberOfIslands`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/NumberOfIslands.java)
+* **Решение:**
+  [`NumberOfIslands.java`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/NumberOfIslands.java)
+  [`NumberOfIslandsTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/NumberOfIslandsTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1099,7 +1107,9 @@
   строке с отступом).
 * **Пример:** Вывод может выглядеть примерно так:
   `Order{orderId=123, customer=Customer{name='Alice'}, products=[\n  Product{name='Laptop', price=1200.0},\n  Product{name='Mouse', price=25.0}\n]}`.
-* **Решение:** [`ToStringComplex`](src/main/java/com/svedentsov/aqa/tasks/oop_design/ToStringComplex.java)
+* **Решение:**
+  [`ToStringComplex.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/ToStringComplex.java)
+  [`ToStringComplexTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/ToStringComplexTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1113,7 +1123,9 @@
 * **Задание:** Напишите метод `String generateRandomString(int length)`, который генерирует и возвращает случайную
   строку, состоящую из букв (верхнего и нижнего регистра) и цифр, указанной длины `length`.
 * **Пример:** `generateRandomString(10)` может вернуть `"aK8s2ZpQ1v"`.
-* **Решение:** [`GenerateRandomString`](src/main/java/com/svedentsov/aqa/tasks/strings/GenerateRandomString.java)
+* **Решение:**
+  [`GenerateRandomString.java`](src/main/java/com/svedentsov/aqa/tasks/strings/GenerateRandomString.java)
+  [`GenerateRandomStringTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/GenerateRandomStringTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1128,7 +1140,9 @@
   формата email: строка должна содержать один символ `@` и хотя бы одну точку `.` после символа `@`.
 * **Пример:** `isValidEmailBasic("test@example.com")` -> `true`. `isValidEmailBasic("test.example.com")` -> `false`.
   `isValidEmailBasic("test@examplecom")` -> `false`. `isValidEmailBasic("test@@example.com")` -> `false`.
-* **Решение:** [`BasicEmailValidation`](src/main/java/com/svedentsov/aqa/tasks/strings/BasicEmailValidation.java)
+* **Решение:**
+  [`BasicEmailValidation.java`](src/main/java/com/svedentsov/aqa/tasks/strings/BasicEmailValidation.java)
+  [`BasicEmailValidationTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/BasicEmailValidationTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1144,7 +1158,9 @@
   найден, верните -1.
 * **Пример:** `findSubstringIndex("hello world", "world")` -> `6`. `findSubstringIndex("aaaaa", "bba")` -> `-1`.
   `findSubstringIndex("abc", "")` -> `0`.
-* **Решение:** [`FindSubstringIndex`](src/main/java/com/svedentsov/aqa/tasks/strings/FindSubstringIndex.java)
+* **Решение:**
+  [`FindSubstringIndex.java`](src/main/java/com/svedentsov/aqa/tasks/strings/FindSubstringIndex.java)
+  [`FindSubstringIndexTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/FindSubstringIndexTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1160,8 +1176,9 @@
   умножения.
 * **Пример:** `matrixA = {{1, 2}, {3, 4}}, matrixB = {{2, 0}, {1, 2}}`. `multiplyMatrices(matrixA, matrixB)` ->
   `{{4, 4}, {10, 8}}`.
-* **Решение:** [
-  `MatrixMultiplication`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/MatrixMultiplication.java)
+* **Решение:**
+  [`MatrixMultiplication.java`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/MatrixMultiplication.java)
+  [`MatrixMultiplicationTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/MatrixMultiplicationTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1180,7 +1197,9 @@
 * **Пример:**
   `LRUCache cache = new LRUCache(2); cache.put(1, 1); cache.put(2, 2); cache.get(1); cache.put(3, 3); // Вытесняет 2 cache.get(2);` ->
   `-1`. `cache.get(1);` -> `1`. `cache.get(3);` -> `3`.
-* **Решение:** [`LRUCache`](src/main/java/com/svedentsov/aqa/tasks/data_structures/LRUCache.java)
+* **Решение:**
+  [`LRUCache.java`](src/main/java/com/svedentsov/aqa/tasks/data_structures/LRUCache.java)
+  [`LRUCacheTest.java`](src/test/java/com/svedentsov/aqa/tasks/data_structures/LRUCacheTest.java)
 
 [К оглавлению](#table-of-contents)
 

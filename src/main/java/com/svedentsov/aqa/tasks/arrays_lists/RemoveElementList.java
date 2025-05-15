@@ -8,13 +8,10 @@ import java.util.stream.Collectors;
 
 /**
  * Решение задачи №30: Удалить определенный элемент из списка.
- * <p>
  * Описание: Написать функцию для удаления всех вхождений заданного элемента.
  * (Проверяет: работа с коллекциями, циклы, создание нового списка)
- * <p>
  * Задание: Напишите метод `List<Integer> removeElement(List<Integer> list, int elementToRemove)`,
  * который возвращает новый список, полученный из `list` удалением всех вхождений `elementToRemove`.
- * <p>
  * Пример: `removeElement(List.of(1, 2, 3, 2, 4, 2), 2)` -> `[1, 3, 4]`.
  */
 public class RemoveElementList {

@@ -5,14 +5,11 @@ import java.util.Objects;
 
 /**
  * Решение задачи №77: Конвертация Base64 (Encode/Decode).
- * <p>
  * Описание: Использовать встроенные классы Java.
  * (Проверяет: знание стандартной библиотеки)
- * <p>
  * Задание: Напишите метод `String encodeBase64(String input)` и
  * `String decodeBase64(String encodedInput)`, используя класс `java.util.Base64`,
  * для кодирования строки в Base64 и декодирования обратно.
- * <p>
  * Пример: `encodeBase64("hello")` -> `"aGVsbG8="`.
  * `decodeBase64("aGVsbG8=")` -> `"hello"`.
  */

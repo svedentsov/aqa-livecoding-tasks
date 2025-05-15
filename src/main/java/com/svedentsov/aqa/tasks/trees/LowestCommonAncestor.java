@@ -5,14 +5,11 @@ import java.util.Objects;
 /**
  * Решение задачи №95: Найти Наименьшего Общего Предка (Lowest Common Ancestor - LCA)
  * для двух узлов в Бинарном Дереве Поиска (BST) и в обычном Бинарном Дереве.
- * <p>
  * Описание: (Проверяет: рекурсия, деревья)
- * <p>
  * Задание (BST): Напишите метод `TreeNode lowestCommonAncestorBST(TreeNode root, TreeNode p, TreeNode q)`,
  * который находит LCA двух узлов `p` и `q` в бинарном дереве поиска `root`.
  * Задание (Binary Tree): Напишите метод `TreeNode lowestCommonAncestorBinaryTree(TreeNode root, TreeNode p, TreeNode q)`,
  * который находит LCA двух узлов `p` и `q` в обычном бинарном дереве `root`.
- * <p>
  * Пример: Для BST `[6, 2, 8, 0, 4, 7, 9, null, null, 3, 5]`, LCA(2, 8) -> 6. LCA(2, 4) -> 2.
  */
 public class LowestCommonAncestor {
@@ -83,7 +80,6 @@ public class LowestCommonAncestor {
     /**
      * Находит LCA двух узлов {@code p} и {@code q} в обычном Бинарном Дереве (не BST).
      * Использует рекурсивный подход.
-     * <p>
      * Сложность: O(n) по времени (в худшем случае обходим все узлы),
      * O(h) по памяти (глубина стека рекурсии, h - высота дерева).
      *
