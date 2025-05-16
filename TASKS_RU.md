@@ -1214,7 +1214,9 @@
   двух отсортированных массивов `nums1` и `nums2`.
 * **Пример:** `findMedianSortedArrays(new int[]{1, 3}, new int[]{2})` -> `2.0`.
   `findMedianSortedArrays(new int[]{1, 2}, new int[]{3, 4})` -> `2.5`.
-* **Решение:** [`MedianSortedArrays`](src/main/java/com/svedentsov/aqa/tasks/algorithms/MedianSortedArrays.java)
+* **Решение:**
+  [`MedianSortedArrays.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/MedianSortedArrays.java)
+  [`MedianSortedArraysTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/MedianSortedArraysTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1229,7 +1231,9 @@
   все уникальные комбинации чисел из массива `candidates`, сумма которых равна `target`. Одно и то же число может
   быть использовано неограниченное количество раз.
 * **Пример:** `candidates = [2, 3, 6, 7], target = 7`. Результат: `[[2, 2, 3], [7]]`.
-* **Решение:** [`CombinationSum.`](src/main/java/com/svedentsov/aqa/tasks/dp/CombinationSum.java)
+* **Решение:**
+  [`CombinationSum.java`](src/main/java/com/svedentsov/aqa/tasks/dp/CombinationSum.java)
+  [`CombinationSumTest.java`](src/test/java/com/svedentsov/aqa/tasks/dp/CombinationSumTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1244,7 +1248,9 @@
 * **Задание:** Напишите метод `int minEditDistance(String word1, String word2)`, который вычисляет минимальное
   количество операций (вставка, удаление, замена символа), необходимых для преобразования `word1` в `word2`.
 * **Пример:** `minEditDistance("horse", "ros")` -> `3`. `minEditDistance("intention", "execution")` -> `5`.
-* **Решение:** [`EditDistance`](src/main/java/com/svedentsov/aqa/tasks/dp/EditDistance.java)
+* **Решение:**
+  [`EditDistance.java`](src/main/java/com/svedentsov/aqa/tasks/dp/EditDistance.java)
+  [`EditDistanceTest.java`](src/test/java/com/svedentsov/aqa/tasks/dp/EditDistanceTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1263,7 +1269,9 @@
   максимальной. Каждый предмет можно взять только один раз (0/1).
 * **Пример:** Веса: `[10, 20, 30]`, Стоимости: `[60, 100, 120]`, Вместимость: `50`. Решение: взять предметы 2 и 3 (
   вес 20+30=50), стоимость 100+120=220.
-* **Решение:** [`Knapsack01`](src/main/java/com/svedentsov/aqa/tasks/dp/Knapsack01.java)
+* **Решение:**
+  [`Knapsack01.java`](src/main/java/com/svedentsov/aqa/tasks/dp/Knapsack01.java)
+  [`Knapsack01Test.java`](src/test/java/com/svedentsov/aqa/tasks/dp/Knapsack01Test.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1277,7 +1285,9 @@
 * **Задание:** Реализуйте метод `void mergeSort(int[] arr)`, который сортирует массив `arr` по возрастанию,
   используя рекурсивный алгоритм сортировки слиянием.
 * **Пример:** Исходный `[5, 1, 4, 2, 8]` после `mergeSort` станет `[1, 2, 4, 5, 8]`.
-* **Решение:** [`MergeSort`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/MergeSort.java)
+* **Решение:**
+  [`MergeSort.java`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/MergeSort.java)
+  [`MergeSortTest.java`](src/test/java/com/svedentsov/aqa/tasks/sorting_searching/MergeSortTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1291,7 +1301,9 @@
 * **Задание:** Реализуйте метод `void quickSort(int[] arr)`, который сортирует массив `arr` по возрастанию,
   используя рекурсивный алгоритм быстрой сортировки.
 * **Пример:** Исходный `[5, 1, 4, 2, 8]` после `quickSort` станет `[1, 2, 4, 5, 8]`.
-* **Решение:** [`QuickSort`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/QuickSort.java)
+* **Решение:**
+  [`QuickSort.java`](src/main/java/com/svedentsov/aqa/tasks/sorting_searching/QuickSort.java)
+  [`QuickSortTest.java`](src/test/java/com/svedentsov/aqa/tasks/sorting_searching/QuickSortTest.java)
 
 [К оглавлению](#table-of-contents)
 

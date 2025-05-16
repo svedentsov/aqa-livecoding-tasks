@@ -1,6 +1,5 @@
 package com.svedentsov.aqa.tasks.sorting_searching;
 
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -34,27 +33,6 @@ public class QuickSort {
     }
 
     /**
-     * Точка входа для демонстрации работы метода быстрой сортировки.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        QuickSort sol = new QuickSort();
-
-        System.out.println("--- Quick Sort Demonstration ---");
-
-        runQuickSortTest(sol, new int[]{5, 1, 4, 2, 8, 5, 0, -3, 99}, "Смешанный массив");
-        runQuickSortTest(sol, new int[]{1}, "Один элемент");
-        runQuickSortTest(sol, new int[]{3, 1}, "Два элемента");
-        runQuickSortTest(sol, new int[]{}, "Пустой массив");
-        runQuickSortTest(sol, new int[]{9, 8, 7, 6, 5, 4, 3, 2, 1}, "Обратно отсортированный");
-        runQuickSortTest(sol, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}, "Уже отсортированный");
-        runQuickSortTest(sol, new int[]{2, 3, 1, 5, 4, 7, 6, 9, 8}, "Случайный порядок");
-        runQuickSortTest(sol, new int[]{3, 1, 4, 1, 5, 9, 2, 6, 5}, "С дубликатами");
-        runQuickSortTest(sol, null, "Null массив");
-    }
-
-    /**
      * Рекурсивная функция быстрой сортировки для подмассива {@code arr[low..high]}.
      *
      * @param arr  Массив.
@@ -62,7 +40,7 @@ public class QuickSort {
      * @param high Верхняя граница (индекс) подмассива (включительно).
      */
     private void quickSortRecursive(int[] arr, int low, int high) {
-        // Базовый случай: подмассив содержит 0 или 1 элемент
+        // Базовый случай: подмассив содержит 0 или 1 элемент (если low >= high)
         if (low < high) {
             // Находим индекс опорного элемента после разделения
             int pivotIndex = partitionRandom(arr, low, high);
@@ -75,7 +53,7 @@ public class QuickSort {
     /**
      * Выполняет разделение (partitioning) подмассива {@code arr[low..high]}
      * относительно случайно выбранного опорного элемента (pivot).
-     * Использует вариацию схемы разделения Хоара или Ломуто. Здесь показана Ломуто.
+     * Использует схему разделения Ломуто.
      *
      * @param arr  Массив.
      * @param low  Нижняя граница подмассива.
@@ -83,23 +61,24 @@ public class QuickSort {
      * @return Индекс, на котором опорный элемент оказался после разделения.
      */
     private int partitionRandom(int[] arr, int low, int high) {
-        // 1. Выбираем случайный опорный элемент и ставим его в конец
-        int pivotIndex = low + RAND.nextInt(high - low + 1);
-        int pivotValue = arr[pivotIndex];
-        swap(arr, pivotIndex, high); // Перемещаем опорный в конец
+        // 1. Выбираем случайный опорный элемент и ставим его в конец (для удобства схемы Ломуто)
+        int pivotRandomIndex = low + RAND.nextInt(high - low + 1);
+        swap(arr, pivotRandomIndex, high); // Перемещаем опорный в конец
+        int pivotValue = arr[high]; // Опорное значение теперь в arr[high]
 
-        // 2. storeIndex - место для следующего элемента <= pivot
+        // 2. storeIndex - место для следующего элемента, который <= pivotValue
+        // Все элементы до storeIndex (не включая его) будут <= pivotValue
         int storeIndex = low;
 
-        // 3. Проходим по подмассиву (кроме опорного в конце)
+        // 3. Проходим по подмассиву (от low до high-1, т.к. опорный в arr[high])
         for (int i = low; i < high; i++) {
-            if (arr[i] <= pivotValue) {
-                swap(arr, storeIndex, i); // Перемещаем элемент <= pivot влево
-                storeIndex++; // Сдвигаем границу
+            if (arr[i] <= pivotValue) { // Если текущий элемент меньше или равен опорному
+                swap(arr, storeIndex, i); // Перемещаем его в левую часть (до storeIndex)
+                storeIndex++;             // Сдвигаем границу для меньших/равных элементов
             }
         }
 
-        // 4. Ставим опорный элемент на его финальное место (storeIndex)
+        // 4. Ставим опорный элемент (который был в arr[high]) на его финальное место (storeIndex)
         swap(arr, storeIndex, high);
         return storeIndex; // Возвращаем индекс опорного элемента
     }
@@ -112,41 +91,9 @@ public class QuickSort {
      * @param j   Индекс второго элемента.
      */
     private void swap(int[] arr, int i, int j) {
-        if (i == j) return;
+        if (i == j) return; // Нет смысла менять элемент с самим собой
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-    }
-
-    /**
-     * Вспомогательный метод для тестирования quickSort.
-     *
-     * @param sol         Экземпляр решателя.
-     * @param arr         Массив для сортировки (будет изменен!).
-     * @param description Описание теста.
-     */
-    private static void runQuickSortTest(QuickSort sol, int[] arr, String description) {
-        System.out.println("\n--- " + description + " ---");
-        String originalString = (arr == null ? "null" : Arrays.toString(arr));
-        System.out.println("Original: " + originalString);
-        // Создаем копию, чтобы не менять массив, переданный извне (если он используется дальше)
-        int[] arrCopy = (arr == null) ? null : arr.clone();
-        try {
-            sol.quickSort(arrCopy); // Сортируем копию
-            String sortedString = (arrCopy == null ? "null" : Arrays.toString(arrCopy));
-            System.out.println("Sorted:   " + sortedString);
-            // Можно добавить проверку на отсортированность
-            // if (arrCopy != null && !isSorted(arrCopy)) System.err.println("   Array is NOT sorted!");
-        } catch (Exception e) {
-            System.err.println("Sorted:   Error - " + e.getMessage());
-        }
-    }
-
-    // Метод для проверки (если нужен)
-    private static boolean isSorted(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i] > arr[i + 1]) return false;
-        }
-        return true;
     }
 }

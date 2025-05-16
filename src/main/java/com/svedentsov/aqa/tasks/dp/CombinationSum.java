@@ -2,7 +2,6 @@ package com.svedentsov.aqa.tasks.dp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -25,10 +24,10 @@ public class CombinationSum {
      * Использует рекурсивный метод с возвратом (backtracking).
      *
      * @param candidates Массив уникальных положительных чисел-кандидатов.
-     *                   Метод сортирует массив для оптимизации.
+     *                   Метод сортирует массив для оптимизации и предсказуемости порядка комбинаций.
      * @param target     Целевая сумма (положительное целое число).
      * @return Список списков, где каждый внутренний список представляет уникальную комбинацию.
-     * Если комбинаций нет, возвращает пустой список.
+     * Если комбинаций нет или входные данные невалидны, возвращает пустой список.
      */
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
@@ -37,47 +36,13 @@ public class CombinationSum {
             return result;
         }
 
-        // Сортировка для оптимизации (ранний выход в backtrack)
+        // Сортировка для оптимизации (ранний выход в backtrack) и для того,
+        // чтобы комбинации генерировались в лексикографическом порядке (если это важно)
         Arrays.sort(candidates);
 
         // Запуск рекурсивного поиска
         backtrack(candidates, target, 0, new ArrayList<>(), result);
         return result;
-    }
-
-    /**
-     * Точка входа для демонстрации работы метода поиска комбинаций суммы.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        CombinationSum sol = new CombinationSum();
-
-        System.out.println("--- Finding Combination Sum ---");
-
-        runCombinationSumTest(sol, new int[]{2, 3, 6, 7}, 7, "Example 1");
-        // Expected: [[2, 2, 3], [7]]
-
-        runCombinationSumTest(sol, new int[]{2, 3, 5}, 8, "Example 2");
-        // Expected: [[2, 2, 2, 2], [2, 3, 3], [3, 5]]
-
-        runCombinationSumTest(sol, new int[]{2}, 1, "No solution 1");
-        // Expected: []
-
-        runCombinationSumTest(sol, new int[]{1}, 3, "Only ones");
-        // Expected: [[1, 1, 1]]
-
-        runCombinationSumTest(sol, new int[]{7, 3, 2}, 7, "Unsorted candidates");
-        // Expected: [[2, 2, 3], [7]] (порядок комбинаций может отличаться)
-
-        runCombinationSumTest(sol, new int[]{8, 7, 4, 3}, 11, "Another example");
-        // Expected: [[3, 4, 4], [3, 8], [4, 7]]
-
-        runCombinationSumTest(sol, null, 5, "Null candidates");
-        // Expected: []
-
-        runCombinationSumTest(sol, new int[]{1, 2}, 0, "Zero target");
-        // Expected: []
     }
 
     /**
@@ -96,12 +61,6 @@ public class CombinationSum {
         // Успешное завершение: нашли комбинацию с нужной суммой
         if (remainingTarget == 0) {
             result.add(new ArrayList<>(currentCombination)); // Добавляем копию
-            return;
-        }
-
-        // Перебор закончился неудачно (сумма стала отрицательной)
-        // Эта проверка не строго обязательна, т.к. следующая проверка в цикле ее покрывает
-        if (remainingTarget < 0) {
             return;
         }
 
@@ -124,36 +83,6 @@ public class CombinationSum {
 
             // Отменяем выбор (backtrack)
             currentCombination.remove(currentCombination.size() - 1);
-        }
-    }
-
-    /**
-     * Вспомогательный метод для тестирования combinationSum.
-     *
-     * @param sol         Экземпляр решателя.
-     * @param candidates  Массив кандидатов.
-     * @param target      Целевая сумма.
-     * @param description Описание теста.
-     */
-    private static void runCombinationSumTest(CombinationSum sol, int[] candidates, int target, String description) {
-        System.out.println("\n--- " + description + " ---");
-        String candidatesStr = (candidates == null ? "null" : Arrays.toString(candidates));
-        System.out.println("Input candidates: " + candidatesStr + ", Target: " + target);
-        try {
-            List<List<Integer>> result = sol.combinationSum(candidates, target);
-            // Сортируем комбинации и элементы внутри для консистентного вывода/сравнения
-            result.forEach(Collections::sort);
-            result.sort((list1, list2) -> {
-                int n = Math.min(list1.size(), list2.size());
-                for (int i = 0; i < n; i++) {
-                    int cmp = Integer.compare(list1.get(i), list2.get(i));
-                    if (cmp != 0) return cmp;
-                }
-                return Integer.compare(list1.size(), list2.size());
-            });
-            System.out.println("Result Combinations: " + result);
-        } catch (Exception e) {
-            System.err.println("Result Combinations: Error - " + e.getMessage());
         }
     }
 }

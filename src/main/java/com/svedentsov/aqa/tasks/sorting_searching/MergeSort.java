@@ -1,7 +1,5 @@
 package com.svedentsov.aqa.tasks.sorting_searching;
 
-import java.util.Arrays;
-
 /**
  * Решение задачи №66: Сортировка слиянием (Merge Sort).
  * Описание: Реализовать алгоритм.
@@ -15,46 +13,23 @@ public class MergeSort {
     /**
      * Сортирует массив целых чисел по возрастанию, используя алгоритм сортировки слиянием.
      * Модифицирует исходный массив {@code arr} на месте.
-     * Сложность: O(n log n) по времени (всегда), O(n) по дополнительной памяти.
-     * Стабильный алгоритм.
+     * Сложность: O(n log n) по времени (всегда), O(n) по дополнительной памяти для temp массива.
      *
      * @param arr Массив для сортировки. Может быть null.
      */
     public void mergeSort(int[] arr) {
-        // Проверка на null и тривиальные случаи (0 или 1 элемент)
+        // Проверка на null и тривиальные случаи (0 или 1 элемент уже отсортированы)
         if (arr == null || arr.length <= 1) {
             return;
         }
-        // Создаем временный буферный массив один раз для использования в merge
-        // Это небольшая оптимизация, чтобы не создавать его на каждом шаге рекурсии.
+        // Создаем временный буферный массив один раз
         int[] temp = new int[arr.length];
         // Запускаем рекурсивную сортировку
         mergeSortRecursive(arr, temp, 0, arr.length - 1);
     }
 
     /**
-     * Точка входа для демонстрации работы метода сортировки слиянием.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        MergeSort sol = new MergeSort();
-
-        System.out.println("--- Merge Sort Demonstration ---");
-
-        runMergeSortTest(sol, new int[]{5, 1, 4, 2, 8, 5, 0, -3, 99}, "Смешанный массив");
-        runMergeSortTest(sol, new int[]{1}, "Один элемент");
-        runMergeSortTest(sol, new int[]{3, 1}, "Два элемента");
-        runMergeSortTest(sol, new int[]{}, "Пустой массив");
-        runMergeSortTest(sol, new int[]{9, 8, 7, 6, 5}, "Обратно отсортированный");
-        runMergeSortTest(sol, new int[]{2, 3, 1, 5, 4}, "Другой случай");
-        runMergeSortTest(sol, new int[]{2, 2, 1, 1, 3, 3}, "С дубликатами");
-        runMergeSortTest(sol, null, "Null массив");
-    }
-
-    /**
      * Рекурсивная функция сортировки слиянием для подмассива arr[left..right].
-     * Использует предоставленный временный массив {@code temp} для слияния.
      *
      * @param arr   Массив (или подмассив), который сортируется.
      * @param temp  Временный массив того же размера, что и arr, для операции слияния.
@@ -74,6 +49,13 @@ public class MergeSort {
         mergeSortRecursive(arr, temp, left, mid);
         mergeSortRecursive(arr, temp, mid + 1, right);
 
+        // Оптимизация: если массив уже отсортирован на этом участке, слияние не нужно.
+        // arr[mid] - последний элемент левой отсортированной части
+        // arr[mid + 1] - первый элемент правой отсортированной части
+        if (arr[mid] <= arr[mid + 1]) {
+            return;
+        }
+
         // Сливаем две отсортированные половины
         merge(arr, temp, left, mid, right);
     }
@@ -90,9 +72,9 @@ public class MergeSort {
      */
     private void merge(int[] arr, int[] temp, int left, int mid, int right) {
         // 1. Копируем весь диапазон [left..right] из arr в temp
-        // Это проще, чем создавать два отдельных маленьких массива на каждом шаге.
-        if (right + 1 - left >= 0) {
-            System.arraycopy(arr, left, temp, left, right + 1 - left);
+        // Длина копируемого участка: (right - left + 1)
+        if (right - left + 1 >= 0) { // Проверка на случай, если left > right (хотя рекурсия должна это предотвращать)
+            System.arraycopy(arr, left, temp, left, right - left + 1);
         }
 
         // 2. Инициализируем указатели для слияния
@@ -111,46 +93,15 @@ public class MergeSort {
         }
 
         // 4. Копируем оставшиеся элементы из левой половины (если есть)
-        // Элементы из правой половины копировать не нужно, т.к. если они остались,
-        // они уже находятся на своих местах в исходном `arr` (и в `temp`),
-        // и указатель `k` уже прошел их позиции.
         while (i <= mid) {
             arr[k++] = temp[i++];
         }
-        // while (j <= right) { // Эта часть не нужна при копировании всего диапазона в temp
-        //     arr[k++] = temp[j++];
-        // }
-    }
 
-    /**
-     * Вспомогательный метод для тестирования mergeSort.
-     *
-     * @param sol         Экземпляр решателя.
-     * @param arr         Массив для сортировки (будет изменен!).
-     * @param description Описание теста.
-     */
-    private static void runMergeSortTest(MergeSort sol, int[] arr, String description) {
-        System.out.println("\n--- " + description + " ---");
-        String originalString = (arr == null ? "null" : Arrays.toString(arr));
-        System.out.println("Original: " + originalString);
-        // Создаем копию для сравнения после сортировки, если нужно
-        // int[] originalCopy = (arr == null) ? null : Arrays.copyOf(arr, arr.length);
-        try {
-            sol.mergeSort(arr); // Сортируем на месте
-            String sortedString = (arr == null ? "null" : Arrays.toString(arr));
-            System.out.println("Sorted:   " + sortedString);
-            // Проверка сортировки (опционально)
-            // if (arr != null && !isSorted(arr)) System.err.println("   Array is NOT sorted!");
-        } catch (Exception e) {
-            System.err.println("Sorted:   Error - " + e.getMessage());
+        // 5. Копируем оставшиеся элементы из правой половины (если есть)
+        // Эта часть необходима, т.к. если левая половина закончилась первой,
+        // оставшиеся элементы правой половины из temp нужно скопировать в arr.
+        while (j <= right) {
+            arr[k++] = temp[j++];
         }
-    }
-
-    // Дополнительный метод для проверки отсортированности (для тестов)
-    private static boolean isSorted(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i] > arr[i + 1]) return false;
-        }
-        return true;
     }
 }
