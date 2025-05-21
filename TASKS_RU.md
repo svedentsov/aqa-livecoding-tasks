@@ -1317,7 +1317,9 @@
 * **Задание:** Реализуйте класс `TreeNode` и метод `TreeNode insertIntoBST(TreeNode root, int val)`, который
   вставляет значение `val` в бинарное дерево поиска с корнем `root` и возвращает корень обновленного дерева.
 * **Пример:** `insertIntoBST(root, 5)` вставит 5 в соответствующее место дерева.
-* **Решение:** [`BuildBST`](src/main/java/com/svedentsov/aqa/tasks/trees/BuildBST.java)
+* **Решение:**
+  [`BuildBST.java`](src/main/java/com/svedentsov/aqa/tasks/trees/BuildBST.java)
+  [`BuildBSTTest.java`](src/test/java/com/svedentsov/aqa/tasks/trees/BuildBSTTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1332,7 +1334,9 @@
   `List<Integer> inorderTraversal(TreeNode root)`, который выполняет центрированный (in-order) обход дерева и
   возвращает список значений узлов.
 * **Пример:** Для дерева `[1, null, 2, 3]`, `inorderTraversal` вернет `[1, 3, 2]`.
-* **Решение:** [`TreeTraversal`](src/main/java/com/svedentsov/aqa/tasks/trees/TreeTraversal.java)
+* **Решение:**
+  [`TreeTraversal.java`](src/main/java/com/svedentsov/aqa/tasks/trees/TreeTraversal.java)
+  [`TreeTraversalTest.java`](src/test/java/com/svedentsov/aqa/tasks/trees/TreeTraversalTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1348,8 +1352,8 @@
   например, `{"name":"John", "age":30}`) и десериализовали обратно, используя гипотетическую библиотеку (или
   упомянув Jackson/Gson).
 * **Пример:** Обсуждение использования аннотаций, `ObjectMapper` и т.д.
-* **Решение (Концептуальное обсуждение):** [
-  `JsonConcept`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/JsonConcept.java)
+* **Решение (Концептуальное обсуждение):**
+  [`JsonConcept.java`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/JsonConcept.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1363,8 +1367,9 @@
 * **Задание:** Напишите метод `boolean hasCycle(ListNode head)`, где `ListNode` - узел связанного списка (с полями
   `val` и `next`). Метод должен вернуть `true`, если в списке есть цикл, и `false` иначе.
 * **Пример:** Если узел `next` последнего элемента указывает на один из предыдущих узлов, метод вернет `true`.
-* **Решение:** [
-  `DetectCycleLinkedList`](src/main/java/com/svedentsov/aqa/tasks/linked_lists/DetectCycleLinkedList.java)
+* **Решение:**
+  [`DetectCycleLinkedList.java`](src/main/java/com/svedentsov/aqa/tasks/linked_lists/DetectCycleLinkedList.java)
+  [`DetectCycleLinkedListTest.java`](src/test/java/com/svedentsov/aqa/tasks/linked_lists/DetectCycleLinkedListTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1378,7 +1383,9 @@
 * **Задание:** Напишите метод `ListNode reverseList(ListNode head)`, который переворачивает односвязный список и
   возвращает новую голову списка.
 * **Пример:** Список `1 -> 2 -> 3 -> null` должен стать `3 -> 2 -> 1 -> null`.
-* **Решение:** [`ReverseLinkedList`](src/main/java/com/svedentsov/aqa/tasks/linked_lists/ReverseLinkedList.java)
+* **Решение:**
+  [`ReverseLinkedList.java`](src/main/java/com/svedentsov/aqa/tasks/linked_lists/ReverseLinkedList.java)
+  [`ReverseLinkedListTest.java`](src/test/java/com/svedentsov/aqa/tasks/linked_lists/ReverseLinkedListTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1393,8 +1400,8 @@
   позволяет делать не более N запросов в секунду для определенного пользователя или IP-адреса. Какие структуры
   данных вы бы использовали? (Например, Token Bucket или Leaky Bucket).
 * **Пример:** Обсуждение использования `Map<UserId, Timestamp/Counter>` или `Map<UserId, TokenBucketState>`.
-* **Решение (Концептуальное обсуждение):** [
-  `RateLimiterConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/RateLimiterConcept.java)
+* **Решение (Концептуальное обсуждение):**
+  [`RateLimiterConcept.java`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/RateLimiterConcept.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1409,8 +1416,8 @@
   Как бы вы хранили подписчиков на темы? Как бы издатель отправлял сообщения?
 * **Пример:** Обсуждение `Map<Topic, List<Subscriber>>`, методов `subscribe(topic, subscriber)`,
   `publish(topic, message)`.
-* **Решение (Концептуальное обсуждение + Простой Код):** [
-  `PubSubConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/PubSubConcept.java)
+* **Решение (Концептуальное обсуждение + Простой Код):**
+  [`PubSubConcept.java`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/PubSubConcept.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1425,8 +1432,9 @@
   Метод должен вернуть `k` точек, наиболее близких к началу координат (0, 0).
 * **Пример:** `points = [[1, 3], [-2, 2]], k = 1`. Результат: `[[-2, 2]]`.
   `points = [[3, 3], [5, -1], [-2, 4]], k = 2`. Результат: `[[3, 3], [-2, 4]]` (порядок не важен).
-* **Решение:** [
-  `KClosestPointsOrigin`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/KClosestPointsOrigin.java)
+* **Решение:**
+  [`KClosestPointsOrigin.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/KClosestPointsOrigin.java)
+  [`KClosestPointsOriginTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/KClosestPointsOriginTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1439,8 +1447,8 @@
 * **Задание:** Обсудите различные подходы к генерации уникальных идентификаторов в распределенной системе или в
   рамках одного приложения. Какие плюсы и минусы у каждого подхода (например, UUID, Snowflake, Timestamp + Counter)?
 * **Пример:** Сравнение вероятности коллизий, производительности, сортируемости ID.
-* **Решение (Концептуальное обсуждение):** [
-  `UniqueIdConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/UniqueIdConcept.java)
+* **Решение (Концептуальное обсуждение):**
+  [`UniqueIdConcept.java`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/UniqueIdConcept.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1454,7 +1462,9 @@
 * **Задание:** Напишите метод `String encodeBase64(String input)` и `String decodeBase64(String encodedInput)`,
   используя класс `java.util.Base64`, для кодирования строки в Base64 и декодирования обратно.
 * **Пример:** `encodeBase64("hello")` -> `"aGVsbG8="`. `decodeBase64("aGVsbG8=")` -> `"hello"`.
-* **Решение:** [`Base64`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/Base64.java)
+* **Решение:**
+  [`Base64.java`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/Base64.java)
+  [`Base64Test.java`](src/test/java/com/svedentsov/aqa/tasks/files_io_formats/Base64Test.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1468,8 +1478,9 @@
 * **Задание:** Используя `java.time` API, напишите метод, который принимает две строки с датами в формате "
   yyyy-MM-dd" и возвращает количество дней между ними.
 * **Пример:** `daysBetween("2025-04-01", "2025-04-10")` -> `9`.
-* **Решение:** [
-  `DateTimeManipulation`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/DateTimeManipulation.java)
+* **Решение:**
+  [`DateTimeManipulation.java`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/DateTimeManipulation.java)
+  [`DateTimeManipulationTest.java`](src/test/java/com/svedentsov/aqa/tasks/files_io_formats/DateTimeManipulationTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1484,7 +1495,8 @@
   конструктор, метод `toString()` (например, "2/3"), и метод `add(Fraction other)` для сложения дробей с приведением
   к общему знаменателю и упрощением результата (используя НОД).
 * **Пример:** `new Fraction(1, 2).add(new Fraction(1, 3))` должен вернуть объект `Fraction`, представляющий `5/6`.
-* **Решение:** [`FractionClass`](src/main/java/com/svedentsov/aqa/tasks/oop_design/FractionClass.java)
+* **Решение:**
+  [`FractionClass.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/FractionClass.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1500,7 +1512,9 @@
   для проверки, соответствует ли строка `number` простому формату телефонного номера, например, `+7-XXX-XXX-XX-XX` (
   где X - цифра).
 * **Пример:** `isValidPhoneNumber("+7-911-123-45-67")` -> `true`. `isValidPhoneNumber("89111234567")` -> `false`.
-* **Решение:** [`SimpleRegex`](src/main/java/com/svedentsov/aqa/tasks/strings/SimpleRegex.java)
+* **Решение:**
+  [`SimpleRegex.java`](src/main/java/com/svedentsov/aqa/tasks/strings/SimpleRegex.java)
+  [`SimpleRegexTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/SimpleRegexTest.java)
 
 [К оглавлению](#table-of-contents)
 
