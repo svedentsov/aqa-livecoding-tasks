@@ -1,7 +1,5 @@
 package com.svedentsov.aqa.tasks.graphs_matrices;
 
-import java.util.Arrays;
-
 /**
  * Решение задачи №81: Поиск слова в матрице символов (Word Search).
  * Описание: Найти слово в 2D сетке букв (горизонтально/вертикально).
@@ -32,7 +30,7 @@ public class WordSearch {
             return false;
         }
         if (word == null || word.isEmpty()) {
-            // Считаем, что пустую строку найти нельзя (согласно большинству реализаций)
+            // Считаем, что пустую строку или null слово найти нельзя
             return false;
         }
 
@@ -59,46 +57,6 @@ public class WordSearch {
     }
 
     /**
-     * Точка входа для демонстрации работы метода поиска слова.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        WordSearch sol = new WordSearch();
-
-        System.out.println("--- Word Search in 2D Board ---");
-
-        char[][] board1 = {
-                {'A', 'B', 'C', 'E'},
-                {'S', 'F', 'C', 'S'},
-                {'A', 'D', 'E', 'E'}
-        };
-        runWordSearchTest(sol, board1, "ABCCED", "Test 1.1"); // true
-        runWordSearchTest(sol, board1, "SEE", "Test 1.2");    // true
-        runWordSearchTest(sol, board1, "ABCB", "Test 1.3");   // false (B используется дважды)
-        runWordSearchTest(sol, board1, "SFDA", "Test 1.4");   // true
-        runWordSearchTest(sol, board1, "XYZ", "Test 1.5");    // false
-        runWordSearchTest(sol, board1, "ADEE", "Test 1.6");   // true
-        runWordSearchTest(sol, board1, "S", "Test 1.7");     // true
-
-        char[][] board2 = {{'a', 'a'}};
-        runWordSearchTest(sol, board2, "aaa", "Test 2.1"); // false (не хватает 'a')
-        runWordSearchTest(sol, board2, "aa", "Test 2.2");  // true
-
-        char[][] board3 = {{'a'}};
-        runWordSearchTest(sol, board3, "a", "Test 3.1");  // true
-        runWordSearchTest(sol, board3, "b", "Test 3.2");  // false
-
-        char[][] board4 = {{'C', 'A', 'A'}, {'A', 'A', 'A'}, {'B', 'C', 'D'}};
-        runWordSearchTest(sol, board4, "AAB", "Test 4.1"); // true
-
-        // Тесты с невалидным входом
-        runWordSearchTest(sol, null, "ABC", "Test 5.1 (Null board)"); // false
-        runWordSearchTest(sol, board1, null, "Test 5.2 (Null word)"); // false
-        runWordSearchTest(sol, board1, "", "Test 5.3 (Empty word)"); // false
-    }
-
-    /**
      * Рекурсивный поиск в глубину (DFS) для нахождения слова {@code word},
      * начиная с ячейки (r, c) и ища символ {@code word[wordIndex]}.
      * Модифицирует доску на месте, помечая посещенные ячейки символом '#',
@@ -107,60 +65,35 @@ public class WordSearch {
      * @param board     Доска (модифицируется).
      * @param r         Текущая строка.
      * @param c         Текущий столбец.
-     * @param word      Слово для поиска в виде массива символов.
+     * @param wordChars Слово для поиска в виде массива символов.
      * @param wordIndex Индекс текущего искомого символа в слове.
      * @return {@code true}, если оставшаяся часть слова найдена, {@code false} иначе.
      */
-    private boolean dfs(char[][] board, int r, int c, char[] word, int wordIndex) {
+    private boolean dfs(char[][] board, int r, int c, char[] wordChars, int wordIndex) {
         // Базовый случай: успех - дошли до конца слова
-        if (wordIndex == word.length) {
+        if (wordIndex == wordChars.length) {
             return true;
         }
 
         // Базовый случай: неудача - выход за границы или несовпадение символа
         // (Символ '#' означает, что ячейка уже посещена в текущем пути)
-        if (r < 0 || r >= board.length || c < 0 || c >= board[0].length || board[r][c] != word[wordIndex]) {
+        if (r < 0 || r >= board.length || c < 0 || c >= board[0].length || board[r][c] != wordChars[wordIndex]) {
             return false;
         }
 
         // Выбор: помечаем ячейку как посещенную (временно изменяем)
         char temp = board[r][c];
-        board[r][c] = '#'; // Любой символ, не входящий в слова
+        board[r][c] = '#'; // Любой символ, не входящий в алфавит слов, например
 
         // Рекурсия: ищем следующий символ в соседях
-        boolean found = dfs(board, r + 1, c, word, wordIndex + 1) || // Низ
-                dfs(board, r - 1, c, word, wordIndex + 1) || // Верх
-                dfs(board, r, c + 1, word, wordIndex + 1) || // Право
-                dfs(board, r, c - 1, word, wordIndex + 1);   // Лево
+        boolean found = dfs(board, r + 1, c, wordChars, wordIndex + 1) || // Низ
+                dfs(board, r - 1, c, wordChars, wordIndex + 1) || // Верх
+                dfs(board, r, c + 1, wordChars, wordIndex + 1) || // Право
+                dfs(board, r, c - 1, wordChars, wordIndex + 1);   // Лево
 
-        // Отмена выбора: восстанавливаем символ на доске
+        // Отмена выбора: восстанавливаем символ на доске (backtracking)
         board[r][c] = temp;
 
         return found;
-    }
-
-    /**
-     * Вспомогательный метод для тестирования exist.
-     *
-     * @param sol         Экземпляр решателя.
-     * @param board       Доска.
-     * @param word        Слово для поиска.
-     * @param description Описание теста.
-     */
-    private static void runWordSearchTest(WordSearch sol, char[][] board, String word, String description) {
-        System.out.println("\n--- " + description + " ---");
-        String boardStr = (board == null ? "null" : Arrays.deepToString(board));
-        String wordStr = (word == null ? "null" : "'" + word + "'");
-        // System.out.println("Input Board: " + boardStr); // Можно раскомментировать для отладки
-        System.out.println("Input Word: " + wordStr);
-        // Важно создать копию доски для теста, т.к. метод exist ее модифицирует
-        char[][] boardCopy = (board == null) ? null : Arrays.stream(board).map(char[]::clone).toArray(char[][]::new);
-        try {
-            boolean result = sol.exist(boardCopy, word);
-            System.out.println("Result (exist): " + result);
-            // Можно добавить сравнение с ожидаемым результатом
-        } catch (Exception e) {
-            System.err.println("Result (exist): Error - " + e.getMessage());
-        }
     }
 }

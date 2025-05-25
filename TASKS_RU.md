@@ -1530,7 +1530,9 @@
   символ нельзя использовать дважды в одном слове.
 * **Пример:** `board = {{'A','B','C','E'}, {'S','F','C','S'}, {'A','D','E','E'}}, word = "ABCCED"` -> `true`.
   `word = "SEE"` -> `true`. `word = "ABCB"` -> `false`.
-* **Решение:** [`WordSearch`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/WordSearch.java)
+* **Решение:**
+  [`WordSearch.java`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/WordSearch.java)
+  [`WordSearchTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/WordSearchTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1546,7 +1548,9 @@
   `ticketNumber`, состоящая из четного количества цифр (например, 6), "счастливым билетом" (сумма первой половины
   цифр равна сумме второй половины).
 * **Пример:** `isLuckyTicket("123402")` -> `true` (1+2+3 = 6, 4+0+2 = 6). `isLuckyTicket("123456")` -> `false`.
-* **Решение:** [`LuckyTicket`](src/main/java/com/svedentsov/aqa/tasks/algorithms/LuckyTicket.java)
+* **Решение:**
+  [`LuckyTicket.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/LuckyTicket.java)
+  [`LuckyTicketTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/LuckyTicketTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1562,10 +1566,10 @@
   корабля). Напишите метод `String checkShot(int x, int y)` который возвращает "Miss" если `field[x][y] == 0`, и "
   Hit" если `field[x][y] == 1`. (Можно усложнить до "Sunk", если это был последний целый сегмент корабля, но это
   выходит за рамки базовой задачи).
-* **Пример:** `field = {{0, 1, 0}, {0, 1, 0}, {0, 0, 0}}`. `checkShot(0, 1)` -> `"Hit"`. `checkShot(0, 0)` ->
-  `"Miss"`.
-* **Решение:** [
-  `BattleshipCheckShot`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/BattleshipCheckShot.java)
+* **Пример:** `field = {{0, 1, 0}, {0, 1, 0}, {0, 0, 0}}`. `checkShot(0, 1)` -> `"Hit"`. `checkShot(0, 0)` -> `"Miss"`.
+* **Решение:**
+  [`BattleshipCheckShot.java`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/BattleshipCheckShot.java)
+  [`BattleshipCheckShotTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/BattleshipCheckShotTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1581,8 +1585,9 @@
   только уникальные цифры от '1' до '9' (пустые клетки игнорируются).
 * **Пример:** Если `board[row]` содержит `['5','3','.','.','7','.','.','.','.']`, метод вернет `true`. Если
   `['5','3','.','.','7','.','.','3','.']`, метод вернет `false`.
-* **Решение:** [
-  `ValidateSudokuPart`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/ValidateSudokuPart.java)
+* **Решение:**
+  [`ValidateSudokuPart.java`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/ValidateSudokuPart.java)
+  [`ValidateSudokuPartTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/ValidateSudokuPartTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1597,8 +1602,8 @@
   использования `Optional.ofNullable()`, `orElse()`, `isPresent()`, `ifPresent()`, чтобы избежать
   `NullPointerException`.
 * **Пример:** Показать код до и после использования `Optional` для работы с потенциально `null` объектом.
-* **Решение (Концептуальное обсуждение + Демонстрация):** [
-  `OptionalConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/OptionalConcept.java)
+* **Решение (Концептуальное обсуждение + Демонстрация):**
+  [`OptionalConcept`](src/main/java/com/svedentsov/aqa/tasks/system_concepts/OptionalConcept.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1613,7 +1618,9 @@
   Stream API, напишите код, который отфильтрует строки, начинающиеся на "a", преобразует их в верхний регистр, и
   соберет результат в новый `List<String>`.
 * **Пример:** Результат должен быть `["APPLE", "APRICOT"]`.
-* **Решение:** [`JavaStreamsSimple`](src/main/java/com/svedentsov/aqa/tasks/algorithms/JavaStreamsSimple.java)
+* **Решение:**
+  [`JavaStreamsSimple`](src/main/java/com/svedentsov/aqa/tasks/algorithms/JavaStreamsSimple.java)
+  [`JavaStreamsSimpleTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/JavaStreamsSimpleTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1628,7 +1635,8 @@
   `final`, предоставьте только геттеры и конструктор, который инициализирует поля. Объясните, почему этот класс
   является неизменяемым.
 * **Пример:** После `ImmutablePoint p = new ImmutablePoint(1, 2);`, состояние `p` изменить нельзя.
-* **Решение:** [`ImmutableClass`](src/main/java/com/svedentsov/aqa/tasks/oop_design/ImmutableClass.java)
+* **Решение:**
+  [`ImmutableClass.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/ImmutableClass.java)
 
 [К оглавлению](#table-of-contents)
 

@@ -58,49 +58,4 @@ public class LuckyTicket {
         // 3. Сравнение сумм
         return leftSum == rightSum;
     }
-
-    /**
-     * Точка входа для демонстрации работы метода проверки счастливого билета.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        LuckyTicket sol = new LuckyTicket();
-        String[] tickets = {
-                "123402", // true (6 == 6)
-                "123456", // false (6 != 15)
-                "000000", // true (0 == 0)
-                "11",     // true (1 == 1)
-                "1010",   // true (1 == 1)
-                "55",     // true (5 == 5)
-                "987888", // true (24 == 24)
-                "123",    // false (odd length)
-                "1a3402", // false (non-digit)
-                "12 34",  // false (non-digit)
-                "",       // false (empty)
-                null      // false (null)
-        };
-
-        System.out.println("--- Lucky Ticket Check ---");
-        for (String ticket : tickets) {
-            runLuckyTicketTest(sol, ticket);
-        }
-    }
-
-    /**
-     * Вспомогательный метод для тестирования isLuckyTicket.
-     *
-     * @param sol    Экземпляр решателя.
-     * @param ticket Номер билета для проверки.
-     */
-    private static void runLuckyTicketTest(LuckyTicket sol, String ticket) {
-        String input = (ticket == null ? "null" : "'" + ticket + "'");
-        try {
-            boolean result = sol.isLuckyTicket(ticket);
-            System.out.println("isLuckyTicket(" + input + ") -> " + result);
-            // Можно добавить сравнение с ожидаемым результатом, если он передан
-        } catch (Exception e) {
-            System.err.println("Error processing " + input + ": " + e.getMessage());
-        }
-    }
 }
