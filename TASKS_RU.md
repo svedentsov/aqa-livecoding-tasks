@@ -1652,8 +1652,8 @@
   например, через копирующий конструктор или метод `clone()`).
 * **Пример:** Класс `UserProfile` с полем `List<String> permissions`. Показать, как при копировании `UserProfile`
   создать и новый `ArrayList` для `permissions`.
-* **Решение (Концептуальное обсуждение + Демонстрация):** [
-  `DeepShallowCopyConcept`](src/main/java/com/svedentsov/aqa/tasks/oop_design/DeepShallowCopyConcept.java)
+* **Решение (Концептуальное обсуждение + Демонстрация):**
+  [`DeepShallowCopyConcept`](src/main/java/com/svedentsov/aqa/tasks/oop_design/DeepShallowCopyConcept.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1669,8 +1669,9 @@
   достижении определенного размера кеша удалять случайный элемент, или самый старый по времени добавления -
   потребует доп. структуру).
 * **Пример:** `cache.put("user:1", userData); Object data = cache.get("user:1");`
-* **Решение:** [
-  `SimpleInMemoryCache`](src/main/java/com/svedentsov/aqa/tasks/data_structures/SimpleInMemoryCache.java)
+* **Решение:**
+  [`SimpleInMemoryCache.java`](src/main/java/com/svedentsov/aqa/tasks/data_structures/SimpleInMemoryCache.java)
+  [`SimpleInMemoryCacheTest.java`](src/test/java/com/svedentsov/aqa/tasks/data_structures/SimpleInMemoryCacheTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1686,7 +1687,9 @@
   мертвая клетка, 1 - живая) и вычисляет следующее состояние поля согласно правилам игры "Жизнь" Конвея (клетка
   выживает с 2-3 соседями, мертвая оживает с 3 соседями). Верните новое поле.
 * **Пример:** Показать небольшой пример 3x3 поля и его состояние на следующем шаге.
-* **Решение:** [`GameOfLifeStep`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/GameOfLifeStep.java)
+* **Решение:**
+  [`GameOfLifeStep.java`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/GameOfLifeStep.java)
+  [`GameOfLifeStepTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/GameOfLifeStepTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1701,7 +1704,9 @@
   каждого столбика 1). Напишите метод `int trapRainWater(int[] height)`, который вычисляет, сколько единиц дождевой
   воды может быть удержано между столбцами после дождя.
 * **Пример:** `trapRainWater(new int[]{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1})` -> `6`.
-* **Решение:** [`TrappingRainWater`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/TrappingRainWater.java)
+* **Решение:**
+  [`TrappingRainWater.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/TrappingRainWater.java)
+  [`TrappingRainWaterTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/TrappingRainWaterTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1716,8 +1721,8 @@
   добавляет число из потока данных) и `double findMedian()` (возвращает медиану всех добавленных на данный момент
   чисел). Какую структуру данных (или комбинацию) было бы эффективно использовать?
 * **Пример:** Обсуждение использования двух куч (min-heap и max-heap).
-* **Решение (Концептуальное обсуждение + Код Класса):** [
-  `MedianFinderStream`](src/main/java/com/svedentsov/aqa/tasks/data_structures/MedianFinderStream.java)
+* **Решение (Концептуальное обсуждение + Код Класса):**
+  [`MedianFinderStream`](src/main/java/com/svedentsov/aqa/tasks/data_structures/MedianFinderStream.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1732,7 +1737,9 @@
   дерево с корнем `root` корректным бинарным деревом поиска (для каждого узла все значения в левом поддереве меньше
   значения узла, а в правом - больше).
 * **Пример:** Дерево `[2, 1, 3]` -> `true`. Дерево `[5, 1, 4, null, null, 3, 6]` -> `false`.
-* **Решение:** [`ValidateBST`](src/main/java/com/svedentsov/aqa/tasks/trees/ValidateBST.java)
+* **Решение:**
+  [`ValidateBST.java`](src/main/java/com/svedentsov/aqa/tasks/trees/ValidateBST.java)
+  [`ValidateBSTTest.java`](src/test/java/com/svedentsov/aqa/tasks/trees/ValidateBSTTest.java)
 
 [К оглавлению](#table-of-contents)
 

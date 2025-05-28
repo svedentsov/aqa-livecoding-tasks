@@ -1,8 +1,5 @@
 package com.svedentsov.aqa.tasks.graphs_matrices;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 /**
  * Решение задачи №90: Игра "Жизнь" Конвея (один шаг).
  * Описание: Рассчитать следующее состояние для одной клетки или небольшой матрицы.
@@ -21,15 +18,15 @@ public class GameOfLifeStep {
 
     /**
      * Вычисляет следующее поколение (состояние) игрового поля для игры "Жизнь" Конвея.
-     * Применяет правила к каждой клетке на основе её 8 соседей (по горизонтали,
-     * вертикали и диагонали). Границы поля считаются мертвыми.
+     * Применяет правила к каждой клетке на основе её 8 соседей.
+     * Границы поля считаются мертвыми.
      * Возвращает новое поле, не изменяя исходное.
      *
      * @param board Текущее состояние поля (0 - мертвая, 1 - живая).
-     *              Предполагается, что массив не null и прямоугольный.
+     * Предполагается, что массив не null и прямоугольный, содержит только 0 или 1.
      * @return Новый 2D массив {@code int[][]}, представляющий состояние поля
-     * в следующем поколении. Возвращает пустой массив {@code int[0][0]},
-     * если исходный {@code board} null или пуст.
+     * в следующем поколении. Возвращает пустой массив {@code new int[0][0]},
+     * если исходный {@code board} null, пуст, или содержит пустые/null строки.
      */
     public int[][] nextGeneration(int[][] board) {
         // Проверка входных данных
@@ -42,8 +39,17 @@ public class GameOfLifeStep {
         // Новое поле для следующего поколения
         int[][] nextBoard = new int[rows][cols];
 
-        // Итерация по всем клеткам
         for (int r = 0; r < rows; r++) {
+            // Проверка на случай зубчатого массива, если строка короче ожидаемой.
+            // Хотя обычно предполагается прямоугольный массив.
+            if (board[r] == null || board[r].length != cols) {
+                // Можно бросить исключение или вернуть ошибку,
+                // но для простоты и совместимости с пустым board[0] вернем пустой.
+                // Либо, если доверяем, что board[r].length == cols всегда (из-за board[0].length)
+                // System.err.println("Warning: Jagged array detected or null row at index " + r);
+                // return new int[0][0]; // Или обработать как ошибку
+            }
+
             for (int c = 0; c < cols; c++) {
                 // Подсчет живых соседей
                 int liveNeighbors = countLiveNeighbors(board, r, c);
@@ -54,71 +60,16 @@ public class GameOfLifeStep {
                 if (currentState == 1) { // Если клетка жива
                     if (liveNeighbors == 2 || liveNeighbors == 3) {
                         nextState = 1; // Выживает
-                    } // Иначе умирает (nextState остается 0)
-                } else { // Если клетка мертва
+                    } // Иначе умирает (от одиночества <2 или перенаселения >3), nextState остается 0
+                } else { // Мертвая клетка
                     if (liveNeighbors == 3) {
                         nextState = 1; // Оживает
-                    } // Иначе остается мертвой (nextState остается 0)
+                    } // Иначе остается мертвой, nextState остается 0
                 }
                 nextBoard[r][c] = nextState; // Записываем новое состояние
             }
         }
         return nextBoard;
-    }
-
-    /**
-     * Точка входа для демонстрации вычисления следующего шага игры "Жизнь".
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        GameOfLifeStep sol = new GameOfLifeStep();
-
-        System.out.println("--- Conway's Game of Life - Next Generation ---");
-
-        // Пример 1: Блинкер (осциллятор)
-        int[][] blinker0 = {
-                {0, 0, 0, 0, 0},
-                {0, 0, 1, 0, 0},
-                {0, 0, 1, 0, 0},
-                {0, 0, 1, 0, 0},
-                {0, 0, 0, 0, 0}
-        };
-        runGameOfLifeTest(sol, blinker0, "Blinker - Gen 0");
-        int[][] blinker1 = sol.nextGeneration(blinker0);
-        runGameOfLifeTest(sol, blinker1, "Blinker - Gen 1");
-        int[][] blinker2 = sol.nextGeneration(blinker1);
-        runGameOfLifeTest(sol, blinker2, "Blinker - Gen 2"); // Должен совпасть с Gen 0
-
-        // Пример 2: Блок (стабильная фигура)
-        int[][] block = {
-                {0, 0, 0, 0},
-                {0, 1, 1, 0},
-                {0, 1, 1, 0},
-                {0, 0, 0, 0}
-        };
-        runGameOfLifeTest(sol, block, "Block - Gen 0");
-        int[][] block1 = sol.nextGeneration(block);
-        runGameOfLifeTest(sol, block1, "Block - Gen 1"); // Должен быть таким же
-
-        // Пример 3: Планер (движется)
-        int[][] glider0 = {
-                {0, 1, 0, 0, 0},
-                {0, 0, 1, 0, 0},
-                {1, 1, 1, 0, 0},
-                {0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0}
-        };
-        runGameOfLifeTest(sol, glider0, "Glider - Gen 0");
-        int[][] glider1 = sol.nextGeneration(glider0);
-        runGameOfLifeTest(sol, glider1, "Glider - Gen 1");
-        int[][] glider2 = sol.nextGeneration(glider1);
-        runGameOfLifeTest(sol, glider2, "Glider - Gen 2");
-        int[][] glider3 = sol.nextGeneration(glider2);
-        runGameOfLifeTest(sol, glider3, "Glider - Gen 3");
-
-        // Пример 4: Пустое поле
-        runGameOfLifeTest(sol, new int[3][3], "Empty Board");
     }
 
     /**
@@ -138,54 +89,19 @@ public class GameOfLifeStep {
         // Перебираем всех 8 соседей, включая диагональные
         for (int i = r - 1; i <= r + 1; i++) {
             for (int j = c - 1; j <= c + 1; j++) {
-                // Пропускаем саму клетку (r, c)
-                if (i == r && j == c) {
+                if (i == r && j == c) { // Пропускаем саму клетку
                     continue;
                 }
-                // Проверяем, находится ли сосед (i, j) в пределах поля
+                // Проверка границ поля
                 if (i >= 0 && i < rows && j >= 0 && j < cols) {
-                    // Если сосед живой (равен 1), увеличиваем счетчик
-                    if (board[i][j] == 1) {
+                    // Проверяем, что board[i] не null и имеет достаточную длину
+                    // Это для дополнительной защиты от зубчатых массивов, если board[i].length < cols
+                    if (board[i] != null && j < board[i].length && board[i][j] == 1) {
                         liveCount++;
                     }
                 }
             }
         }
         return liveCount;
-    }
-
-    /**
-     * Вспомогательный метод для красивой печати поля (0 как '.', 1 как '#').
-     */
-    private static void printBoard(String title, int[][] board) {
-        System.out.println(title + ":");
-        if (board == null || board.length == 0 || board[0] == null || board[0].length == 0) {
-            System.out.println("Empty or null board.");
-            return;
-        }
-        for (int[] row : board) {
-            String rowStr = Arrays.stream(row)
-                    .mapToObj(cell -> cell == 1 ? "#" : ".")
-                    .collect(Collectors.joining(" "));
-            System.out.println("  " + rowStr);
-        }
-    }
-
-    /**
-     * Вспомогательный метод для тестирования одного шага Игры Жизнь.
-     *
-     * @param sol          Экземпляр решателя.
-     * @param currentBoard Текущее состояние доски.
-     * @param description  Описание теста.
-     */
-    private static void runGameOfLifeTest(GameOfLifeStep sol, int[][] currentBoard, String description) {
-        System.out.println("\n--- " + description + " ---");
-        printBoard("Current Generation", currentBoard);
-        try {
-            int[][] nextBoard = sol.nextGeneration(currentBoard);
-            printBoard("Next Generation", nextBoard);
-        } catch (Exception e) {
-            System.err.println("Error calculating next generation: " + e.getMessage());
-        }
     }
 }

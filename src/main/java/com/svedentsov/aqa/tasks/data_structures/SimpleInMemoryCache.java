@@ -57,7 +57,6 @@ public class SimpleInMemoryCache<K, V> {
             long cleanupInterval = Math.max(1000, defaultTtlMillis); // Интервал очистки (минимум 1 сек)
             this.cleanupScheduler.scheduleAtFixedRate(this::removeExpiredEntries,
                     cleanupInterval, cleanupInterval, TimeUnit.MILLISECONDS);
-            System.out.println("[Cache] Background cleanup enabled (Interval: " + cleanupInterval + "ms).");
         } else {
             this.cleanupScheduler = null;
         }
@@ -117,7 +116,6 @@ public class SimpleInMemoryCache<K, V> {
             cache.remove(key, entry);
             return Optional.empty(); // Устарело
         }
-
         return Optional.of(entry.value); // Найдено и актуально
     }
 
@@ -146,60 +144,6 @@ public class SimpleInMemoryCache<K, V> {
     public int size() {
         // Для точного размера актуальных записей вызвать removeExpiredEntries() перед size()
         return cache.size();
-    }
-
-    /**
-     * Точка входа для демонстрации работы SimpleTTLCache.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) throws InterruptedException {
-        // 1. Кеш БЕЗ фоновой очистки
-        System.out.println("--- Cache Demo (Default TTL = 500ms, No Background Cleanup) ---");
-        SimpleInMemoryCache<String, Integer> cache1 = new SimpleInMemoryCache<>(500, false);
-        cache1.put("A", 100); // TTL=500ms
-        cache1.put("B", 200, 1000); // TTL=1000ms
-        System.out.println("Initial size: " + cache1.size()); // 2
-        System.out.println("Get A: " + cache1.get("A")); // Optional[100]
-        System.out.println("Get B: " + cache1.get("B")); // Optional[200]
-        System.out.println("Waiting 600ms...");
-        Thread.sleep(600);
-        System.out.println("Get A after 600ms: " + cache1.get("A")); // Optional.empty (lazy removed)
-        System.out.println("Get B after 600ms: " + cache1.get("B")); // Optional[200]
-        System.out.println("Size after lazy removal: " + cache1.size()); // 1 (B остался)
-        cache1.put("C", 300, 200);
-        System.out.println("Size after put C: " + cache1.size()); // 2
-        System.out.println("Running manual cleanup...");
-        cache1.removeExpiredEntries(); // B еще не устарел, С не устарел
-        System.out.println("Size after manual cleanup: " + cache1.size()); // 2
-        System.out.println("Waiting 300ms more (total 900ms from C)...");
-        Thread.sleep(300);
-        System.out.println("Get C after 900ms: " + cache1.get("C")); // Optional.empty (lazy removed)
-        System.out.println("Get B after 900ms: " + cache1.get("B")); // Optional[200]
-        System.out.println("Size after lazy removal: " + cache1.size()); // 1
-
-        // 2. Кеш С фоновой очисткой
-        System.out.println("\n--- Cache Demo (Default TTL = 400ms, Background Cleanup Enabled) ---");
-        SimpleInMemoryCache<Integer, String> cache2 = new SimpleInMemoryCache<>(400, true);
-        cache2.put(1, "One", 200);
-        cache2.put(2, "Two"); // TTL 400ms
-        cache2.put(3, "Three", 800);
-        System.out.println("Initial size: " + cache2.size()); // 3
-        System.out.println("Waiting 500ms (cleanup should run)...");
-        Thread.sleep(500);
-        // Очистка должна была удалить ключ 1 (200ms) и ключ 2 (400ms)
-        System.out.println("Get 1: " + cache2.get(1)); // Optional.empty
-        System.out.println("Get 2: " + cache2.get(2)); // Optional.empty
-        System.out.println("Get 3: " + cache2.get(3)); // Optional[Three]
-        System.out.println("Approximate Size after background cleanup: " + cache2.size()); // Ожидается 1 (может быть 0 или 1, зависит от тайминга)
-        System.out.println("Waiting 500ms more (total 1000ms)...");
-        Thread.sleep(500);
-        System.out.println("Approximate Size after 2nd cleanup: " + cache2.size()); // Ожидается 0
-        System.out.println("Get 3: " + cache2.get(3)); // Optional.empty
-
-        // Не забываем остановить планировщик
-        cache2.shutdownCleanup();
-        System.out.println("--- Demo Finished ---");
     }
 
     /**
