@@ -16,38 +16,54 @@ public class LowestCommonAncestor {
 
     /**
      * Вложенный статический класс, представляющий узел бинарного дерева.
+     * Сделан public static для легкого доступа из тестов.
      */
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+    public static class TreeNode {
+        public int val; // Сделаем public для простоты создания деревьев в тестах
+        public TreeNode left;
+        public TreeNode right;
 
-        TreeNode(int val) {
+        public TreeNode(int val) {
             this.val = val;
         }
 
-        TreeNode(int val, TreeNode left, TreeNode right) {
+        public TreeNode(int val, TreeNode left, TreeNode right) {
             this.val = val;
             this.left = left;
             this.right = right;
         }
 
-        // Переопределяем toString для более читаемого вывода
         @Override
         public String toString() {
             return String.valueOf(this.val);
+        }
+
+        // Для удобства тестирования, чтобы можно было сравнивать узлы по значению в некоторых случаях,
+        // но для LCA важно ссылочное равенство.
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            TreeNode treeNode = (TreeNode) o;
+            return val == treeNode.val; // Упрощенное equals для тестовых нужд, если нужно сравнить значения.
+            // В реальных LCA тестах будем сравнивать ссылки.
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(val);
         }
     }
 
     /**
      * Находит LCA двух узлов {@code p} и {@code q} в Бинарном Дереве Поиска (BST).
-     * Использует свойства BST (left < root < right) для эффективного поиска за O(h),
-     * где h - высота дерева. Реализация итеративная.
+     * Итеративная реализация.
+     * Предполагается, что p и q не null и присутствуют в дереве.
      *
      * @param root Корневой узел BST.
-     * @param p    Первый узел (предполагается не null и существующим в дереве).
-     * @param q    Второй узел (предполагается не null и существующим в дереве).
-     * @return Узел, являющийся LCA для p и q, или null если root = null.
+     * @param p    Первый узел.
+     * @param q    Второй узел.
+     * @return Узел, являющийся LCA для p и q. Возвращает null, если root равен null.
      */
     public TreeNode lowestCommonAncestorBST(TreeNode root, TreeNode p, TreeNode q) {
         Objects.requireNonNull(p, "Node p cannot be null");
@@ -55,39 +71,35 @@ public class LowestCommonAncestor {
 
         TreeNode current = root;
         while (current != null) {
-            int rootVal = current.val;
-            int pVal = p.val;
-            int qVal = q.val;
-
-            // Если оба значения больше корня, LCA точно справа
-            if (pVal > rootVal && qVal > rootVal) {
+            // Если оба значения p и q больше значения текущего узла, LCA в правом поддереве
+            if (p.val > current.val && q.val > current.val) {
                 current = current.right;
             }
-            // Если оба значения меньше корня, LCA точно слева
-            else if (pVal < rootVal && qVal < rootVal) {
+            // Если оба значения p и q меньше значения текущего узла, LCA в левом поддереве
+            else if (p.val < current.val && q.val < current.val) {
                 current = current.left;
             }
-            // Иначе мы нашли узел, где значения p и q расходятся
-            // (одно <= rootVal, другое >= rootVal), или один из узлов равен current.
-            // Этот узел current и есть LCA.
+            // Иначе, текущий узел current является точкой расхождения или одним из узлов p/q.
+            // Это и есть LCA.
             else {
                 return current;
             }
         }
-        return null; // Не должны дойти сюда, если p и q есть в дереве
+        return null; // Должно быть достигнуто только если root изначально null,
+        // или если p/q не найдены (хотя метод предполагает их наличие)
     }
 
     /**
      * Находит LCA двух узлов {@code p} и {@code q} в обычном Бинарном Дереве (не BST).
-     * Использует рекурсивный подход.
-     * Сложность: O(n) по времени (в худшем случае обходим все узлы),
-     * O(h) по памяти (глубина стека рекурсии, h - высота дерева).
+     * Рекурсивная реализация.
+     * Если один из узлов p или q не найден в дереве с корнем root,
+     * и другой узел найден, то будет возвращен найденный узел.
+     * Если оба не найдены, вернет null.
      *
      * @param root Корневой узел дерева.
      * @param p    Первый узел.
      * @param q    Второй узел.
-     * @return Узел, являющийся LCA для p и q, или null если {@code root} null
-     * или если один из узлов (p или q) не найден в дереве с корнем {@code root}.
+     * @return Узел, являющийся LCA для p и q.
      */
     public TreeNode lowestCommonAncestorBinaryTree(TreeNode root, TreeNode p, TreeNode q) {
         Objects.requireNonNull(p, "Node p cannot be null");
@@ -119,91 +131,5 @@ public class LowestCommonAncestor {
         // `leftLCA` или `rightLCA`. Возвращаем этот найденный LCA вверх по стеку.
         // Если ни в одном поддереве ничего не найдено (оба null), возвращаем null.
         return (leftLCA != null) ? leftLCA : rightLCA;
-    }
-
-    /**
-     * Точка входа для демонстрации работы методов поиска LCA.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        LowestCommonAncestor sol = new LowestCommonAncestor();
-
-        // --- BST ---
-        System.out.println("--- Lowest Common Ancestor in BST ---");
-        TreeNode node3 = new TreeNode(3);
-        TreeNode node5 = new TreeNode(5);
-        TreeNode node0 = new TreeNode(0);
-        TreeNode node4 = new TreeNode(4, node3, node5);
-        TreeNode node2 = new TreeNode(2, node0, node4);
-        TreeNode node7 = new TreeNode(7);
-        TreeNode node9 = new TreeNode(9);
-        TreeNode node8 = new TreeNode(8, node7, node9);
-        TreeNode rootBST = new TreeNode(6, node2, node8);
-        runLcaTest("BST", sol, rootBST, node2, node8, 6); // LCA(2, 8) = 6
-        runLcaTest("BST", sol, rootBST, node2, node4, 2); // LCA(2, 4) = 2
-        runLcaTest("BST", sol, rootBST, node0, node5, 2); // LCA(0, 5) = 2
-        runLcaTest("BST", sol, rootBST, node3, node5, 4); // LCA(3, 5) = 4
-        runLcaTest("BST", sol, rootBST, node7, node9, 8); // LCA(7, 9) = 8
-        runLcaTest("BST", sol, rootBST, node0, node9, 6); // LCA(0, 9) = 6
-
-        // --- Binary Tree (Не BST) ---
-        System.out.println("\n--- Lowest Common Ancestor in Binary Tree ---");
-        TreeNode node7_bt = new TreeNode(7);
-        TreeNode node4_bt = new TreeNode(4);
-        TreeNode node6_bt = new TreeNode(6);
-        TreeNode node2_bt = new TreeNode(2, node7_bt, node4_bt);
-        TreeNode node5_bt = new TreeNode(5, node6_bt, node2_bt);
-        TreeNode node0_bt = new TreeNode(0);
-        TreeNode node8_bt = new TreeNode(8);
-        TreeNode node1_bt = new TreeNode(1, node0_bt, node8_bt);
-        TreeNode rootBT = new TreeNode(3, node5_bt, node1_bt);
-        runLcaTest("BT ", sol, rootBT, node5_bt, node1_bt, 3); // LCA(5, 1) = 3
-        runLcaTest("BT ", sol, rootBT, node5_bt, node4_bt, 5); // LCA(5, 4) = 5
-        runLcaTest("BT ", sol, rootBT, node6_bt, node4_bt, 5); // LCA(6, 4) = 5
-        runLcaTest("BT ", sol, rootBT, node0_bt, node8_bt, 1); // LCA(0, 8) = 1
-        runLcaTest("BT ", sol, rootBT, node7_bt, node4_bt, 2); // LCA(7, 4) = 2
-        runLcaTest("BT ", sol, rootBT, node6_bt, node6_bt, 6); // LCA(6, 6) = 6
-        TreeNode node10_bt = new TreeNode(10); // Узел не в дереве
-        runLcaTest("BT ", sol, rootBT, node6_bt, node10_bt, -1); // Ожидаем null (или зависит от реализации, если один узел не найден)
-    }
-
-    /**
-     * Вспомогательный метод для тестирования LCA.
-     *
-     * @param type        Тип дерева ("BST" или "BT").
-     * @param sol         Экземпляр решателя.
-     * @param root        Корень дерева.
-     * @param p           Первый узел.
-     * @param q           Второй узел.
-     * @param expectedVal Ожидаемое значение LCA (-1 если ожидается null/ошибка).
-     */
-    private static void runLcaTest(String type, LowestCommonAncestor sol, TreeNode root, TreeNode p, TreeNode q, int expectedVal) {
-        String pStr = (p == null ? "null" : String.valueOf(p.val));
-        String qStr = (q == null ? "null" : String.valueOf(q.val));
-        System.out.printf("LCA(%s, %s, %s): ", type, pStr, qStr);
-        TreeNode lca = null;
-        String error = null;
-        try {
-            if ("BST".equals(type)) {
-                lca = sol.lowestCommonAncestorBST(root, p, q);
-            } else {
-                lca = sol.lowestCommonAncestorBinaryTree(root, p, q);
-            }
-        } catch (Exception e) {
-            error = e.getClass().getSimpleName();
-        }
-
-        String resultStr = (lca == null ? "null" : String.valueOf(lca.val));
-        String expectedStr = (expectedVal == -1 ? "null" : String.valueOf(expectedVal));
-
-        System.out.print("Result=" + resultStr);
-        if (error != null) System.out.print(" (Error: " + error + ")");
-        System.out.print(" (Expected: " + expectedStr + ")");
-
-        if (!Objects.equals(resultStr, expectedStr)) {
-            System.out.print(" <- MISMATCH!");
-        }
-        System.out.println();
     }
 }

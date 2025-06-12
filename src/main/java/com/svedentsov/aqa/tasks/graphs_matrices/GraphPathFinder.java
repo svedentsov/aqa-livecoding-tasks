@@ -79,59 +79,6 @@ public class GraphPathFinder {
     }
 
     /**
-     * Точка входа для демонстрации работы методов поиска пути в графе.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        GraphPathFinder sol = new GraphPathFinder();
-
-        // --- Создание Графа ---
-        Map<Integer, List<Integer>> graph = new HashMap<>();
-        graph.put(0, List.of(1, 2));    // 0 -> 1, 2
-        graph.put(1, List.of(2));        // 1 -> 2
-        graph.put(2, List.of(0, 3));    // 2 -> 0, 3 (цикл 0-2)
-        graph.put(3, List.of(3));        // 3 -> 3 (петля)
-        graph.put(4, List.of(5));        // 4 -> 5 (другой компонент)
-        graph.put(5, Collections.emptyList()); // 5 (сток)
-        graph.put(6, Collections.emptyList()); // 6 (изолированный, но есть в ключах)
-        // Узел 7 не добавлен в ключи
-
-        System.out.println("--- Graph Path Finding (BFS/DFS) ---");
-        System.out.println("Graph (Adjacency List):");
-        graph.forEach((node, neighbors) -> System.out.println("  " + node + " -> " + neighbors));
-
-        // --- Тестовые Случаи ---
-        int[][] testCases = {
-                // start, end, expectedResult (1=true, 0=false)
-                {0, 3, 1}, // true
-                {3, 0, 0}, // false
-                {0, 5, 0}, // false
-                {4, 5, 1}, // true
-                {5, 4, 0}, // false
-                {0, 6, 0}, // false
-                {6, 0, 0}, // false
-                {0, 0, 1}, // true
-                {3, 3, 1}, // true
-                {5, 5, 1}, // true
-                {6, 6, 1}, // true
-                {0, 2, 1}, // true
-                {2, 0, 1}, // true
-                {1, 3, 1}, // true (1 -> 2 -> 3)
-                {0, 7, 0}, // false (узел 7 не существует)
-                {7, 0, 0}, // false (узел 7 не существует)
-                {7, 7, 0}  // false (узел 7 не существует)
-        };
-
-        for (int[] test : testCases) {
-            runPathTest(sol, graph, test[0], test[1], test[2] == 1);
-        }
-
-        // Тест с null графом
-        runPathTest(sol, null, 0, 1, false);
-    }
-
-    /**
      * Рекурсивный вспомогательный метод для DFS.
      *
      * @param currentNode Текущий узел.
@@ -160,33 +107,5 @@ public class GraphPathFinder {
         // Важно НЕ удалять из visited при возврате из рекурсии,
         // чтобы избежать повторного исследования уже проверенных ветвей.
         return false;
-    }
-
-    /**
-     * Вспомогательный метод для тестирования поиска пути.
-     *
-     * @param sol      Экземпляр решателя.
-     * @param graph    Список смежности.
-     * @param start    Начальный узел.
-     * @param end      Конечный узел.
-     * @param expected Ожидаемый результат (true/false).
-     */
-    private static void runPathTest(GraphPathFinder sol, Map<Integer, List<Integer>> graph, int start, int end, boolean expected) {
-        System.out.println("\n--- Path from " + start + " to " + end + " ---");
-        String expectedStr = String.valueOf(expected);
-        try {
-            boolean resultBFS = sol.hasPathBFS(start, end, graph);
-            System.out.printf("  Result (BFS): %-5b (Expected: %-5b) %s%n",
-                    resultBFS, expected, (resultBFS == expected ? "" : "<- MISMATCH!"));
-        } catch (Exception e) {
-            System.err.println("  Result (BFS): Error - " + e.getMessage());
-        }
-        try {
-            boolean resultDFS = sol.hasPathDFS(start, end, graph);
-            System.out.printf("  Result (DFS): %-5b (Expected: %-5b) %s%n",
-                    resultDFS, expected, (resultDFS == expected ? "" : "<- MISMATCH!"));
-        } catch (Exception e) {
-            System.err.println("  Result (DFS): Error - " + e.getMessage());
-        }
     }
 }

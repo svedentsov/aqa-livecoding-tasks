@@ -26,8 +26,8 @@ public class SimpleExpressionEvaluator {
      *
      * @param expression Строка с арифметическим выражением.
      * @return Результат вычисления.
-     * @throws IllegalArgumentException если выражение некорректно.
-     * @throws ArithmeticException      при делении на ноль или переполнении числа.
+     * @throws IllegalArgumentException если выражение некорректно (формат, символы).
+     * @throws ArithmeticException      при делении на ноль или переполнении числа/результата.
      */
     public int evaluateExpression(String expression) {
         if (expression == null || expression.trim().isEmpty()) {
@@ -47,7 +47,7 @@ public class SimpleExpressionEvaluator {
                 // Строим число
                 // Проверка на переполнение до умножения/сложения
                 if (currentNumber > (Integer.MAX_VALUE - (c - '0')) / 10) {
-                    throw new ArithmeticException("Number overflow parsing '" + expression + "'");
+                    throw new ArithmeticException("Number overflow parsing input near: " + expression.substring(Math.max(0, i - 10), i + 1));
                 }
                 currentNumber = currentNumber * 10 + (c - '0');
                 numberInProgress = true;
@@ -89,51 +89,8 @@ public class SimpleExpressionEvaluator {
             return operandStack.pop();
         } else {
             // Если стек пуст или содержит > 1 элемента -> ошибка формата
-            throw new IllegalArgumentException("Invalid expression format (final stack size: " + operandStack.size() + ")");
-        }
-    }
-
-    /**
-     * Точка входа для демонстрации вычисления выражений.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        SimpleExpressionEvaluator sol = new SimpleExpressionEvaluator();
-        String[] expressions = {
-                "3 + 5 * 2",         // 13
-                " 10 - 4 / 2 ",      // 8
-                "2*3+5/6*3+15",      // 6 + 0 * 3 + 15 = 21 (Целочисленное 5/6 = 0)
-                "100 / 10 * 2",      // 10 * 2 = 20
-                "5",                 // 5
-                "10 / 3",            // 3
-                " 2 * 2 * 2 ",       // 8
-                "10 - 2 + 3",        // 8 + 3 = 11
-                "100 / 2 / 5",       // 50 / 5 = 10
-                "42",                // 42
-                "1+2*3-4/2"          // 1+6-2 = 5
-        };
-        int[] expectedResults = {13, 8, 21, 20, 5, 3, 8, 11, 10, 42, 5};
-
-        System.out.println("--- Evaluating Simple Arithmetic Expressions ---");
-        for (int i = 0; i < expressions.length; i++) {
-            runEvaluateTest(sol, expressions[i], expectedResults[i]);
-        }
-
-        System.out.println("\n--- Error Cases ---");
-        String[] errorExpressions = {
-                "3 +",          // Неожиданный конец
-                "++3",          // Неподдерживаемый оператор
-                "10 / 0",       // Деление на ноль
-                "a + 5",        // Невалидный символ
-                "10 * * 5",     // Два оператора подряд
-                "10 5 + 3",     // Нет оператора между числами
-                "1 2 3",        // Просто числа
-                "",             // Пустая строка
-                null            // Null строка
-        };
-        for (String expr : errorExpressions) {
-            runEvaluateTest(sol, expr, Integer.MIN_VALUE); // Используем MIN_VALUE как маркер ожидания ошибки
+            throw new IllegalArgumentException("Invalid expression format: Final operand stack size is " + operandStack.size() +
+                    ", expected 1. Operator stack empty: " + operatorStack.isEmpty());
         }
     }
 
@@ -175,60 +132,39 @@ public class SimpleExpressionEvaluator {
      * @param operators Стек операторов.
      */
     private void evaluateTop(Deque<Integer> operands, Deque<Character> operators) {
-        if (operators.isEmpty()) throw new IllegalArgumentException("Operator stack is empty during evaluation.");
-        if (operands.size() < 2)
-            throw new IllegalArgumentException("Operand stack requires at least 2 elements for evaluation.");
+        if (operators.isEmpty()) {
+              throw new IllegalArgumentException("Operator stack empty during evaluation, but operation was triggered.");
+        }
+        if (operands.size() < 2) {
+            throw new IllegalArgumentException("Operand stack requires at least 2 elements for evaluation. Found: " + operands.size() +
+                    ". Operator: " + operators.peek());
+        }
 
         char op = operators.pop();
         int rightOperand = operands.pop();
         int leftOperand = operands.pop();
         int result;
 
-        switch (op) {
-            case '+':
-                result = Math.addExact(leftOperand, rightOperand);
-                break; // Используем addExact для проверки переполнения
-            case '-':
-                result = Math.subtractExact(leftOperand, rightOperand);
-                break;
-            case '*':
-                result = Math.multiplyExact(leftOperand, rightOperand);
-                break;
-            case '/':
-                if (rightOperand == 0) throw new ArithmeticException("Division by zero.");
-                result = leftOperand / rightOperand; // Целочисленное деление
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown operator: " + op);
-        }
-        operands.push(result); // Кладем результат обратно
-    }
-
-    /**
-     * Вспомогательный метод для тестирования evaluateExpression.
-     *
-     * @param sol        Экземпляр решателя.
-     * @param expression Выражение для вычисления.
-     * @param expected   Ожидаемый результат (Integer.MIN_VALUE для ожидания ошибки).
-     */
-    private static void runEvaluateTest(SimpleExpressionEvaluator sol, String expression, int expected) {
-        String input = (expression == null ? "null" : "'" + expression + "'");
-        System.out.print("evaluateExpression(" + input + ") -> ");
         try {
-            int result = sol.evaluateExpression(expression);
-            boolean match = (expected != Integer.MIN_VALUE && result == expected);
-            System.out.printf("%d (Expected: %s) %s%n",
-                    result,
-                    (expected == Integer.MIN_VALUE ? "Error" : expected),
-                    (match ? "" : (expected == Integer.MIN_VALUE ? "<- ERROR NOT CAUGHT!" : "<- MISMATCH!")));
-        } catch (IllegalArgumentException | ArithmeticException e) {
-            if (expected == Integer.MIN_VALUE) { // Ожидали ошибку
-                System.out.println("Caught expected error: " + e.getClass().getSimpleName());
-            } else { // Не ожидали ошибку
-                System.err.printf("Caught unexpected error: %s (Expected: %d)%n", e.getMessage(), expected);
-            }
-        } catch (Exception e) { // Ловим другие возможные ошибки
-            System.err.printf("Caught unexpected error: %s%n", e);
+            result = switch (op) {
+                case '+' -> Math.addExact(leftOperand, rightOperand);
+                case '-' -> Math.subtractExact(leftOperand, rightOperand);
+                case '*' -> Math.multiplyExact(leftOperand, rightOperand);
+                case '/' -> {
+                    if (rightOperand == 0) {
+                        throw new ArithmeticException("Division by zero.");
+                    }
+                    yield leftOperand / rightOperand;
+                }
+                default ->
+                    // This should not be reached if isOperator is comprehensive
+                        throw new IllegalArgumentException("Unknown operator: " + op);
+            };
+        } catch (ArithmeticException e) {
+            // Re-throw with more context if needed, or let it propagate
+            // For example: throw new ArithmeticException("Arithmetic overflow/error during operation: " + leftOperand + " " + op + " " + rightOperand, e);
+            throw e;
         }
+        operands.push(result);
     }
 }

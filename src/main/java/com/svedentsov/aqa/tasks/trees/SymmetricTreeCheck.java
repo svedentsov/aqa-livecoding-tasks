@@ -15,17 +15,18 @@ public class SymmetricTreeCheck {
 
     /**
      * Вложенный статический класс, представляющий узел бинарного дерева.
+     * Сделан public static для удобства использования в тестах.
      */
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+    public static class TreeNode {
+        public int val; // public для простоты создания деревьев в тестах
+        public TreeNode left;
+        public TreeNode right;
 
-        TreeNode(int val) {
+        public TreeNode(int val) {
             this.val = val;
         }
 
-        TreeNode(int val, TreeNode left, TreeNode right) {
+        public TreeNode(int val, TreeNode left, TreeNode right) {
             this.val = val;
             this.left = left;
             this.right = right;
@@ -47,6 +48,17 @@ public class SymmetricTreeCheck {
     }
 
     /**
+     * Рекурсивный вспомогательный метод для проверки зеркальности двух поддеревьев.
+     */
+    private boolean isMirror(TreeNode node1, TreeNode node2) {
+        if (node1 == null && node2 == null) return true;
+        if (node1 == null || node2 == null) return false;
+        if (node1.val != node2.val) return false;
+
+        return isMirror(node1.left, node2.right) && isMirror(node1.right, node2.left);
+    }
+
+    /**
      * Проверяет, является ли бинарное дерево зеркально симметричным (итеративный подход).
      * Использует очередь для попарного сравнения узлов на симметричных позициях.
      *
@@ -62,7 +74,6 @@ public class SymmetricTreeCheck {
         queue.offer(root.right);
 
         while (!queue.isEmpty()) {
-            // Извлекаем пару узлов для сравнения
             TreeNode node1 = queue.poll();
             TreeNode node2 = queue.poll();
 
@@ -73,94 +84,12 @@ public class SymmetricTreeCheck {
                 return false;
             }
 
-            // Добавляем потомков в очередь в зеркальном порядке
-            queue.offer(node1.left);  // Левый от первого
-            queue.offer(node2.right); // Правый от второго
-            queue.offer(node1.right); // Правый от первого
-            queue.offer(node2.left);  // Левый от второго
+            // Добавляем потомков в очередь в зеркальном порядке для сравнения
+            queue.offer(node1.left);  // Внешний левый
+            queue.offer(node2.right); // Внешний правый
+            queue.offer(node1.right); // Внутренний левый
+            queue.offer(node2.left);  // Внутренний правый
         }
-        // Если очередь опустела без нарушений -> симметрично
         return true;
-    }
-
-    /**
-     * Точка входа для демонстрации работы методов проверки симметричности.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        SymmetricTreeCheck sol = new SymmetricTreeCheck();
-
-        System.out.println("--- Checking for Symmetric Trees ---");
-
-        // Пример 1: Симметричное
-        TreeNode root1 = new TreeNode(1,
-                new TreeNode(2, new TreeNode(3), new TreeNode(4)),
-                new TreeNode(2, new TreeNode(4), new TreeNode(3)));
-        runSymmetricTest(sol, root1, "Tree 1 (Symmetric)"); // true
-
-        // Пример 2: Несимметричное
-        TreeNode root2 = new TreeNode(1,
-                new TreeNode(2, null, new TreeNode(3)),
-                new TreeNode(2, null, new TreeNode(3)));
-        runSymmetricTest(sol, root2, "Tree 2 (Asymmetric)"); // false
-
-        // Пример 3: Пустое
-        runSymmetricTest(sol, null, "Tree 3 (null)"); // true
-
-        // Пример 4: Один узел
-        runSymmetricTest(sol, new TreeNode(1), "Tree 4 (Single node)"); // true
-
-        // Пример 5: Асимметрия по значению
-        TreeNode root5 = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-        runSymmetricTest(sol, root5, "Tree 5 (Asymmetric values)"); // false
-
-        // Пример 6: Асимметрия по структуре
-        TreeNode root6 = new TreeNode(1, new TreeNode(2, new TreeNode(3), null), new TreeNode(2, new TreeNode(3), null));
-        runSymmetricTest(sol, root6, "Tree 6 (Asymmetric structure)"); // false
-    }
-
-    /**
-     * Рекурсивный вспомогательный метод для проверки зеркальности двух поддеревьев.
-     *
-     * @param node1 Корень первого поддерева.
-     * @param node2 Корень второго поддерева.
-     * @return {@code true}, если поддеревья зеркальны, {@code false} иначе.
-     */
-    private boolean isMirror(TreeNode node1, TreeNode node2) {
-        // Оба null -> симметричны
-        if (node1 == null && node2 == null) return true;
-        // Только один null -> не симметричны
-        if (node1 == null || node2 == null) return false;
-        // Значения разные -> не симметричны
-        if (node1.val != node2.val) return false;
-
-        // Рекурсивно проверяем внешние и внутренние поддеревья
-        return isMirror(node1.left, node2.right) && isMirror(node1.right, node2.left);
-    }
-
-    /**
-     * Вспомогательный метод для тестирования isSymmetric.
-     *
-     * @param sol         Экземпляр решателя.
-     * @param root        Корень дерева.
-     * @param description Описание теста.
-     */
-    private static void runSymmetricTest(SymmetricTreeCheck sol, TreeNode root, String description) {
-        System.out.println("\n--- " + description + " ---");
-        // Печать дерева для визуализации может быть сложной, пропустим
-        System.out.println("Input root value: " + (root == null ? "null" : root.val));
-        try {
-            boolean resultRec = sol.isSymmetricRecursive(root);
-            System.out.println("  Result (Recursive): " + resultRec);
-        } catch (Exception e) {
-            System.err.println("  Result (Recursive): Error - " + e.getMessage());
-        }
-        try {
-            boolean resultIter = sol.isSymmetricIterative(root);
-            System.out.println("  Result (Iterative): " + resultIter);
-        } catch (Exception e) {
-            System.err.println("  Result (Iterative): Error - " + e.getMessage());
-        }
     }
 }

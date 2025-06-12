@@ -293,7 +293,8 @@
 * **Пример:** `findFirstNonRepeatingChar("swiss")` -> `'w'`, `findFirstNonRepeatingChar("aabbcc")` -> `null`.
 * **Решение:**
   [`FindFirstNonRepeatingChar.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingChar.java),
-  [`FindFirstNonRepeatingCharTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingCharTest.java)
+  [
+  `FindFirstNonRepeatingCharTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingCharTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -500,7 +501,8 @@
   `findIntersection(new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4})` -> `{4, 9}`.
 * **Решение:**
   [`FindIntersectionArrays.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindIntersectionArrays.java),
-  [`FindIntersectionArraysTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/FindIntersectionArraysTest.java)
+  [
+  `FindIntersectionArraysTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/FindIntersectionArraysTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -517,8 +519,10 @@
 * **Пример:** `areBracketsBalanced("({[]})")` -> `true`. `areBracketsBalanced("([)]")` -> `false`.
   `areBracketsBalanced("{[}")` -> `false`. `areBracketsBalanced("()")` -> `true`.
 * **Решение:**
-  [`BalancedParenthesesCheck.java`](src/main/java/com/svedentsov/aqa/tasks/data_structures/BalancedParenthesesCheck.java),
-  [`BalancedParenthesesCheckTest.java`](src/test/java/com/svedentsov/aqa/tasks/data_structures/BalancedParenthesesCheckTest.java)
+  [
+  `BalancedParenthesesCheck.java`](src/main/java/com/svedentsov/aqa/tasks/data_structures/BalancedParenthesesCheck.java),
+  [
+  `BalancedParenthesesCheckTest.java`](src/test/java/com/svedentsov/aqa/tasks/data_structures/BalancedParenthesesCheckTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -537,7 +541,8 @@
   строку. `myCar.getMake()` должно вернуть `"Toyota"`.
 * **Решение:**
   [`SimpleClassImplementation.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/SimpleClassImplementation.java),
-  [`SimpleClassImplementationTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/SimpleClassImplementationTest.java)
+  [
+  `SimpleClassImplementationTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/SimpleClassImplementationTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -676,7 +681,8 @@
   `findMostFrequentElement(new int[]{1, 2, 3})` -> `1` (или `2`, или `3`).
 * **Решение:**
   [`FindMostFrequentElement.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/FindMostFrequentElement.java)
-  [`FindMostFrequentElementTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindMostFrequentElementTest.java)
+  [
+  `FindMostFrequentElementTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindMostFrequentElementTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -890,8 +896,10 @@
   `lengthOfLongestSubstring("bbbbb")` -> `1` (подстрока "b"). `lengthOfLongestSubstring("pwwkew")` -> `3` (
   подстрока "wke").
 * **Решение:**
-  [`LongestSubstringWithoutRepeating.java`](src/main/java/com/svedentsov/aqa/tasks/strings/LongestSubstringWithoutRepeating.java)
-  [`LongestSubstringWithoutRepeatingTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/LongestSubstringWithoutRepeatingTest.java)
+  [
+  `LongestSubstringWithoutRepeating.java`](src/main/java/com/svedentsov/aqa/tasks/strings/LongestSubstringWithoutRepeating.java)
+  [
+  `LongestSubstringWithoutRepeatingTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/LongestSubstringWithoutRepeatingTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1178,7 +1186,8 @@
   `{{4, 4}, {10, 8}}`.
 * **Решение:**
   [`MatrixMultiplication.java`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/MatrixMultiplication.java)
-  [`MatrixMultiplicationTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/MatrixMultiplicationTest.java)
+  [
+  `MatrixMultiplicationTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/MatrixMultiplicationTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1480,7 +1489,8 @@
 * **Пример:** `daysBetween("2025-04-01", "2025-04-10")` -> `9`.
 * **Решение:**
   [`DateTimeManipulation.java`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/DateTimeManipulation.java)
-  [`DateTimeManipulationTest.java`](src/test/java/com/svedentsov/aqa/tasks/files_io_formats/DateTimeManipulationTest.java)
+  [
+  `DateTimeManipulationTest.java`](src/test/java/com/svedentsov/aqa/tasks/files_io_formats/DateTimeManipulationTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1722,7 +1732,8 @@
   чисел). Какую структуру данных (или комбинацию) было бы эффективно использовать?
 * **Пример:** Обсуждение использования двух куч (min-heap и max-heap).
 * **Решение (Концептуальное обсуждение + Код Класса):**
-  [`MedianFinderStream`](src/main/java/com/svedentsov/aqa/tasks/data_structures/MedianFinderStream.java)
+  [`MedianFinder.java`](src/main/java/com/svedentsov/aqa/tasks/data_structures/MedianFinder.java)
+  [`MedianFinderTest.java`](src/test/java/com/svedentsov/aqa/tasks/data_structures/MedianFinderTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1754,7 +1765,9 @@
   возвращает уровень узла со значением `key` в бинарном дереве (корень на уровне 1). Если узел не найден, верните
   -1.
 * **Пример:** В дереве `[3, 9, 20, null, null, 15, 7]`, `getNodeLevel(root, 15, 1)` -> `3`.
-* **Решение:** [`NodeLevelInTree`](src/main/java/com/svedentsov/aqa/tasks/trees/NodeLevelInTree.java)
+* **Решение:**
+  [`NodeLevelInTree.java`](src/main/java/com/svedentsov/aqa/tasks/trees/NodeLevelInTree.java)
+  [`NodeLevelInTreeTest.java`](src/test/java/com/svedentsov/aqa/tasks/trees/NodeLevelInTreeTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1769,7 +1782,9 @@
   находит наименьшего общего предка (LCA) двух узлов `p` и `q` в бинарном дереве поиска `root`.
 * **Пример:** Для BST `[6, 2, 8, 0, 4, 7, 9, null, null, 3, 5]`, LCA для узлов 2 и 8 будет 6. LCA для узлов 2 и 4
   будет 2.
-* **Решение:** [`LowestCommonAncestor`](src/main/java/com/svedentsov/aqa/tasks/trees/LowestCommonAncestor.java)
+* **Решение:**
+  [`LowestCommonAncestor.java`](src/main/java/com/svedentsov/aqa/tasks/trees/LowestCommonAncestor.java)
+  [`LowestCommonAncestorTest.java`](src/test/java/com/svedentsov/aqa/tasks/trees/LowestCommonAncestorTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1783,7 +1798,9 @@
   дерева (длину самого длинного пути между любыми двумя узлами в дереве). Путь не обязательно проходит через корень.
   Длина пути измеряется количеством ребер.
 * **Пример:** Для дерева `[1, 2, 3, 4, 5]`, диаметр равен 3 (путь `4 -> 2 -> 1 -> 3` или `5 -> 2 -> 1 -> 3`).
-* **Решение:** [`BinaryTreeDiameter`](src/main/java/com/svedentsov/aqa/tasks/trees/BinaryTreeDiameter.java)
+* **Решение:**
+  [`BinaryTreeDiameter.java`](src/main/java/com/svedentsov/aqa/tasks/trees/BinaryTreeDiameter.java)
+  [`BinaryTreeDiameterTest.java`](src/test/java/com/svedentsov/aqa/tasks/trees/BinaryTreeDiameterTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1797,7 +1814,9 @@
 * **Задание:** Напишите метод `boolean isSymmetric(TreeNode root)`, который проверяет, является ли бинарное дерево
   зеркально симметричным относительно своего центра.
 * **Пример:** Дерево `[1, 2, 2, 3, 4, 4, 3]` -> `true`. Дерево `[1, 2, 2, null, 3, null, 3]` -> `false`.
-* **Решение:** [`SymmetricTreeCheck`](src/main/java/com/svedentsov/aqa/tasks/trees/SymmetricTreeCheck.java)
+* **Решение:**
+  [`SymmetricTreeCheck.java`](src/main/java/com/svedentsov/aqa/tasks/trees/SymmetricTreeCheck.java)
+  [`SymmetricTreeCheckTest.java`](src/test/java/com/svedentsov/aqa/tasks/trees/SymmetricTreeCheckTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1813,7 +1832,9 @@
   ли путь от `startNode` до `endNode`. Используйте поиск в ширину (BFS) или в глубину (DFS).
 * **Пример:** Для графа `{0:[1, 2], 1:[2], 2:[0, 3], 3:[3]}`, `hasPath(0, 3, graph)` -> `true`.
   `hasPath(3, 0, graph)` -> `false`.
-* **Решение:** [`GraphPathFinder`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/GraphPathFinder.java)
+* **Решение:**
+  [`GraphPathFinder.java`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/GraphPathFinder.java)
+  [`GraphPathFinderTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/GraphPathFinderTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1829,7 +1850,9 @@
   цвет, что и стартовая клетка, должны быть перекрашены в `newColor`.
 * **Пример:** `image = {{1,1,1},{1,1,0},{1,0,1}}, sr = 1, sc = 1, newColor = 2`. Результат:
   `{{2,2,2},{2,2,0},{2,0,1}}`.
-* **Решение:** [`FloodFill`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/FloodFill.java)
+* **Решение:**
+  [`FloodFill.java`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/FloodFill.java)
+  [`FloodFillTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/FloodFillTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1847,7 +1870,8 @@
 * **Пример:** `evaluateExpression("3 + 5 * 2")` -> `13`. `evaluateExpression(" 10 - 4 / 2 ")` -> `8`.
   `evaluateExpression("2*3+5/6*3+15")` -> `21`. (Упрощенная версия может не требовать полного парсера с учетом
   скобок).
-* **Решение:** [
-  `SimpleExpressionEvaluator`](src/main/java/com/svedentsov/aqa/tasks/algorithms/SimpleExpressionEvaluator.java)
+* **Решение:**
+  [`SimpleExpressionEvaluator.java`](src/main/java/com/svedentsov/aqa/tasks/algorithms/SimpleExpressionEvaluator.java)
+  [`SimpleExpressionEvaluatorTest.java`](src/test/java/com/svedentsov/aqa/tasks/algorithms/SimpleExpressionEvaluatorTest.java)
 
 [К оглавлению](#table-of-contents)
