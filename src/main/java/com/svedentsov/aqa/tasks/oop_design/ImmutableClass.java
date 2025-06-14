@@ -1,6 +1,5 @@
 package com.svedentsov.aqa.tasks.oop_design;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -83,10 +82,7 @@ public class ImmutableClass {
             this.username = Objects.requireNonNull(username);
             Objects.requireNonNull(permissions);
             // 5. Защитное копирование в конструкторе
-            // List.copyOf (Java 9+) создает неизменяемый список-копию
-            this.permissions = List.copyOf(permissions);
-            // Альтернатива для Java 8:
-            // this.permissions = Collections.unmodifiableList(new ArrayList<>(permissions));
+            this.permissions = List.copyOf(permissions); // List.copyOf (Java 9+) создает неизменяемую копию
         }
 
         public String getUsername() {
@@ -113,62 +109,18 @@ public class ImmutableClass {
         }
 
         @Override
-        public boolean equals(Object o) { /* ... стандартная реализация ... */
-            return true;
-        } // Упрощено
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) return false;
+            ImmutableUserProfile that = (ImmutableUserProfile) o;
+            return Objects.equals(username, that.username) && Objects.equals(permissions, that.permissions);
+        }
 
         @Override
         public int hashCode() {
             return Objects.hash(username, permissions);
         }
-    }
-
-    /**
-     * Точка входа для демонстрации использования неизменяемых классов.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        System.out.println("--- Immutable Class Demonstration ---");
-
-        // Пример с ImmutablePointSimple
-        System.out.println("\n[ImmutablePointSimple Demo]");
-        ImmutablePointSimple p1 = new ImmutablePointSimple(10, 20);
-        ImmutablePointSimple p2 = new ImmutablePointSimple(10, 20);
-        System.out.println("p1: " + p1);
-        System.out.println("p2: " + p2);
-        System.out.println("p1.getX(): " + p1.getX());
-        // p1.x = 5; // Ошибка компиляции - поле final
-        // p1.setX(5); // Ошибка компиляции - нет сеттера
-
-        // Пример с ImmutableUserProfile
-        System.out.println("\n[ImmutableUserProfile Demo]");
-        List<String> initialRoles = new ArrayList<>(); // Создаем ИЗМЕНЯЕМЫЙ список
-        initialRoles.add("READ");
-        initialRoles.add("WRITE");
-        System.out.println("Initial mutable list: " + initialRoles);
-
-        // Создаем immutable объект, передавая изменяемый список
-        ImmutableUserProfile user1 = new ImmutableUserProfile("user1", initialRoles);
-        System.out.println("User1 created: " + user1);
-
-        // Пытаемся изменить исходный список ПОСЛЕ создания объекта
-        System.out.println("Modifying original list AFTER user1 creation...");
-        initialRoles.add("DELETE");
-        System.out.println("Original list now: " + initialRoles);
-        System.out.println("User1 permissions (should be unchanged): " + user1.getPermissions()); // Должны остаться [READ, WRITE]
-
-        // Пытаемся изменить список, полученный из геттера
-        System.out.println("Attempting to modify list from getPermissions()...");
-        List<String> user1Permissions = user1.getPermissions();
-        try {
-            user1Permissions.add("ADMIN"); // Должно вызвать UnsupportedOperationException
-            System.out.println("   !!! Modification succeeded - IMMUTABILITY BROKEN !!!");
-        } catch (UnsupportedOperationException e) {
-            System.out.println("   Caught expected UnsupportedOperationException - Cannot modify returned list.");
-        }
-        System.out.println("User1 permissions after attempt: " + user1.getPermissions()); // Должны остаться [READ, WRITE]
-
-        System.out.println("\nConclusion: Immutable objects are inherently thread-safe and their state cannot change after creation, making code more predictable.");
     }
 }

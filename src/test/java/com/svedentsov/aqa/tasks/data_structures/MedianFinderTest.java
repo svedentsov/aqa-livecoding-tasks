@@ -52,7 +52,7 @@ class MedianFinderTest {
     }
 
     @Test
-    @DisplayName("Последовательность из задания main: 1, 2, 3")
+    @DisplayName("Последовательность из задания: 1, 2, 3")
     void addNum_sequence_1_2_3() {
         medianFinder.addNum(1); // maxHeap: [1], minHeap: [], median: 1
         assertEquals(1.0, medianFinder.findMedian(), DELTA);
@@ -81,8 +81,8 @@ class MedianFinderTest {
 
     static Stream<Arguments> sequenceTestCases() {
         return Stream.of(
-                Arguments.of(new int[]{1, 2, 3, 0, 5, 2, 4, -1, 6, 6}, new double[]{1.0, 1.5, 2.0, 1.5, 2.0, 2.0, 2.0, 2.0, 2.0, 2.5}, "Первая последовательность из main"),
-                Arguments.of(new int[]{6, 10, 2, 6, 5, 0, 6, 3, 1, 0, 0}, new double[]{6.0, 8.0, 6.0, 6.0, 6.0, 5.5, 6.0, 5.5, 5.0, 4.0, 3.0}, "Вторая последовательность из main"),
+                Arguments.of(new int[]{1, 2, 3, 0, 5, 2, 4, -1, 6, 6}, new double[]{1.0, 1.5, 2.0, 1.5, 2.0, 2.0, 2.0, 2.0, 2.0, 2.5}, "Первая последовательность"),
+                Arguments.of(new int[]{6, 10, 2, 6, 5, 0, 6, 3, 1, 0, 0}, new double[]{6.0, 8.0, 6.0, 6.0, 6.0, 5.5, 6.0, 5.5, 5.0, 4.0, 3.0}, "Вторая последовательность"),
                 Arguments.of(new int[]{3, 1, 2}, new double[]{3.0, 2.0, 2.0}, "Простая последовательность 3,1,2"),
                 Arguments.of(new int[]{-1, -2, -3, -4, -5}, new double[]{-1.0, -1.5, -2.0, -2.5, -3.0}, "Отрицательные числа (убывающие)"),
                 Arguments.of(new int[]{1, 1, 1, 1}, new double[]{1.0, 1.0, 1.0, 1.0}, "Дубликаты")

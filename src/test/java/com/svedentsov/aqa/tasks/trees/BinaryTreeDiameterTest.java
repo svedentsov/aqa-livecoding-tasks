@@ -68,7 +68,7 @@ class BinaryTreeDiameterTest {
         //   rightH = calc(null): returns -1
         //   diam_1 = 2+2-1 = 3. maxD = max(4,3) = 4
         //   returns 1+max(2,-1) = 3.
-        // Result: maxD = 4. The example in `main` expected 5. Let's check example path: 5 -> 3 -> 2 -> 4 -> 6. This has 4 edges.
+        // Result: maxD = 4. The example in expected 5. Let's check example path: 5 -> 3 -> 2 -> 4 -> 6. This has 4 edges.
         // Path (5,3) (3,2) (2,4) (4,6).  This is indeed 4 edges. Original comment for example 6 might be off by 1.
         // Let's use the example from LeetCode 543 which is often confused: [1,2,3,4,5]
         // This usually means:
@@ -108,7 +108,7 @@ class BinaryTreeDiameterTest {
                 Arguments.of(root4, 0, "Дерево из одного узла [1]"),
                 Arguments.of(root5, 3, "Линейное дерево вправо [1,null,[2,null,[3,null,4]]]"),
                 Arguments.of(root8, 3, "Линейное дерево влево [[[[4],3],2],1]"),
-                Arguments.of(root7, 4, "Диаметр не через корень (копия root6 из main)")
+                Arguments.of(root7, 4, "Диаметр не через корень")
         );
     }
 

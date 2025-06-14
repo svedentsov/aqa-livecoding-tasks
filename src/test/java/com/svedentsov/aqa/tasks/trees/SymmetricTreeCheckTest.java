@@ -52,7 +52,7 @@ class SymmetricTreeCheckTest {
         // Пример 5: Асимметрия по значению детей корня
         TreeNode root5 = new TreeNode(1, new TreeNode(2), new TreeNode(3));
 
-        // Пример 6: Асимметрия по структуре (из main)
+        // Пример 6: Асимметрия по структуре
         // [1, [2,3,N], [2,3,N]]
         TreeNode root6 = new TreeNode(1,
                 new TreeNode(2, new TreeNode(3), null),

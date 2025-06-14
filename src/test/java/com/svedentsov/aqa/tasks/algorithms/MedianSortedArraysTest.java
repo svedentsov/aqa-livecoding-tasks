@@ -24,10 +24,8 @@ class MedianSortedArraysTest {
 
     static Stream<Arguments> provideSortedArraysAndMedians() {
         return Stream.of(
-                // Примеры из описания
                 Arguments.of(new int[]{1, 3}, new int[]{2}, 2.0),
                 Arguments.of(new int[]{1, 2}, new int[]{3, 4}, 2.5),
-                // Случаи из main
                 Arguments.of(new int[]{0, 0}, new int[]{0, 0}, 0.0),
                 Arguments.of(new int[]{}, new int[]{1}, 1.0),      // Первый пустой
                 Arguments.of(new int[]{1}, new int[]{}, 1.0),      // Второй пустой (будет обмен)

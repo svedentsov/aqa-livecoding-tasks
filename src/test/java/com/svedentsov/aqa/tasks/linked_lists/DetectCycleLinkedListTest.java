@@ -24,7 +24,7 @@ class DetectCycleLinkedListTest {
     class CyclePresentTests {
 
         @Test
-        @DisplayName("Список с циклом (пример 1 из main)")
+        @DisplayName("Список с циклом")
         void hasCycle_whenCyclePresent_example1_shouldReturnTrue() {
             ListNode nodeNeg4 = new ListNode(-4);
             ListNode node0 = new ListNode(0, nodeNeg4);
@@ -69,7 +69,7 @@ class DetectCycleLinkedListTest {
     class NoCycleTests {
 
         @Test
-        @DisplayName("Список без цикла (пример 2 из main)")
+        @DisplayName("Список без цикла")
         void hasCycle_whenNoCycle_example2_shouldReturnFalse() {
             ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
             assertFalse(cycleDetector.hasCycle(head), "Не должен обнаруживать цикл");
@@ -96,7 +96,7 @@ class DetectCycleLinkedListTest {
         }
 
         @Test
-        @DisplayName("Длинный список без цикла (пример 7 из main)")
+        @DisplayName("Длинный список без цикла")
         void hasCycle_whenLongListNoCycle_shouldReturnFalse() {
             ListNode current = new ListNode(0);
             ListNode head = current;

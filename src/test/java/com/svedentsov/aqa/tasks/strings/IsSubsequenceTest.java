@@ -25,10 +25,8 @@ class IsSubsequenceTest {
     // Формат: s, t, expectedResult (boolean)
     static Stream<Arguments> provideSubsequenceCases() {
         return Stream.of(
-                // Примеры из описания
                 Arguments.of("ace", "abcde", true),
                 Arguments.of("axc", "ahbgdc", false),
-                // Случаи из main
                 Arguments.of("", "abcde", true), // Пустая s
                 Arguments.of("abc", "", false), // Пустая t (s не пустая)
                 Arguments.of("b", "abc", true),

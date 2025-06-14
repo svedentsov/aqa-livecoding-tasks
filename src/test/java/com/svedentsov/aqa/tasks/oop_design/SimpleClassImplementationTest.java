@@ -34,8 +34,6 @@ class SimpleClassImplementationTest {
     @DisplayName("Тесты конструктора")
     class ConstructorTests {
 
-        // ... (other constructor tests remain the same) ...
-
         // --- Static method to provide invalid years ---
         static Stream<Integer> provideInvalidYears() {
             int currentYear = Year.now().getValue();

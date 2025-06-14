@@ -10,9 +10,6 @@ import java.util.Objects;
  * и знаменатель (`denominator`). Добавьте конструктор, метод `toString()`
  * (например, "2/3"), и метод `add(Fraction other)` для сложения дробей
  * с приведением к общему знаменателю и упрощением результата (используя НОД).
- * Добавлены также методы subtract, multiply, divide.
- * Пример: `new Fraction(1, 2).add(new Fraction(1, 3))` должен вернуть объект
- * `Fraction`, представляющий `5/6`.
  */
 public class FractionClass {
 
@@ -86,14 +83,8 @@ public class FractionClass {
 
         public Fraction add(Fraction other) {
             Objects.requireNonNull(other, "Other fraction cannot be null");
-            long num1 = this.numerator;
-            long den1 = this.denominator;
-            long num2 = other.numerator;
-            long den2 = other.denominator;
-            // Проверка на переполнение при вычислении числителя и знаменателя
-            long newNumL = Math.addExact(Math.multiplyExact(num1, den2), Math.multiplyExact(num2, den1));
-            long newDenL = Math.multiplyExact(den1, den2);
-            // Проверка, что результат умещается в int перед созданием новой дроби
+            long newNumL = Math.addExact(Math.multiplyExact((long) this.numerator, other.denominator), Math.multiplyExact((long) other.numerator, this.denominator));
+            long newDenL = Math.multiplyExact((long) this.denominator, other.denominator);
             if (newNumL < Integer.MIN_VALUE || newNumL > Integer.MAX_VALUE || newDenL < Integer.MIN_VALUE || newDenL > Integer.MAX_VALUE) {
                 throw new ArithmeticException("Integer overflow during addition.");
             }
@@ -102,12 +93,8 @@ public class FractionClass {
 
         public Fraction subtract(Fraction other) {
             Objects.requireNonNull(other, "Other fraction cannot be null");
-            long num1 = this.numerator;
-            long den1 = this.denominator;
-            long num2 = other.numerator;
-            long den2 = other.denominator;
-            long newNumL = Math.subtractExact(Math.multiplyExact(num1, den2), Math.multiplyExact(num2, den1));
-            long newDenL = Math.multiplyExact(den1, den2);
+            long newNumL = Math.subtractExact(Math.multiplyExact((long) this.numerator, other.denominator), Math.multiplyExact((long) other.numerator, this.denominator));
+            long newDenL = Math.multiplyExact((long) this.denominator, other.denominator);
             if (newNumL < Integer.MIN_VALUE || newNumL > Integer.MAX_VALUE || newDenL < Integer.MIN_VALUE || newDenL > Integer.MAX_VALUE) {
                 throw new ArithmeticException("Integer overflow during subtraction.");
             }
@@ -116,12 +103,8 @@ public class FractionClass {
 
         public Fraction multiply(Fraction other) {
             Objects.requireNonNull(other, "Other fraction cannot be null");
-            long num1 = this.numerator;
-            long den1 = this.denominator;
-            long num2 = other.numerator;
-            long den2 = other.denominator;
-            long newNumL = Math.multiplyExact(num1, num2);
-            long newDenL = Math.multiplyExact(den1, den2);
+            long newNumL = Math.multiplyExact((long) this.numerator, other.numerator);
+            long newDenL = Math.multiplyExact((long) this.denominator, other.denominator);
             if (newNumL < Integer.MIN_VALUE || newNumL > Integer.MAX_VALUE || newDenL < Integer.MIN_VALUE || newDenL > Integer.MAX_VALUE) {
                 throw new ArithmeticException("Integer overflow during multiplication.");
             }
@@ -133,12 +116,8 @@ public class FractionClass {
             if (other.numerator == 0) {
                 throw new ArithmeticException("Division by zero fraction.");
             }
-            long num1 = this.numerator;
-            long den1 = this.denominator;
-            long num2 = other.numerator;
-            long den2 = other.denominator;
-            long newNumL = Math.multiplyExact(num1, den2);
-            long newDenL = Math.multiplyExact(den1, num2);
+            long newNumL = Math.multiplyExact((long) this.numerator, other.denominator);
+            long newDenL = Math.multiplyExact((long) this.denominator, other.numerator);
             if (newNumL < Integer.MIN_VALUE || newNumL > Integer.MAX_VALUE || newDenL < Integer.MIN_VALUE || newDenL > Integer.MAX_VALUE) {
                 throw new ArithmeticException("Integer overflow during division.");
             }
@@ -190,81 +169,6 @@ public class FractionClass {
             }
             // a гарантированно неотрицательно, т.к. входные a и b были неотрицательны
             return a;
-        }
-    }
-
-    /**
-     * Точка входа для демонстрации использования класса Fraction.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-        System.out.println("--- Fraction Class Demo ---");
-        try {
-            // Создание дробей
-            System.out.println("\n[Creation & Simplification]");
-            Fraction f1_2 = new Fraction(1, 2);     // 1/2
-            Fraction f1_3 = new Fraction(1, 3);     // 1/3
-            Fraction f2_4 = new Fraction(2, 4);     // 1/2
-            Fraction f_3_6 = new Fraction(-3, 6);    // -1/2
-            Fraction f_5_n2 = new Fraction(5, -2);   // -5/2
-            Fraction f4_2 = new Fraction(4, 2);     // 2/1 -> 2
-            Fraction f_6_n3 = new Fraction(-6, -3);  // 2/1 -> 2
-            Fraction f0_5 = new Fraction(0, 5);     // 0/1 -> 0
-            Fraction f7_1 = new Fraction(7);        // 7/1 -> 7
-
-            System.out.println("f(1, 2)   -> " + f1_2);
-            System.out.println("f(2, 4)   -> " + f2_4);
-            System.out.println("f(-3, 6)  -> " + f_3_6);
-            System.out.println("f(5, -2)  -> " + f_5_n2);
-            System.out.println("f(4, 2)   -> " + f4_2);
-            System.out.println("f(-6, -3) -> " + f_6_n3);
-            System.out.println("f(0, 5)   -> " + f0_5);
-            System.out.println("f(7)      -> " + f7_1);
-            System.out.println("ZERO      -> " + Fraction.ZERO);
-            System.out.println("ONE       -> " + Fraction.ONE);
-
-            // Сравнение
-            System.out.println("\n[Equality & Comparison]");
-            System.out.println("f(1/2) == f(2/4)? " + f1_2.equals(f2_4)); // true
-            System.out.println("f(2/1) == f(2/1)? " + f4_2.equals(f_6_n3)); // true
-            System.out.println("f(1/2).compareTo(f(1/3)) -> " + f1_2.compareTo(f1_3)); // > 0
-            System.out.println("f(-1/2).compareTo(f(1/2)) -> " + f_3_6.compareTo(f1_2)); // < 0
-
-            // Арифметика
-            System.out.println("\n[Arithmetic Operations]");
-            System.out.println(f1_2 + " + " + f1_3 + " = " + f1_2.add(f1_3));           // 5/6
-            System.out.println(f1_2 + " - " + f1_3 + " = " + f1_2.subtract(f1_3));     // 1/6
-            System.out.println(f_5_n2 + " * " + f_3_6 + " = " + f_5_n2.multiply(f_3_6)); // 5/4
-            System.out.println(f1_2 + " / " + f1_3 + " = " + f1_2.divide(f1_3));       // 3/2
-            System.out.println(f4_2 + " / " + f1_2 + " = " + f4_2.divide(f1_2));       // 4
-
-            // Double value
-            System.out.println("\n[Double Value]");
-            System.out.println("f(5/6).doubleValue() = " + new Fraction(5, 6).doubleValue()); // ~0.8333
-
-            // Ошибки
-            System.out.println("\n[Error Handling]");
-            try {
-                new Fraction(1, 0);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Caught expected (div by zero): " + e.getMessage());
-            }
-            try {
-                f1_2.divide(Fraction.ZERO);
-            } catch (ArithmeticException e) {
-                System.out.println("Caught expected (div by zero fraction): " + e.getMessage());
-            }
-            // Переполнение
-            try {
-                new Fraction(Integer.MAX_VALUE).add(Fraction.ONE);
-            } catch (ArithmeticException e) {
-                System.out.println("Caught expected (overflow): " + e.getMessage());
-            }
-
-        } catch (Exception e) { // Ловим остальные неожиданные ошибки
-            System.err.println("An unexpected error occurred in main: " + e);
-            e.printStackTrace();
         }
     }
 }

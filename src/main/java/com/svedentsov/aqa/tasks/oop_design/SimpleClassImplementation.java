@@ -4,7 +4,6 @@ import java.util.Objects;
 
 /**
  * Класс-обертка для класса Car.
- * Ранее содержал main метод для демонстрации.
  */
 public class SimpleClassImplementation {
 

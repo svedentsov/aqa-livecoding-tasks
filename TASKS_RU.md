@@ -293,8 +293,7 @@
 * **Пример:** `findFirstNonRepeatingChar("swiss")` -> `'w'`, `findFirstNonRepeatingChar("aabbcc")` -> `null`.
 * **Решение:**
   [`FindFirstNonRepeatingChar.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingChar.java),
-  [
-  `FindFirstNonRepeatingCharTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingCharTest.java)
+  [`FindFirstNonRepeatingCharTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindFirstNonRepeatingCharTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -501,8 +500,7 @@
   `findIntersection(new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4})` -> `{4, 9}`.
 * **Решение:**
   [`FindIntersectionArrays.java`](src/main/java/com/svedentsov/aqa/tasks/arrays_lists/FindIntersectionArrays.java),
-  [
-  `FindIntersectionArraysTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/FindIntersectionArraysTest.java)
+  [`FindIntersectionArraysTest.java`](src/test/java/com/svedentsov/aqa/tasks/arrays_lists/FindIntersectionArraysTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -519,10 +517,8 @@
 * **Пример:** `areBracketsBalanced("({[]})")` -> `true`. `areBracketsBalanced("([)]")` -> `false`.
   `areBracketsBalanced("{[}")` -> `false`. `areBracketsBalanced("()")` -> `true`.
 * **Решение:**
-  [
-  `BalancedParenthesesCheck.java`](src/main/java/com/svedentsov/aqa/tasks/data_structures/BalancedParenthesesCheck.java),
-  [
-  `BalancedParenthesesCheckTest.java`](src/test/java/com/svedentsov/aqa/tasks/data_structures/BalancedParenthesesCheckTest.java)
+  [`BalancedParenthesesCheck.java`](src/main/java/com/svedentsov/aqa/tasks/data_structures/BalancedParenthesesCheck.java),
+  [`BalancedParenthesesCheckTest.java`](src/test/java/com/svedentsov/aqa/tasks/data_structures/BalancedParenthesesCheckTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -541,8 +537,7 @@
   строку. `myCar.getMake()` должно вернуть `"Toyota"`.
 * **Решение:**
   [`SimpleClassImplementation.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/SimpleClassImplementation.java),
-  [
-  `SimpleClassImplementationTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/SimpleClassImplementationTest.java)
+  [`SimpleClassImplementationTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/SimpleClassImplementationTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -681,8 +676,7 @@
   `findMostFrequentElement(new int[]{1, 2, 3})` -> `1` (или `2`, или `3`).
 * **Решение:**
   [`FindMostFrequentElement.java`](src/main/java/com/svedentsov/aqa/tasks/maps_sets/FindMostFrequentElement.java)
-  [
-  `FindMostFrequentElementTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindMostFrequentElementTest.java)
+  [`FindMostFrequentElementTest.java`](src/test/java/com/svedentsov/aqa/tasks/maps_sets/FindMostFrequentElementTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -736,7 +730,8 @@
 * **Пример:** `MyStack stack = new MyStack(); stack.push(1); stack.push(2); stack.pop()` -> `2`. `stack.peek()` ->
   `1`. `stack.isEmpty()` -> `false`.
 * **Решение:**
-  [`ImplementStackQueue`](src/main/java/com/svedentsov/aqa/tasks/data_structures/ImplementStackQueue.java)
+  [`ImplementStackQueue.java`](src/main/java/com/svedentsov/aqa/tasks/data_structures/ImplementStackQueue.java)
+  [`ImplementStackQueueTest.java`](src/test/java/com/svedentsov/aqa/tasks/data_structures/ImplementStackQueueTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -896,10 +891,8 @@
   `lengthOfLongestSubstring("bbbbb")` -> `1` (подстрока "b"). `lengthOfLongestSubstring("pwwkew")` -> `3` (
   подстрока "wke").
 * **Решение:**
-  [
-  `LongestSubstringWithoutRepeating.java`](src/main/java/com/svedentsov/aqa/tasks/strings/LongestSubstringWithoutRepeating.java)
-  [
-  `LongestSubstringWithoutRepeatingTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/LongestSubstringWithoutRepeatingTest.java)
+  [`LongestSubstringWithoutRepeating.java`](src/main/java/com/svedentsov/aqa/tasks/strings/LongestSubstringWithoutRepeating.java)
+  [`LongestSubstringWithoutRepeatingTest.java`](src/test/java/com/svedentsov/aqa/tasks/strings/LongestSubstringWithoutRepeatingTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1186,8 +1179,7 @@
   `{{4, 4}, {10, 8}}`.
 * **Решение:**
   [`MatrixMultiplication.java`](src/main/java/com/svedentsov/aqa/tasks/graphs_matrices/MatrixMultiplication.java)
-  [
-  `MatrixMultiplicationTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/MatrixMultiplicationTest.java)
+  [`MatrixMultiplicationTest.java`](src/test/java/com/svedentsov/aqa/tasks/graphs_matrices/MatrixMultiplicationTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1489,8 +1481,7 @@
 * **Пример:** `daysBetween("2025-04-01", "2025-04-10")` -> `9`.
 * **Решение:**
   [`DateTimeManipulation.java`](src/main/java/com/svedentsov/aqa/tasks/files_io_formats/DateTimeManipulation.java)
-  [
-  `DateTimeManipulationTest.java`](src/test/java/com/svedentsov/aqa/tasks/files_io_formats/DateTimeManipulationTest.java)
+  [`DateTimeManipulationTest.java`](src/test/java/com/svedentsov/aqa/tasks/files_io_formats/DateTimeManipulationTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1507,6 +1498,7 @@
 * **Пример:** `new Fraction(1, 2).add(new Fraction(1, 3))` должен вернуть объект `Fraction`, представляющий `5/6`.
 * **Решение:**
   [`FractionClass.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/FractionClass.java)
+  [`FractionTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/FractionClassTest.java)
 
 [К оглавлению](#table-of-contents)
 
@@ -1647,6 +1639,7 @@
 * **Пример:** После `ImmutablePoint p = new ImmutablePoint(1, 2);`, состояние `p` изменить нельзя.
 * **Решение:**
   [`ImmutableClass.java`](src/main/java/com/svedentsov/aqa/tasks/oop_design/ImmutableClass.java)
+  [`ImmutableClassTest.java`](src/test/java/com/svedentsov/aqa/tasks/oop_design/ImmutableClassTest.java)
 
 [К оглавлению](#table-of-contents)
 

@@ -5,25 +5,20 @@ import java.util.NoSuchElementException;
 
 /**
  * Решение задачи №35: Реализация базового Стека и Очереди.
- * Описание: Используя массив или `LinkedList`.
+ * Описание: Используя массив или LinkedList.
  * (Проверяет: основы структур данных, ООП)
- * Задание: Реализуйте класс `MyStack`, используя `java.util.LinkedList` или массив,
- * который будет иметь методы `push(int value)`, `pop()` (возвращает и удаляет
- * верхний элемент), `peek()` (возвращает верхний элемент без удаления) и `isEmpty()`.
- * Дополнительно реализован `MyQueue`.
- * Пример: `MyStack stack = new MyStack(); stack.push(1); stack.push(2); stack.pop()` -> `2`.
- * `stack.peek()` -> `1`. `stack.isEmpty()` -> `false`.
+ * Задание: Реализуйте класс MyStack, используя java.util.LinkedList или массив,
+ * который будет иметь методы push(int value), pop() (возвращает и удаляет
+ * верхний элемент), peek() (возвращает верхний элемент без удаления) и isEmpty().
+ * Дополнительно реализован MyQueue.
  */
 public class ImplementStackQueue {
 
     /**
      * Простая реализация стека (LIFO - Last In, First Out) на основе {@link LinkedList}.
-     * Предоставляет основные операции стека: push, pop, peek, isEmpty, size.
-     * Использует методы addFirst, removeFirst, getFirst из LinkedList, которые
-     * эффективны для операций с началом списка.
-     * Не является потокобезопасным (non-thread-safe).
+     * Класс сделан public для доступа из тестов.
      */
-    static class MyStack {
+    public static class MyStack {
         // LinkedList подходит, так как push/pop/peek с начала списка выполняются за O(1).
         private final LinkedList<Integer> storage = new LinkedList<>();
 
@@ -100,7 +95,7 @@ public class ImplementStackQueue {
      * оба из которых эффективны для LinkedList (O(1)).
      * Не является потокобезопасным (non-thread-safe).
      */
-    static class MyQueue {
+    public static class MyQueue {
         private final LinkedList<Integer> storage = new LinkedList<>();
 
         /**
@@ -154,102 +149,6 @@ public class ImplementStackQueue {
          */
         public int size() {
             return storage.size();
-        }
-
-        /**
-         * Возвращает строковое представление очереди (для отладки).
-         * Показывает элементы от начала к концу.
-         */
-        @Override
-        public String toString() {
-            return "MyQueue (front -> rear): " + storage.toString();
-        }
-    }
-
-    /**
-     * Точка входа для демонстрации работы классов MyStack и MyQueue.
-     *
-     * @param args Аргументы командной строки (не используются).
-     */
-    public static void main(String[] args) {
-
-        // --- Демонстрация Стека ---
-        System.out.println("--- Stack Demonstration ---");
-        MyStack stack = new MyStack();
-        System.out.println("Initial: " + stack + ", isEmpty: " + stack.isEmpty() + ", Size: " + stack.size());
-
-        System.out.println("Push 10");
-        stack.push(10);
-        System.out.println("Push 20");
-        stack.push(20);
-        System.out.println("Push 30");
-        stack.push(30);
-        System.out.println("Current: " + stack + ", isEmpty: " + stack.isEmpty() + ", Size: " + stack.size());
-
-        System.out.println("Peek: " + stack.peek()); // 30
-        System.out.println("Pop: " + stack.pop()); // 30
-        System.out.println("Current: " + stack + ", Size: " + stack.size());
-
-        System.out.println("Peek: " + stack.peek()); // 20
-        System.out.println("Pop: " + stack.pop()); // 20
-        System.out.println("Current: " + stack + ", Size: " + stack.size());
-
-        System.out.println("Pop: " + stack.pop()); // 10
-        System.out.println("Current: " + stack + ", isEmpty: " + stack.isEmpty() + ", Size: " + stack.size());
-
-        // Попытка операций на пустом стеке
-        try {
-            System.out.print("Attempting pop() on empty stack: ");
-            stack.pop();
-        } catch (NoSuchElementException e) {
-            System.out.println("Caught expected exception - " + e.getMessage());
-        }
-        try {
-            System.out.print("Attempting peek() on empty stack: ");
-            stack.peek();
-        } catch (NoSuchElementException e) {
-            System.out.println("Caught expected exception - " + e.getMessage());
-        }
-
-        // --- Демонстрация Очереди ---
-        System.out.println("\n--- Queue Demonstration ---");
-        MyQueue queue = new MyQueue();
-        System.out.println("Initial: " + queue + ", isEmpty: " + queue.isEmpty() + ", Size: " + queue.size());
-
-        System.out.println("Enqueue 100");
-        queue.enqueue(100);
-        System.out.println("Enqueue 200");
-        queue.enqueue(200);
-        System.out.println("Enqueue 300");
-        queue.enqueue(300);
-        System.out.println("Current: " + queue + ", isEmpty: " + queue.isEmpty() + ", Size: " + queue.size());
-
-        System.out.println("Peek: " + queue.peek()); // 100
-        System.out.println("Dequeue: " + queue.dequeue()); // 100
-        System.out.println("Current: " + queue + ", Size: " + queue.size());
-
-        System.out.println("Peek: " + queue.peek()); // 200
-        System.out.println("Enqueue 400");
-        queue.enqueue(400);
-        System.out.println("Current: " + queue + ", Size: " + queue.size());
-
-        System.out.println("Dequeue: " + queue.dequeue()); // 200
-        System.out.println("Dequeue: " + queue.dequeue()); // 300
-        System.out.println("Dequeue: " + queue.dequeue()); // 400
-        System.out.println("Current: " + queue + ", isEmpty: " + queue.isEmpty() + ", Size: " + queue.size());
-
-        // Попытка операций на пустой очереди
-        try {
-            System.out.print("Attempting dequeue() on empty queue: ");
-            queue.dequeue();
-        } catch (NoSuchElementException e) {
-            System.out.println("Caught expected exception - " + e.getMessage());
-        }
-        try {
-            System.out.print("Attempting peek() on empty queue: ");
-            queue.peek();
-        } catch (NoSuchElementException e) {
-            System.out.println("Caught expected exception - " + e.getMessage());
         }
     }
 }
